@@ -5,7 +5,9 @@
 - Escoger una cantidad de clics específica (de 1 a 99999999) o ilimitada.
 - Posibilidad de cerrar el autoclicker automáticamente una vez culminado el procedimiento.
 - Elegir entre click izquierdo, central o derecho.
-- Atajos de teclado para iniciar, pausar o detenerlo.
+- Seleccionar tres medidas de duración (milisegundos, segundos o minutos).
+- Atajos de teclado para iniciar, pausar/reanudar o detener.
+- Disponible en español e inglés.
 
 ### Requisitos para ejecutar Sobreclick
 * Windows XP o superior.
