@@ -32,9 +32,15 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(sobreclick));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.sobreclickToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.restaurarValoresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.siempreVisibleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.cerrarAlTerminarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.salirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ayudaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.licenciaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.visitarRepositorioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.ascercaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.buttonC = new System.Windows.Forms.Button();
             this.buttonP = new System.Windows.Forms.Button();
@@ -48,10 +54,8 @@
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.timerClick = new System.Windows.Forms.Timer(this.components);
             this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.restaurarValoresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.visitarRepositorioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.cerrarAlTerminarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
@@ -59,92 +63,109 @@
             // 
             // menuStrip1
             // 
+            resources.ApplyResources(this.menuStrip1, "menuStrip1");
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.sobreclickToolStripMenuItem,
             this.ayudaToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(269, 24);
-            this.menuStrip1.TabIndex = 0;
-            this.menuStrip1.Text = "menuStrip1";
             // 
             // sobreclickToolStripMenuItem
             // 
+            resources.ApplyResources(this.sobreclickToolStripMenuItem, "sobreclickToolStripMenuItem");
             this.sobreclickToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.restaurarValoresToolStripMenuItem,
+            this.siempreVisibleToolStripMenuItem,
             this.toolStripSeparator1,
             this.cerrarAlTerminarToolStripMenuItem,
             this.salirToolStripMenuItem});
             this.sobreclickToolStripMenuItem.Name = "sobreclickToolStripMenuItem";
-            this.sobreclickToolStripMenuItem.Size = new System.Drawing.Size(73, 20);
-            this.sobreclickToolStripMenuItem.Text = "&Sobreclick";
+            // 
+            // restaurarValoresToolStripMenuItem
+            // 
+            resources.ApplyResources(this.restaurarValoresToolStripMenuItem, "restaurarValoresToolStripMenuItem");
+            this.restaurarValoresToolStripMenuItem.Name = "restaurarValoresToolStripMenuItem";
+            this.restaurarValoresToolStripMenuItem.Click += new System.EventHandler(this.restaurarValoresToolStripMenuItem_Click);
+            // 
+            // siempreVisibleToolStripMenuItem
+            // 
+            resources.ApplyResources(this.siempreVisibleToolStripMenuItem, "siempreVisibleToolStripMenuItem");
+            this.siempreVisibleToolStripMenuItem.Name = "siempreVisibleToolStripMenuItem";
+            this.siempreVisibleToolStripMenuItem.Click += new System.EventHandler(this.siempreVisibleToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            resources.ApplyResources(this.toolStripSeparator1, "toolStripSeparator1");
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            // 
+            // cerrarAlTerminarToolStripMenuItem
+            // 
+            resources.ApplyResources(this.cerrarAlTerminarToolStripMenuItem, "cerrarAlTerminarToolStripMenuItem");
+            this.cerrarAlTerminarToolStripMenuItem.Name = "cerrarAlTerminarToolStripMenuItem";
+            this.cerrarAlTerminarToolStripMenuItem.Click += new System.EventHandler(this.cerrarAlTerminarToolStripMenuItem_Click);
             // 
             // salirToolStripMenuItem
             // 
+            resources.ApplyResources(this.salirToolStripMenuItem, "salirToolStripMenuItem");
             this.salirToolStripMenuItem.Name = "salirToolStripMenuItem";
-            this.salirToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
-            this.salirToolStripMenuItem.Text = "&Salir";
             this.salirToolStripMenuItem.Click += new System.EventHandler(this.salirToolStripMenuItem_Click);
             // 
             // ayudaToolStripMenuItem
             // 
+            resources.ApplyResources(this.ayudaToolStripMenuItem, "ayudaToolStripMenuItem");
             this.ayudaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.licenciaToolStripMenuItem,
             this.visitarRepositorioToolStripMenuItem,
+            this.toolStripSeparator2,
             this.ascercaToolStripMenuItem});
             this.ayudaToolStripMenuItem.Name = "ayudaToolStripMenuItem";
-            this.ayudaToolStripMenuItem.Size = new System.Drawing.Size(53, 20);
-            this.ayudaToolStripMenuItem.Text = "&Ayuda";
             // 
             // licenciaToolStripMenuItem
             // 
+            resources.ApplyResources(this.licenciaToolStripMenuItem, "licenciaToolStripMenuItem");
             this.licenciaToolStripMenuItem.Name = "licenciaToolStripMenuItem";
-            this.licenciaToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
-            this.licenciaToolStripMenuItem.Text = "&Licencia";
             this.licenciaToolStripMenuItem.Click += new System.EventHandler(this.licenciaToolStripMenuItem_Click);
+            // 
+            // visitarRepositorioToolStripMenuItem
+            // 
+            resources.ApplyResources(this.visitarRepositorioToolStripMenuItem, "visitarRepositorioToolStripMenuItem");
+            this.visitarRepositorioToolStripMenuItem.Name = "visitarRepositorioToolStripMenuItem";
+            this.visitarRepositorioToolStripMenuItem.Click += new System.EventHandler(this.visitarRepositorioToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator2
+            // 
+            resources.ApplyResources(this.toolStripSeparator2, "toolStripSeparator2");
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
             // 
             // ascercaToolStripMenuItem
             // 
+            resources.ApplyResources(this.ascercaToolStripMenuItem, "ascercaToolStripMenuItem");
             this.ascercaToolStripMenuItem.Name = "ascercaToolStripMenuItem";
-            this.ascercaToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
-            this.ascercaToolStripMenuItem.Text = "&Acerca de Sobreclick";
             this.ascercaToolStripMenuItem.Click += new System.EventHandler(this.ascercaToolStripMenuItem_Click);
             // 
             // buttonC
             // 
-            this.buttonC.Location = new System.Drawing.Point(13, 176);
+            resources.ApplyResources(this.buttonC, "buttonC");
             this.buttonC.Name = "buttonC";
-            this.buttonC.Size = new System.Drawing.Size(75, 52);
-            this.buttonC.TabIndex = 1;
-            this.buttonC.Text = "&Iniciar (F6)";
             this.buttonC.UseVisualStyleBackColor = true;
             this.buttonC.Click += new System.EventHandler(this.buttonC_Click);
             // 
             // buttonP
             // 
-            this.buttonP.Enabled = false;
-            this.buttonP.Location = new System.Drawing.Point(94, 176);
+            resources.ApplyResources(this.buttonP, "buttonP");
             this.buttonP.Name = "buttonP";
-            this.buttonP.Size = new System.Drawing.Size(75, 52);
-            this.buttonP.TabIndex = 2;
-            this.buttonP.Text = "&Pausar (F7)";
             this.buttonP.UseVisualStyleBackColor = true;
             this.buttonP.Click += new System.EventHandler(this.buttonP_Click);
             // 
             // buttonD
             // 
-            this.buttonD.Enabled = false;
-            this.buttonD.Location = new System.Drawing.Point(176, 176);
+            resources.ApplyResources(this.buttonD, "buttonD");
             this.buttonD.Name = "buttonD";
-            this.buttonD.Size = new System.Drawing.Size(75, 52);
-            this.buttonD.TabIndex = 3;
-            this.buttonD.Text = "&Detener (F8)";
             this.buttonD.UseVisualStyleBackColor = true;
             this.buttonD.Click += new System.EventHandler(this.buttonD_Click);
             // 
             // numericUpDown1
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(193, 43);
+            resources.ApplyResources(this.numericUpDown1, "numericUpDown1");
             this.numericUpDown1.Maximum = new decimal(new int[] {
             99999999,
             0,
@@ -156,8 +177,6 @@
             0,
             0});
             this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(58, 20);
-            this.numericUpDown1.TabIndex = 4;
             this.numericUpDown1.Value = new decimal(new int[] {
             10,
             0,
@@ -167,36 +186,24 @@
             // 
             // buttonR
             // 
-            this.buttonR.Enabled = false;
-            this.buttonR.Location = new System.Drawing.Point(94, 176);
+            resources.ApplyResources(this.buttonR, "buttonR");
             this.buttonR.Name = "buttonR";
-            this.buttonR.Size = new System.Drawing.Size(75, 52);
-            this.buttonR.TabIndex = 5;
-            this.buttonR.Text = "&Reanudar";
             this.buttonR.UseVisualStyleBackColor = true;
             this.buttonR.Click += new System.EventHandler(this.buttonR_Click);
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 43);
+            resources.ApplyResources(this.label1, "label1");
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(94, 13);
-            this.label1.TabIndex = 6;
-            this.label1.Text = "Cantidad de clicks";
             // 
             // label2
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 69);
+            resources.ApplyResources(this.label2, "label2");
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(72, 13);
-            this.label2.TabIndex = 8;
-            this.label2.Text = "Duración (ms)";
             // 
             // numericUpDown2
             // 
-            this.numericUpDown2.Location = new System.Drawing.Point(193, 69);
+            resources.ApplyResources(this.numericUpDown2, "numericUpDown2");
             this.numericUpDown2.Maximum = new decimal(new int[] {
             1000000,
             0,
@@ -208,8 +215,6 @@
             0,
             0});
             this.numericUpDown2.Name = "numericUpDown2";
-            this.numericUpDown2.Size = new System.Drawing.Size(58, 20);
-            this.numericUpDown2.TabIndex = 7;
             this.numericUpDown2.Value = new decimal(new int[] {
             500,
             0,
@@ -219,25 +224,19 @@
             // 
             // label3
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(10, 98);
+            resources.ApplyResources(this.label3, "label3");
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(28, 13);
-            this.label3.TabIndex = 9;
-            this.label3.Text = "Tipo";
             // 
             // comboBox1
             // 
+            resources.ApplyResources(this.comboBox1, "comboBox1");
             this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Items.AddRange(new object[] {
-            "Izquierdo",
-            "Central",
-            "Derecho"});
-            this.comboBox1.Location = new System.Drawing.Point(145, 95);
+            resources.GetString("comboBox1.Items"),
+            resources.GetString("comboBox1.Items1"),
+            resources.GetString("comboBox1.Items2")});
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(106, 21);
-            this.comboBox1.TabIndex = 10;
             this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // timerClick
@@ -246,46 +245,37 @@
             // 
             // checkBox1
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(13, 153);
+            resources.ApplyResources(this.checkBox1, "checkBox1");
             this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(108, 17);
-            this.checkBox1.TabIndex = 11;
-            this.checkBox1.Text = "Cantidad ilimitada";
             this.checkBox1.UseVisualStyleBackColor = true;
             this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
-            // restaurarValoresToolStripMenuItem
+            // panel1
             // 
-            this.restaurarValoresToolStripMenuItem.Enabled = false;
-            this.restaurarValoresToolStripMenuItem.Name = "restaurarValoresToolStripMenuItem";
-            this.restaurarValoresToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
-            this.restaurarValoresToolStripMenuItem.Text = "&Restaurar valores";
-            this.restaurarValoresToolStripMenuItem.Click += new System.EventHandler(this.restaurarValoresToolStripMenuItem_Click);
+            resources.ApplyResources(this.panel1, "panel1");
+            this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.Name = "panel1";
             // 
-            // toolStripSeparator1
+            // comboBox2
             // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(160, 6);
-            // 
-            // visitarRepositorioToolStripMenuItem
-            // 
-            this.visitarRepositorioToolStripMenuItem.Name = "visitarRepositorioToolStripMenuItem";
-            this.visitarRepositorioToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
-            this.visitarRepositorioToolStripMenuItem.Text = "&Visitar repositorio";
-            // 
-            // cerrarAlTerminarToolStripMenuItem
-            // 
-            this.cerrarAlTerminarToolStripMenuItem.Name = "cerrarAlTerminarToolStripMenuItem";
-            this.cerrarAlTerminarToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
-            this.cerrarAlTerminarToolStripMenuItem.Text = "S&alir al terminar";
-            this.cerrarAlTerminarToolStripMenuItem.Click += new System.EventHandler(this.cerrarAlTerminarToolStripMenuItem_Click);
+            resources.ApplyResources(this.comboBox2, "comboBox2");
+            this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Items.AddRange(new object[] {
+            resources.GetString("comboBox2.Items"),
+            resources.GetString("comboBox2.Items1"),
+            resources.GetString("comboBox2.Items2")});
+            this.comboBox2.Name = "comboBox2";
+            this.comboBox2.Tag = "";
+            this.comboBox2.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged);
             // 
             // sobreclick
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(269, 248);
+            this.Controls.Add(this.buttonC);
+            this.Controls.Add(this.comboBox2);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.label3);
@@ -295,15 +285,12 @@
             this.Controls.Add(this.numericUpDown1);
             this.Controls.Add(this.buttonD);
             this.Controls.Add(this.buttonP);
-            this.Controls.Add(this.buttonC);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.buttonR);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.MaximizeBox = false;
             this.Name = "sobreclick";
-            this.Text = "Sobreclick";
             this.Load += new System.EventHandler(this.sobreclick_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
@@ -338,6 +325,10 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem visitarRepositorioToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem cerrarAlTerminarToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private System.Windows.Forms.ToolStripMenuItem siempreVisibleToolStripMenuItem;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.ComboBox comboBox2;
     }
 }
 

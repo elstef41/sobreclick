@@ -23,12 +23,11 @@ namespace Sobreclick
         public static extern void mouse_event(long dwFlags, long dx, long dy, long cButtons, long dwExtraInfo);
         [DllImport("user32.dll")]
         public static extern bool RegisterHotKey(IntPtr hWnd, int id, int fsModifiers, int vlc);
-
+        
 
         int clickTimes = 0;
         public void ClickI()
         {
-            //Call the imported function with the cursor's current position
             int X = Cursor.Position.X;
             int Y = Cursor.Position.Y;
             mouse_event(MOUSEEVENTF_LEFTDOWN | MOUSEEVENTF_LEFTUP, X, Y, 0, 0);
@@ -36,7 +35,6 @@ namespace Sobreclick
 
         public void ClickM()
         {
-            //Call the imported function with the cursor's current position
             int X = Cursor.Position.X;
             int Y = Cursor.Position.Y;
             mouse_event(MOUSEEVENTF_MIDDLEDOWN | MOUSEEVENTF_MIDDLEUP, X, Y, 0, 0);
@@ -71,6 +69,8 @@ namespace Sobreclick
             Boolean F8P = RegisterHotKey(
                     this.Handle, tclidd, 0x0000, tcld
                 );
+            comboBox1.SelectedIndex = 0;
+            comboBox2.SelectedIndex = 0;
 
         }
 
@@ -92,7 +92,14 @@ namespace Sobreclick
                     case 2:
                         if (!buttonC.Enabled)
                         {
-                            Pausar();
+                            if (!buttonR.Enabled)
+                            {
+                                Pausar();
+                            }
+                            else
+                            {
+                                Reanudar();
+                            }
                         }
                         else
                         {
@@ -141,10 +148,26 @@ namespace Sobreclick
             }
             else
             {
+                int clickinterval;
+                switch (Convert.ToInt32(comboBox2.SelectedIndex))
+                {
+                    case 0:
+                        clickinterval = Convert.ToInt32(numericUpDown2.Value);
+                        break;
+                    case 1:
+                        clickinterval = Convert.ToInt32(numericUpDown2.Value) * 1000;
+                        break;
+                    case 2:
+                        clickinterval = Convert.ToInt32(numericUpDown2.Value) * 60000;
+                        break;
+                    default:
+                        clickinterval = Convert.ToInt32(numericUpDown2.Value);
+                        break;
+                }
                 buttonC.Enabled = false;
                 buttonP.Enabled = true;
                 buttonD.Enabled = true;
-                timerClick.Interval = Convert.ToInt32(numericUpDown2.Value);
+                timerClick.Interval = clickinterval;
                 timerClick.Start();
                 return true;
             }
@@ -168,6 +191,23 @@ namespace Sobreclick
             buttonP.Enabled = true;
             buttonR.Visible = false;
             buttonR.Enabled = false;
+                int clickinterval;
+                switch (Convert.ToInt32(comboBox2.SelectedIndex))
+                {
+                    case 0:
+                        clickinterval = Convert.ToInt32(numericUpDown2.Value);
+                        break;
+                    case 1:
+                        clickinterval = Convert.ToInt32(numericUpDown2.Value) * 1000;
+                        break;
+                    case 2:
+                        clickinterval = Convert.ToInt32(numericUpDown2.Value) * 60000;
+                        break;
+                    default:
+                        clickinterval = Convert.ToInt32(numericUpDown2.Value);
+                        break;
+                }
+                timerClick.Interval = clickinterval;
             timerClick.Start();
             return true;
         }
@@ -216,7 +256,7 @@ namespace Sobreclick
                             ClickD();
                             break;
                     }
-                            break;
+                        break;
                 case false:
                     if (clickTimes != 0)
                     {
@@ -274,6 +314,7 @@ namespace Sobreclick
             numericUpDown1.Value = 10;
             numericUpDown2.Value = 500;
             comboBox1.SelectedIndex = 0;
+            comboBox2.SelectedIndex = 0;
             restaurarValoresToolStripMenuItem.Enabled = false;
         }
 
@@ -316,6 +357,33 @@ namespace Sobreclick
         private void sobreclick_Load(object sender, EventArgs e)
         {
             clickTimes = Convert.ToInt32(numericUpDown1.Value);
+        }
+
+        private void visitarRepositorioToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://github.com/elstef41/sobreclick");
+        }
+
+        private void siempreVisibleToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (!siempreVisibleToolStripMenuItem.Checked)
+            {
+                this.TopMost = true;
+                siempreVisibleToolStripMenuItem.Checked = true;
+            }
+            else
+            {
+                this.TopMost = false;
+                siempreVisibleToolStripMenuItem.Checked = false;
+            }
+        }
+
+        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comboBox2.SelectedIndex != 0)
+            {
+                restaurarValoresToolStripMenuItem.Enabled = true;
+            }
         }
     }
 }
