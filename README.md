@@ -1,16 +1,18 @@
 # Sobreclick
 [![Lanzamiento actual](https://img.shields.io/github/v/release/elstef41/sobreclick?include_prereleases)](https://github.com/elstef41/sobreclick/releases)
 
-![Ventana principal](https://user-images.githubusercontent.com/19848495/155681468-7104a1de-d02d-4e60-be0a-0f398513e47e.jpg)
+
+![Ventana principal](https://user-images.githubusercontent.com/19848495/156661791-9cd37f6b-d061-497a-980b-578b2b9cc12d.png)
+
 ## Una herramienta simple que permite hacer clic una determinada cantidad de veces específica en distintas aplicaciones.
 ### Funciones principales:
 - Escoger una cantidad de clics específica (de 1 a 99999999) o ilimitada.
 - Posibilidad de cerrar el autoclicker automáticamente una vez culminado el procedimiento.
-- Elegir entre click izquierdo, central o derecho.
-- Seleccionar tres medidas de duración (milisegundos, segundos o minutos).
+- Elegir entre clic izquierdo, central o derecho.
+- Hacer doble clic.
+- Seleccionar cuatro medidas de duración (milisegundos, segundos. minutos u horas).
 - Atajos de teclado para iniciar, pausar/reanudar o detener.
-- Disponible en español!
- e inglés.
+- Disponible en español e inglés.
 
 ### Requisitos para ejecutar Sobreclick
 * Windows XP o superior.
