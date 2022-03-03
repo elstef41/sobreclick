@@ -1,6 +1,6 @@
 # Sobreclick
 [![Lanzamiento actual](https://img.shields.io/github/v/release/elstef41/sobreclick?include_prereleases)](https://github.com/elstef41/sobreclick/releases)
-
+[![Sourceforge](https://img.shields.io/badge/sourceforge-descargar-green)](https://sourceforge.net/projects/sobreclick/files/latest/download)
 
 ![Ventana principal](https://user-images.githubusercontent.com/19848495/156661791-9cd37f6b-d061-497a-980b-578b2b9cc12d.png)
 
