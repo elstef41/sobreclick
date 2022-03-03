@@ -6,6 +6,8 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
+using System.Threading;
+using System.Globalization;
 
 namespace Sobreclick
 {
@@ -54,6 +56,7 @@ namespace Sobreclick
             this.Text = "Sobreclick ";
             this.Text += SC.obtenerVersion();
             this.Text += " por elstef41";
+            this.MinimumSize = new Size(270, 268);
             int tcli = (int)Keys.F6;
             int tclidi = 1;
             int tclp = (int)Keys.F7;
@@ -160,6 +163,9 @@ namespace Sobreclick
                     case 2:
                         clickinterval = Convert.ToInt32(numericUpDown2.Value) * 60000;
                         break;
+                    case 3:
+                        clickinterval = Convert.ToInt32(numericUpDown2.Value) * 3600000;
+                        break;
                     default:
                         clickinterval = Convert.ToInt32(numericUpDown2.Value);
                         break;
@@ -203,6 +209,9 @@ namespace Sobreclick
                     case 2:
                         clickinterval = Convert.ToInt32(numericUpDown2.Value) * 60000;
                         break;
+                    case 3:
+                        clickinterval = Convert.ToInt32(numericUpDown2.Value) * 3600000;
+                        break;
                     default:
                         clickinterval = Convert.ToInt32(numericUpDown2.Value);
                         break;
@@ -225,8 +234,19 @@ namespace Sobreclick
 
         private void buttonC_Click(object sender, EventArgs e)
         {
-            clickTimes = Convert.ToInt32(numericUpDown1.Value);
-            Iniciar();
+            if (numericUpDown1.Text == "")
+            {
+                MessageBox.Show("Tienes que establecer una duración.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else if (numericUpDown2.Text == "")
+            {
+                MessageBox.Show("Tienes que establecer un tipo.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                clickTimes = Convert.ToInt32(numericUpDown1.Value);
+                Iniciar();
+            }
         }
 
         private void buttonD_Click(object sender, EventArgs e)
@@ -247,12 +267,15 @@ namespace Sobreclick
                     switch (comboBox1.SelectedIndex)
                     {
                         case 0:
+                            if (checkBox2.Checked) { ClickI(); }
                             ClickI();
                             break;
                         case 1:
+                            if (checkBox2.Checked) { ClickM(); }
                             ClickM();
                             break;
                         case 2:
+                            if (checkBox2.Checked) { ClickD(); }
                             ClickD();
                             break;
                     }
@@ -263,12 +286,15 @@ namespace Sobreclick
                         switch (comboBox1.SelectedIndex)
                         {
                             case 0:
+                                if (checkBox2.Checked) { ClickI(); }
                                 ClickI();
                                 break;
                             case 1:
+                                if (checkBox2.Checked) { ClickM(); }
                                 ClickM();
                                 break;
                             case 2:
+                                if (checkBox2.Checked) { ClickD(); }
                                 ClickD();
                                 break;
                         }
@@ -310,6 +336,7 @@ namespace Sobreclick
         private void restaurarValoresToolStripMenuItem_Click(object sender, EventArgs e)
         {
             checkBox1.Checked = false;
+            checkBox2.Checked = false;
             numericUpDown2.Enabled = true;
             numericUpDown1.Value = 10;
             numericUpDown2.Value = 500;
@@ -383,6 +410,87 @@ namespace Sobreclick
             if (comboBox2.SelectedIndex != 0)
             {
                 restaurarValoresToolStripMenuItem.Enabled = true;
+            }
+        }
+
+
+        private static void ChangeLanguage(string lang)
+        {
+            Thread.CurrentThread.CurrentUICulture = new CultureInfo(lang);
+            foreach (Form frm in Application.OpenForms)
+            {
+                localizeForm(frm);
+            }
+        }
+
+        private static void localizeForm(Form frm)
+        {
+            var manager = new ComponentResourceManager(frm.GetType());
+            manager.ApplyResources(frm, "$this");
+            applyResources(manager, frm.Controls);
+        }
+
+        private static void applyResources(ComponentResourceManager manager, Control.ControlCollection ctls)
+        {
+            foreach (Control ctl in ctls)
+            {
+                manager.ApplyResources(ctl, ctl.Name);
+                applyResources(manager, ctl.Controls);
+            }
+        }
+          
+
+        private void siempreVisibleToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            if (!siempreVisibleToolStripMenuItem.Checked)
+            {
+                this.TopMost = true;
+                siempreVisibleToolStripMenuItem.Checked = true;
+            }
+            else
+            {
+                this.TopMost = false;
+                siempreVisibleToolStripMenuItem.Checked = false;
+            }
+        }
+
+        private void languageToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void restaurarTamañoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Size = new Size(285, 287);
+            restaurarTamañoToolStripMenuItem.Enabled = false;
+        }
+
+        private void sobreclick_SizeChanged(object sender, EventArgs e)
+        {
+            if (this.WindowState == FormWindowState.Maximized)
+            {
+                restaurarTamañoToolStripMenuItem.Enabled = false;
+
+            }
+            else if (this.Size.Width != 287 || this.Size.Height != 285)
+            {
+                restaurarTamañoToolStripMenuItem.Enabled = true;
+            }
+            else
+            {
+                restaurarTamañoToolStripMenuItem.Enabled = false;
+            }
+        }
+
+        private void checkBox2_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox2.Checked)
+            {
+                restaurarValoresToolStripMenuItem.Enabled = true;
+            }
+            else
+            {
+                restaurarValoresToolStripMenuItem.Enabled = false;
             }
         }
     }
