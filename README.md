@@ -34,4 +34,4 @@ Sobreclick se encuentra alojado bajo la licencia [Apache License 2.0](https://ww
 
 [Telegram](https://t.me/elstef41)
 
-[Blog](https://elstef41.cf)
+[Blog](https://elstef41.com)
