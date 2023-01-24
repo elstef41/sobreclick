@@ -5321,4 +5321,16 @@
   <data name="restaurarTamañoToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Restore size</value>
   </data>
+	<data name="msgClickType" xml:space="preserve">
+    <value>Selecciona un tipo de clic: izquierdo, central o derecho.</value>
+  </data>
+	<data name="msgMore0" xml:space="preserve">
+    <value>The amount of clicks must be more than 0</value>
+  </data>
+	<data name="msgTimeSelection" xml:space="preserve">
+    <value>You have to select the time.</value>
+  </data>
+	<data name="msgTypeSelection" xml:space="preserve">
+    <value>You have to select a type.</value>
+  </data>
 </root>

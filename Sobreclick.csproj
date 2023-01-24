@@ -35,6 +35,9 @@
   <PropertyGroup>
     <ApplicationIcon>Properties\sc.ico</ApplicationIcon>
   </PropertyGroup>
+  <PropertyGroup>
+    <AutoGenerateBindingRedirects>false</AutoGenerateBindingRedirects>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -60,23 +63,19 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="strings.cs" />
-    <EmbeddedResource Include="acercade.aa.resx">
-      <DependentUpon>acercade.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="acercade.en.resx">
       <DependentUpon>acercade.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="acercade.resx">
       <DependentUpon>acercade.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="sobreclick.en-AI.resx">
-      <DependentUpon>sobreclick.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="sobreclick.en.resx">
       <DependentUpon>sobreclick.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="sobreclick.resx">
       <DependentUpon>sobreclick.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

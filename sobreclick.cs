@@ -8,12 +8,14 @@ using System.Windows.Forms;
 using System.Runtime.InteropServices;
 using System.Threading;
 using System.Globalization;
+using System.Resources;
 
 namespace Sobreclick
 {
     public partial class sobreclick : Form
     {
         strings SC = new strings();
+        ResourceManager rm = new ResourceManager(typeof(sobreclick));
         private const int MOUSEEVENTF_LEFTDOWN = 0X0002;
         private const int MOUSEEVENTF_LEFTUP = 0X0004;
         private const int MOUSEEVENTF_MIDDLEDOWN = 0X0020;
@@ -141,12 +143,12 @@ namespace Sobreclick
             bool nud1 = Convert.ToInt32(numericUpDown1.Value) < 1;
             if (nud1 == true)
             {
-                MessageBox.Show("La cantidad de clics debe ser mayor a 0", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(rm.GetString("msgMore0"), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return true;
             }
             else if (comboBox1.Text == "")
             {
-                MessageBox.Show("Selecciona un tipo de clic: izquierdo, central o derecho.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(rm.GetString("msgClickType"), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return true;
             }
             else
@@ -236,11 +238,11 @@ namespace Sobreclick
         {
             if (numericUpDown1.Text == "")
             {
-                MessageBox.Show("Tienes que establecer una duración.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(rm.GetString("msgTimeSelection"), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else if (numericUpDown2.Text == "")
             {
-                MessageBox.Show("Tienes que establecer un tipo.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(rm.GetString("msgTypeSelection"), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
