@@ -36,7 +36,7 @@ namespace Sobreclick
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            System.Diagnostics.Process.Start("https://elstef41.cf/");
+            System.Diagnostics.Process.Start("https://elstef41.com/");
         }
 
         private void AcercaDe_KeyPress(object sender, KeyPressEventArgs e)
@@ -60,6 +60,22 @@ namespace Sobreclick
         private void acercade_Load_1(object sender, EventArgs e)
         {
 
+        }
+
+        private void linkLabel1_LinkClicked_1(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://elstef41.com/");
+        }
+
+        private void linkLabel2_LinkClicked_1(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+
+            System.Diagnostics.Process.Start("https://www.youtube.com/user/elstef41");
+        }
+
+        private void linkLabel3_LinkClicked_1(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://twitter.com/elstef41");
         }
     }
 }

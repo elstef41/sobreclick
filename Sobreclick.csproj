@@ -75,9 +75,6 @@
     <EmbeddedResource Include="acercade.resx">
       <DependentUpon>acercade.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="sc_config.en-DE.resx">
-      <DependentUpon>sc_config.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="sc_config.en.resx">
       <DependentUpon>sc_config.cs</DependentUpon>
     </EmbeddedResource>
