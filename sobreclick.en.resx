@@ -5327,7 +5327,4 @@
   <data name="msgTypeSelection" xml:space="preserve">
     <value>You have to select a type.</value>
   </data>
-  <data name="msgEqual" xml:space="preserve">
-    <value>Some keys are repeated.</value>
-  </data>
 </root>

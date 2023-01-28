@@ -5200,4 +5200,7 @@
   <data name="$this.Text" xml:space="preserve">
     <value>Key settings</value>
   </data>
+  <data name="msgEqual" xml:space="preserve">
+    <value>Some keys are repeated. Check them and try again.</value>
+  </data>
 </root>

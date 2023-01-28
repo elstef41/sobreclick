@@ -5799,7 +5799,4 @@
   <data name="msgTypeSelection" xml:space="preserve">
     <value>Tienes que establecer un tipo.</value>
   </data>
-  <data name="msgEqual" xml:space="preserve">
-    <value>Algunas teclas están repetidas.</value>
-  </data>
 </root>
