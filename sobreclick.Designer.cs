@@ -33,6 +33,7 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.sobreclickToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.restaurarValoresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.configuraciónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.cerrarAlTerminarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.salirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -77,6 +78,7 @@
             // 
             this.sobreclickToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.restaurarValoresToolStripMenuItem,
+            this.configuraciónToolStripMenuItem,
             this.toolStripSeparator1,
             this.cerrarAlTerminarToolStripMenuItem,
             this.salirToolStripMenuItem});
@@ -88,6 +90,12 @@
             resources.ApplyResources(this.restaurarValoresToolStripMenuItem, "restaurarValoresToolStripMenuItem");
             this.restaurarValoresToolStripMenuItem.Name = "restaurarValoresToolStripMenuItem";
             this.restaurarValoresToolStripMenuItem.Click += new System.EventHandler(this.restaurarValoresToolStripMenuItem_Click);
+            // 
+            // configuraciónToolStripMenuItem
+            // 
+            this.configuraciónToolStripMenuItem.Name = "configuraciónToolStripMenuItem";
+            resources.ApplyResources(this.configuraciónToolStripMenuItem, "configuraciónToolStripMenuItem");
+            this.configuraciónToolStripMenuItem.Click += new System.EventHandler(this.configuraciónToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
             // 
@@ -315,6 +323,7 @@
             this.Controls.Add(this.buttonR);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "sobreclick";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.sobreclick_FormClosing);
             this.Load += new System.EventHandler(this.sobreclick_Load);
             this.SizeChanged += new System.EventHandler(this.sobreclick_SizeChanged);
             this.menuStrip1.ResumeLayout(false);
@@ -357,6 +366,7 @@
         private System.Windows.Forms.ToolStripMenuItem siempreVisibleToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem restaurarTamañoToolStripMenuItem;
         private System.Windows.Forms.CheckBox checkBox2;
+        private System.Windows.Forms.ToolStripMenuItem configuraciónToolStripMenuItem;
     }
 }
 

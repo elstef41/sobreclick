@@ -35,6 +35,9 @@
   <PropertyGroup>
     <ApplicationIcon>Properties\sc.ico</ApplicationIcon>
   </PropertyGroup>
+  <PropertyGroup>
+    <AutoGenerateBindingRedirects>false</AutoGenerateBindingRedirects>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -51,6 +54,12 @@
     <Compile Include="acercade.Designer.cs">
       <DependentUpon>acercade.cs</DependentUpon>
     </Compile>
+    <Compile Include="sc_config.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="sc_config.Designer.cs">
+      <DependentUpon>sc_config.cs</DependentUpon>
+    </Compile>
     <Compile Include="sobreclick.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -60,23 +69,28 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="strings.cs" />
-    <EmbeddedResource Include="acercade.aa.resx">
-      <DependentUpon>acercade.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="acercade.en.resx">
       <DependentUpon>acercade.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="acercade.resx">
       <DependentUpon>acercade.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="sobreclick.en-AI.resx">
-      <DependentUpon>sobreclick.cs</DependentUpon>
+    <EmbeddedResource Include="sc_config.en-DE.resx">
+      <DependentUpon>sc_config.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="sc_config.en.resx">
+      <DependentUpon>sc_config.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="sc_config.resx">
+      <DependentUpon>sc_config.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="sobreclick.en.resx">
       <DependentUpon>sobreclick.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="sobreclick.resx">
       <DependentUpon>sobreclick.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
