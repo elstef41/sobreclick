@@ -54,6 +54,12 @@
     <Compile Include="acercade.Designer.cs">
       <DependentUpon>acercade.cs</DependentUpon>
     </Compile>
+    <Compile Include="sc_config.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="sc_config.Designer.cs">
+      <DependentUpon>sc_config.cs</DependentUpon>
+    </Compile>
     <Compile Include="sobreclick.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -68,6 +74,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="acercade.resx">
       <DependentUpon>acercade.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="sc_config.en-DE.resx">
+      <DependentUpon>sc_config.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="sc_config.en.resx">
+      <DependentUpon>sc_config.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="sc_config.resx">
+      <DependentUpon>sc_config.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="sobreclick.en.resx">
       <DependentUpon>sobreclick.cs</DependentUpon>

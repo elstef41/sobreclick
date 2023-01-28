@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
 using System.Threading;
@@ -23,11 +20,17 @@ namespace Sobreclick
         private const int MOUSEEVENTF_RIGHTDOWN = 0X0008;
         private const int MOUSEEVENTF_RIGHTUP = 0X00010;
 
+        private const int tclidi = 0x0997;
+        private const int tclidp = 0x0998;
+        private const int tclidd = 0x0999;
+
         [DllImport("user32.dll", CharSet = CharSet.Auto, CallingConvention = CallingConvention.StdCall)]
         public static extern void mouse_event(long dwFlags, long dx, long dy, long cButtons, long dwExtraInfo);
         [DllImport("user32.dll")]
         public static extern bool RegisterHotKey(IntPtr hWnd, int id, int fsModifiers, int vlc);
-        
+        [DllImport("user32.dll")]
+        public static extern bool UnregisterHotKey(IntPtr hWnd, int id);
+
 
         int clickTimes = 0;
         public void ClickI()
@@ -59,42 +62,55 @@ namespace Sobreclick
             this.Text += SC.obtenerVersion();
             this.Text += " por elstef41";
             this.MinimumSize = new Size(270, 268);
-            int tcli = (int)Keys.F6;
-            int tclidi = 1;
-            int tclp = (int)Keys.F7;
-            int tclidp = 2;
-            int tcld = (int)Keys.F8;
-            int tclidd = 3;
-            Boolean F6P = RegisterHotKey(
-                    this.Handle, tclidi, 0x0000, tcli
-                );
-            Boolean F7P = RegisterHotKey(
-                    this.Handle, tclidp, 0x0000, tclp
-                );
-            Boolean F8P = RegisterHotKey(
-                    this.Handle, tclidd, 0x0000, tcld
-                );
             comboBox1.SelectedIndex = 0;
             comboBox2.SelectedIndex = 0;
+        }
 
+
+        public void actualizarTeclas()
+        {
+            UnregisterHotKey(this.Handle, tclidi);
+            UnregisterHotKey(this.Handle, tclidp);
+            UnregisterHotKey(this.Handle, tclidd);
+            Keys tcli = strings.iniT;
+            Keys tclp = strings.pauT;
+            Keys tcld = strings.detT;
+            RegisterHotKey(this.Handle, tclidi, 0x0000, (int)tcli);
+            RegisterHotKey(this.Handle, tclidp, 0x0000, (int)tclp);
+            RegisterHotKey(this.Handle, tclidd, 0x0000, (int)tcld);
+            switch (CultureInfo.CurrentCulture.Name)
+            {
+                case "en":
+                    buttonC.Text = buttonC.Text.Substring(0, 7) + tcli.ToString() + ")";
+                    buttonR.Text = buttonR.Text.Substring(0, 8) + tclp.ToString() + ")";
+                    buttonP.Text = buttonP.Text.Substring(0, 7) + tclp.ToString() + ")";
+                    buttonD.Text = buttonD.Text.Substring(0, 6) + tcld.ToString() + ")";
+                    break;
+                case "es-ES":
+                default:
+                    buttonC.Text = buttonC.Text.Substring(0, 10) + tcli.ToString() + ")";
+                    buttonR.Text = buttonR.Text.Substring(0, 11) + tclp.ToString() + ")";
+                    buttonP.Text = buttonP.Text.Substring(0, 9) + tclp.ToString() + ")";
+                    buttonD.Text = buttonD.Text.Substring(0, 10) + tcld.ToString() + ")";
+                    break;
+            }
         }
 
         protected override void WndProc(ref Message m)
         {
+            base.WndProc(ref m);
             if (m.Msg == 0x0312)
             {
-                int i = m.WParam.ToInt32();
-
-                switch (i)
+                switch (m.WParam.ToInt32())
                 {
-                    case 1:
+                    case tclidi:
                         if (buttonC.Enabled)
                         {
                             clickTimes = Convert.ToInt32(numericUpDown1.Value);
                             Iniciar();
                         }
                         break;
-                    case 2:
+                    case tclidp:
                         if (!buttonC.Enabled)
                         {
                             if (!buttonR.Enabled)
@@ -111,7 +127,7 @@ namespace Sobreclick
                             buttonP.Visible = true;
                         }
                         break;
-                    case 3:
+                    case tclidd:
                         if (buttonD.Enabled)
                         {
                             Detener();
@@ -120,7 +136,6 @@ namespace Sobreclick
                 }
             }
 
-            base.WndProc(ref m);
         }
         private void ascercaToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -386,6 +401,7 @@ namespace Sobreclick
         private void sobreclick_Load(object sender, EventArgs e)
         {
             clickTimes = Convert.ToInt32(numericUpDown1.Value);
+            actualizarTeclas();
         }
 
         private void visitarRepositorioToolStripMenuItem_Click(object sender, EventArgs e)
@@ -456,10 +472,6 @@ namespace Sobreclick
             }
         }
 
-        private void languageToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void restaurarTamañoToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -494,6 +506,30 @@ namespace Sobreclick
             {
                 restaurarValoresToolStripMenuItem.Enabled = false;
             }
+        }
+
+        private void configuraciónToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            sc_config scC = new sc_config();
+            scC.Show();
+            scC.FormClosed += new FormClosedEventHandler(scC_FormClosed);
+        }
+
+        private void scC_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            actualizarTeclas();
+        }
+
+        private void sobreclick_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            UnregisterHotKey(this.Handle, tclidi);
+            UnregisterHotKey(this.Handle, tclidp);
+            UnregisterHotKey(this.Handle, tclidd);
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            actualizarTeclas();
         }
     }
 }
