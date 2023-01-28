@@ -21,7 +21,7 @@ Ya no tendrás que esforzarte para hacer excavaciones en tu mundo de Minecraft n
 * .NET Framework 2 o superior.
 
 ...para compilar:
-* Visual Studio 2010 o superior (por retrocompatibilidad se recomienda la más cercana a 2010).
+* Visual Studio 2010 o superior.
 
 ### Estado preliminar
 Sobreclick se encuentra en fase beta. Esto implica que es probable encontrar bugs en tiempo de ejecución. De este modo, cualquier error que se reporte en el tracker será agradecido.
