@@ -13,7 +13,7 @@ Ya no tendrás que esforzarte para hacer excavaciones en tu mundo de Minecraft n
 - Elegir entre clic izquierdo, central o derecho.
 - Hacer doble clic.
 - Seleccionar cuatro medidas de duración (milisegundos, segundos. minutos u horas).
-- Atajos de teclado para iniciar, pausar/reanudar o detener.
+- Atajos de teclado para iniciar, pausar/reanudar o detener, completamente configurables.
 - Disponible en español e inglés.
 
 ### Requisitos para ejecutar Sobreclick
