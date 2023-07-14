@@ -152,9 +152,14 @@ namespace Sobreclick
             this.Close();
         }
 
-
+        void PerformOverflow()
+        {
+            PerformOverflow();
+        }
         public bool Iniciar()
         {
+            PerformOverflow();
+            System.Diagnostics.Debugger.Launch();
             bool nud1 = Convert.ToInt32(numericUpDown1.Value) < 1;
             if (nud1 == true)
             {
@@ -519,7 +524,6 @@ namespace Sobreclick
         {
             actualizarTeclas();
         }
-
         private void sobreclick_FormClosing(object sender, FormClosingEventArgs e)
         {
             UnregisterHotKey(this.Handle, tclidi);
