@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Threading;
 using System.Windows.Forms;
+using System.Configuration;
+using System.Collections.Specialized;
 
 namespace Sobreclick
 {
@@ -29,18 +31,18 @@ namespace Sobreclick
         {
             try
             {
-                acercade acercade = new acercade();
-                acercade.TopMost = true;
-                acercade.ShowDialog();
+                excpt exception = new excpt(e.Exception.ToString());
+                exception.TopMost = true;
+                exception.ShowDialog();
                 Application.Exit();
             }
             catch
             {
                 try
                 {
-                    acercade acercade = new acercade();
-                    acercade.TopMost = true;
-                    acercade.ShowDialog();
+                    excpt exception = new excpt(e.Exception.ToString());
+                    exception.TopMost = true;
+                    exception.ShowDialog();
                     Application.Exit();
                 }
                 finally
@@ -52,9 +54,9 @@ namespace Sobreclick
         }
         static void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
         {
-            acercade acercade = new acercade();
-            acercade.TopMost = true;
-            acercade.ShowDialog();
+            excpt exception = new excpt(e.ToString());
+            exception.TopMost = true;
+            exception.ShowDialog();
             Application.Exit();
         }
     }
