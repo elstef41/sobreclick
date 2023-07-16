@@ -27,6 +27,13 @@ Ya no tendrás que esforzarte para hacer excavaciones en tu mundo de Minecraft n
 ### Estado preliminar
 Sobreclick se encuentra en fase beta. Esto implica que es probable encontrar bugs en tiempo de ejecución. De este modo, cualquier error que se reporte en el tracker será agradecido.
 
+## Capturas
+![Sobreclick en Windows XP](https://github.com/elstef41/sobreclick/assets/19848495/aca7a812-696d-4d3c-a99c-b1c299f5a0fd)
+
+![Sobreclick en Windows 7](https://github.com/elstef41/sobreclick/assets/19848495/4bf50f14-6c59-454e-a7ce-5acaffe78238)
+
+![Configuración de Sobreclick](https://github.com/elstef41/sobreclick/assets/19848495/164f0844-fc0c-4b7f-9b19-20c991ea15de)
+
 ## Licencia
 Sobreclick se encuentra alojado bajo la licencia [Apache License 2.0](https://www.apache.org/licenses/LICENSE-2.0.html).
 
