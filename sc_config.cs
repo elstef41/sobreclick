@@ -6,15 +6,22 @@ using System.Drawing;
 using System.Resources;
 using System.Text;
 using System.Windows.Forms;
+using System.Configuration;
+using static System.Resources.ResXFileRef;
 
 namespace Sobreclick
 {
     public partial class sc_config : Form
     {
+        static conf Conf = new conf();
+        public static TypeConverter conversor = TypeDescriptor.GetConverter(typeof(Keys));
+
+
         ResourceManager rm = new ResourceManager(typeof(sc_config));
-        public static Keys iniT = strings.iniT;
-        public static Keys pauT = strings.pauT;
-        public static Keys detT = strings.detT;
+
+        public static Keys iniT = (Keys)conversor.ConvertFromString(Conf.teclaIniciar());
+        public static Keys pauT = (Keys)conversor.ConvertFromString(Conf.teclaPausarReanudar());
+        public static Keys detT = (Keys)conversor.ConvertFromString(Conf.teclaDetener());
         public sc_config()
         {
             InitializeComponent();
@@ -49,7 +56,8 @@ namespace Sobreclick
             if (iniT == pauT || iniT == detT || detT == pauT)
             {
                 MessageBox.Show(rm.GetString("msgEqual"), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            } else
+            }
+            else
             {
                 strings.actualizarTecla(1, iniT);
                 strings.actualizarTecla(2, pauT);
@@ -70,9 +78,9 @@ namespace Sobreclick
 
         private void button2_Click(object sender, EventArgs e)
         {
-            iniT = Keys.F6;
-            pauT = Keys.F7;
-            detT = Keys.F8;
+            iniT = strings.iniT;
+            pauT = strings.pauT;
+            detT = strings.detT;
             textBox1.Clear();
             textBox1.AppendText(iniT.ToString() + "\r\n");
             textBox2.Clear();

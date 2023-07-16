@@ -5316,15 +5316,18 @@
     <value>NoControl</value>
   </data>
   <data name="msgClickType" xml:space="preserve">
-    <value>Select a type of click: left, center or right.</value>
+    <value>Select click type: left, center or right.</value>
   </data>
   <data name="msgMore0" xml:space="preserve">
     <value>The amount of clicks must be more than 0</value>
   </data>
   <data name="msgTimeSelection" xml:space="preserve">
-    <value>You have to select the time.</value>
+    <value>You need to select the time.</value>
   </data>
   <data name="msgTypeSelection" xml:space="preserve">
-    <value>You have to select a type.</value>
+    <value>You need to select a type.</value>
+  </data>
+  <data name="msgConfError0" xml:space="preserve">
+    <value>Error loading configuration file (sobreclick.exe.config). Option for change the shortcut keys will not be available.</value>
   </data>
 </root>

@@ -5799,4 +5799,7 @@
   <data name="msgTypeSelection" xml:space="preserve">
     <value>Tienes que establecer un tipo.</value>
   </data>
+  <data name="msgConfError0" xml:space="preserve">
+    <value>No se ha podido cargar el archivo de configuración (Sobreclick.exe.config). La opción para cambiar las teclas no estará disponible.</value>
+  </data>
 </root>

@@ -6,12 +6,16 @@ using System.Runtime.InteropServices;
 using System.Threading;
 using System.Globalization;
 using System.Resources;
+using static System.Resources.ResXFileRef;
 
 namespace Sobreclick
 {
     public partial class sobreclick : Form
     {
         strings SC = new strings();
+        static conf Conf = new conf();
+        public static TypeConverter conversor = TypeDescriptor.GetConverter(typeof(Keys));
+
         ResourceManager rm = new ResourceManager(typeof(sobreclick));
         private const int MOUSEEVENTF_LEFTDOWN = 0X0002;
         private const int MOUSEEVENTF_LEFTUP = 0X0004;
@@ -23,6 +27,10 @@ namespace Sobreclick
         private const int tclidi = 0x0997;
         private const int tclidp = 0x0998;
         private const int tclidd = 0x0999;
+        
+        Keys tcli = strings.iniT;
+        Keys tclp = strings.pauT;
+        Keys tcld = strings.detT;
 
         [DllImport("user32.dll", CharSet = CharSet.Auto, CallingConvention = CallingConvention.StdCall)]
         public static extern void mouse_event(long dwFlags, long dx, long dy, long cButtons, long dwExtraInfo);
@@ -72,9 +80,19 @@ namespace Sobreclick
             UnregisterHotKey(this.Handle, tclidi);
             UnregisterHotKey(this.Handle, tclidp);
             UnregisterHotKey(this.Handle, tclidd);
-            Keys tcli = strings.iniT;
-            Keys tclp = strings.pauT;
-            Keys tcld = strings.detT;
+
+            try
+            {
+                tcli = (Keys)conversor.ConvertFromString(Conf.teclaIniciar());
+                tclp = (Keys)conversor.ConvertFromString(Conf.teclaPausarReanudar());
+                tcld = (Keys)conversor.ConvertFromString(Conf.teclaDetener());
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(rm.GetString("msgConfError0"), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                configuraciónToolStripMenuItem.Enabled = false;
+            }
+
             RegisterHotKey(this.Handle, tclidi, 0x0000, (int)tcli);
             RegisterHotKey(this.Handle, tclidp, 0x0000, (int)tclp);
             RegisterHotKey(this.Handle, tclidd, 0x0000, (int)tcld);
@@ -151,8 +169,6 @@ namespace Sobreclick
         {
             this.Close();
         }
-
-
         public bool Iniciar()
         {
             bool nud1 = Convert.ToInt32(numericUpDown1.Value) < 1;
@@ -406,7 +422,7 @@ namespace Sobreclick
 
         private void visitarRepositorioToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            System.Diagnostics.Process.Start("https://github.com/elstef41/sobreclick");
+            System.Diagnostics.Process.Start(strings.scRepositorio);
         }
 
         private void siempreVisibleToolStripMenuItem_Click(object sender, EventArgs e)
@@ -519,7 +535,6 @@ namespace Sobreclick
         {
             actualizarTeclas();
         }
-
         private void sobreclick_FormClosing(object sender, FormClosingEventArgs e)
         {
             UnregisterHotKey(this.Handle, tclidi);
