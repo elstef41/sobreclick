@@ -3,6 +3,7 @@
 [![Sourceforge](https://img.shields.io/badge/sourceforge-descargar-green)](https://sourceforge.net/projects/sobreclick/files/latest/download)
 
 ![Ventana principal](https://github.com/elstef41/sobreclick/assets/19848495/91ffbaca-ef98-480c-8946-586303ea57b9)
+=======
 
 ## Una herramienta simple que permite hacer clic una determinada cantidad de veces específica en distintas aplicaciones.
 Ya no tendrás que esforzarte para hacer excavaciones en tu mundo de Minecraft ni gastarte los botones de tu mouse en Cookie Clicker. Con una interfaz muy simple pero útil, Sobreclick te permite hacer clics automatizados, ofreciéndote un montón de características
@@ -21,7 +22,7 @@ Ya no tendrás que esforzarte para hacer excavaciones en tu mundo de Minecraft n
 * .NET Framework 2 o superior.
 
 ...para compilar:
-* Visual Studio 2010 o superior (por retrocompatibilidad se recomienda la más cercana a 2010).
+* Visual Studio 2010 o superior.
 
 ### Estado preliminar
 Sobreclick se encuentra en fase beta. Esto implica que es probable encontrar bugs en tiempo de ejecución. De este modo, cualquier error que se reporte en el tracker será agradecido.
