@@ -177,7 +177,7 @@
     <value>61, 20</value>
   </data>
   <data name="ventanaToolStripMenuItem.Text" xml:space="preserve">
-    <value>Ventana</value>
+    <value>&amp;Ventana</value>
   </data>
   <data name="licenciaToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>183, 22</value>
@@ -613,7 +613,7 @@
     <value>13</value>
   </data>
   <data name="checkBox2.Text" xml:space="preserve">
-    <value>Doble clic</value>
+    <value>D&amp;oble clic</value>
   </data>
   <data name="&gt;&gt;checkBox2.Name" xml:space="preserve">
     <value>checkBox2</value>
