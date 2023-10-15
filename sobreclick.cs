@@ -7,6 +7,8 @@ using System.Threading;
 using System.Globalization;
 using System.Resources;
 using static System.Resources.ResXFileRef;
+using System.Runtime.Remoting.Metadata.W3cXsd2001;
+using System.Diagnostics;
 
 namespace Sobreclick
 {
@@ -15,6 +17,13 @@ namespace Sobreclick
         strings SC = new strings();
         static conf Conf = new conf();
         public static TypeConverter conversor = TypeDescriptor.GetConverter(typeof(Keys));
+
+        // Variables genéricas
+        public static bool sonidoAT = false;
+        public static bool apagarAT = false;
+        public static bool salirAT = false;
+
+        public ProcessStartInfo shutdownProcess = new ProcessStartInfo("shutdown", "-s -t 0");
 
         ResourceManager rm = new ResourceManager(typeof(sobreclick));
         private const int MOUSEEVENTF_LEFTDOWN = 0X0002;
@@ -32,6 +41,9 @@ namespace Sobreclick
         Keys tclp = strings.pauT;
         Keys tcld = strings.detT;
 
+        string sonDir = strings.archivoSonDir;
+
+        
         [DllImport("user32.dll", CharSet = CharSet.Auto, CallingConvention = CallingConvention.StdCall)]
         public static extern void mouse_event(long dwFlags, long dx, long dy, long cButtons, long dwExtraInfo);
         [DllImport("user32.dll")]
@@ -74,6 +86,15 @@ namespace Sobreclick
             comboBox2.SelectedIndex = 0;
         }
 
+        public void actualizarDirSon()
+        {
+            sonDir = Conf.dirSonido();
+            if (sonDir == null)
+            {
+                MessageBox.Show(rm.GetString("msgConfError0"), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                configuraciónToolStripMenuItem.Enabled = false;
+            }
+        }
 
         public void actualizarTeclas()
         {
@@ -220,7 +241,36 @@ namespace Sobreclick
             buttonD.Enabled = false;
             buttonR.Visible = false;
             buttonR.Enabled = false;
-            timerClick.Dispose();
+            timerClick.Dispose();   
+
+            if (sonidoAT)
+            {
+                try
+                {
+                    strings.archivoSon.Play();
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show(rm.GetString("msgShutdownError"), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            if (apagarAT)
+            {
+                try
+                {
+                    shutdownProcess.CreateNoWindow = true;
+                    shutdownProcess.UseShellExecute = false;
+                    Process.Start(shutdownProcess);
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show(rm.GetString("msgShutdownError"), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            if (salirAT)
+            {
+                this.Dispose();
+            }
             return true;
         }
 
@@ -289,7 +339,6 @@ namespace Sobreclick
             buttonP.Enabled = false;
             buttonR.Visible = false;
             buttonR.Enabled = false;
-            if (cerrarAlTerminarToolStripMenuItem.Checked) { this.Dispose(); }
         }
 
         private void timerClick_Tick(object sender, EventArgs e)
@@ -402,21 +451,10 @@ namespace Sobreclick
             }
         }
 
-        private void cerrarAlTerminarToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (!cerrarAlTerminarToolStripMenuItem.Checked)
-            {
-                cerrarAlTerminarToolStripMenuItem.Checked = true;
-            }
-            else
-            {
-                cerrarAlTerminarToolStripMenuItem.Checked = false;
-            }
-        }
-
         private void sobreclick_Load(object sender, EventArgs e)
         {
             clickTimes = Convert.ToInt32(numericUpDown1.Value);
+            actualizarDirSon();
             actualizarTeclas();
         }
 
@@ -545,6 +583,42 @@ namespace Sobreclick
         private void button1_Click(object sender, EventArgs e)
         {
             actualizarTeclas();
+        }
+
+        private void salirToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            if (salirToolStripMenuItem1.Checked)
+            {
+                salirAT = true;
+            }
+            else
+            {
+                salirAT = false;
+            }
+        }
+
+        private void reproducirSonidoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (reproducirSonidoToolStripMenuItem.Checked)
+            {
+                sonidoAT = true;
+            }
+            else
+            {
+                sonidoAT = false;
+            }
+        }
+
+        private void apagarElEquipoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (apagarElEquipoToolStripMenuItem.Checked)
+            {
+                apagarAT = true;
+            }
+            else
+            {
+                apagarAT = false;
+            }
         }
     }
 }

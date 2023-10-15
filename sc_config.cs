@@ -16,12 +16,16 @@ namespace Sobreclick
         static conf Conf = new conf();
         public static TypeConverter conversor = TypeDescriptor.GetConverter(typeof(Keys));
 
-
         ResourceManager rm = new ResourceManager(typeof(sc_config));
-
+        // Teclas
         public static Keys iniT = (Keys)conversor.ConvertFromString(Conf.teclaIniciar());
         public static Keys pauT = (Keys)conversor.ConvertFromString(Conf.teclaPausarReanudar());
         public static Keys detT = (Keys)conversor.ConvertFromString(Conf.teclaDetener());
+
+        // Sonidos
+        public static string sonConfDir = Conf.dirSonido();
+        public static bool sonSistemaPreferido = false;
+
         public sc_config()
         {
             InitializeComponent();
@@ -53,16 +57,57 @@ namespace Sobreclick
 
         private void button1_Click(object sender, EventArgs e)
         {
+            sonConfDir = textBox4.Text; 
             if (iniT == pauT || iniT == detT || detT == pauT)
             {
                 MessageBox.Show(rm.GetString("msgEqual"), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
+                if (!checkBox1.Checked)
+                {
+                    if (sonConfDir == "")
+                    {
+                        DialogResult confirmSon = MessageBox.Show(rm.GetString("msgSonDefault"), "Error", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                        switch (confirmSon)
+                        {
+                            case DialogResult.Yes:
+                                guardarCambiosConf();
+                                break;
+                        }
+                    }
+                    else if (!sonConfDir.EndsWith(".wav"))
+                    {
+                        MessageBox.Show(rm.GetString("msgErrorLoadingSound"), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                else
+                {
+                    guardarCambiosConf();
+                }
+            }
+        }
+
+        private void guardarCambiosConf()
+        {
+            try
+            {
                 strings.actualizarTecla(1, iniT);
                 strings.actualizarTecla(2, pauT);
                 strings.actualizarTecla(3, detT);
+                if (!checkBox1.Checked)
+                {
+                    strings.actualizarArchivoSon(sonConfDir);
+                }
+                else
+                {
+                    strings.actualizarArchivoSon(@"C:\Windows\Media\chord.wav");
+                }
                 this.Close();
+            }
+            catch (Exception E)
+            {
+                MessageBox.Show(rm.GetString("msgErrorSaving"), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -71,11 +116,37 @@ namespace Sobreclick
             textBox1.Clear();
             textBox2.Clear();
             textBox3.Clear();
+            textBox4.Clear();
             textBox1.AppendText(iniT.ToString() + "\r\n");
             textBox2.AppendText(pauT.ToString() + "\r\n");
             textBox3.AppendText(detT.ToString() + "\r\n");
+            textBox4.AppendText(sonConfDir + "\r\n");
+            if (sonConfDir == "")
+            {
+                turnarConfigSonido();
+            }
         }
 
+        private void turnarConfigSonido()
+        {
+            switch (sonSistemaPreferido)
+            {
+                case true:
+                    textBox4.Enabled = true;
+                    button3.Enabled = true;
+                    button4.Enabled = true;
+                    sonSistemaPreferido = false;
+                    break;
+                case false:
+                default:
+                    textBox4.Enabled = false;
+                    button3.Enabled = false;
+                    button4.Enabled = false;
+                    textBox4.Text = "";
+                    sonSistemaPreferido = true;
+                    break;
+            }
+        }
         private void button2_Click(object sender, EventArgs e)
         {
             iniT = strings.iniT;
@@ -88,6 +159,28 @@ namespace Sobreclick
             textBox3.Clear();
             textBox3.AppendText(detT.ToString() + "\r\n");
             button2.Enabled = false;
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            turnarConfigSonido();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            using (OpenFileDialog cargarSon = new OpenFileDialog())
+            {
+                cargarSon.Filter = "Archivos de sonido compatibles (*.wav)|*.wav";
+                if (cargarSon.ShowDialog() == DialogResult.OK && cargarSon.FileName.EndsWith(".wav"))
+                {
+                    var fs = cargarSon.OpenFile();
+                    textBox4.Text = cargarSon.FileName;
+                }
+                else
+                {
+                    MessageBox.Show(rm.GetString("msgErrorLoadingSound"), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
         }
     }
 }

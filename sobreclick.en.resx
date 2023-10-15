@@ -130,11 +130,29 @@
   <data name="toolStripSeparator1.Size" type="System.Drawing.Size, System.Drawing">
     <value>177, 6</value>
   </data>
+    <data name="salirToolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
+		<value>180, 22</value>
+	</data>
+	<data name="salirToolStripMenuItem1.Text" xml:space="preserve">
+    <value>&amp;Exit</value>
+  </data>
+	<data name="reproducirSonidoToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+		<value>180, 22</value>
+	</data>
+	<data name="reproducirSonidoToolStripMenuItem.Text" xml:space="preserve">
+    <value>&amp;Play sound</value>
+  </data>
+	<data name="apagarElEquipoToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+		<value>180, 22</value>
+	</data>
+	<data name="apagarElEquipoToolStripMenuItem.Text" xml:space="preserve">
+    <value>&amp;Turn off computer</value>
+  </data>
   <data name="cerrarAlTerminarToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>180, 22</value>
   </data>
   <data name="cerrarAlTerminarToolStripMenuItem.Text" xml:space="preserve">
-    <value>&amp;Close on end</value>
+    <value>&amp;On end...</value>
   </data>
   <data name="salirToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>180, 22</value>
@@ -256,6 +274,7 @@
   <data name="checkBox2.Text" xml:space="preserve">
     <value>Double-click</value>
   </data>
+	
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAABAAgAEBAQAAAABAAoAQAAhgAAACAgEAAAAAQA6AIAAK4BAAAgIAAAAAAYAKgMAACWBAAAEBAAAAAA
@@ -5329,5 +5348,8 @@
   </data>
   <data name="msgConfError0" xml:space="preserve">
     <value>Error loading configuration file (sobreclick.exe.config). Option for change the shortcut keys will not be available.</value>
+  </data>
+	<data name="msgShutdownError" xml:space="preserve">
+    <value>The system couldn't be turned off. Check that Windows Shutdown executable exists.</value>
   </data>
 </root>

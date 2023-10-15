@@ -19,5 +19,9 @@ namespace Sobreclick
         {
             return ConfigurationManager.AppSettings.Get("detener");
         }
+        public string dirSonido()
+        {
+            return ConfigurationManager.AppSettings.Get("dirSonido");
+        }
     }
 }

@@ -117,14 +117,14 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="menuStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing">
+  <metadata name="menuStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
-  </data>
+  </metadata>
   <assembly alias="mscorlib" name="mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="restaurarValoresToolStripMenuItem.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="restaurarValoresToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>180, 22</value>
   </data>
@@ -140,11 +140,29 @@
   <data name="toolStripSeparator1.Size" type="System.Drawing.Size, System.Drawing">
     <value>177, 6</value>
   </data>
+  <data name="salirToolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>180, 22</value>
+  </data>
+  <data name="salirToolStripMenuItem1.Text" xml:space="preserve">
+    <value>&amp;Salir</value>
+  </data>
+  <data name="reproducirSonidoToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>180, 22</value>
+  </data>
+  <data name="reproducirSonidoToolStripMenuItem.Text" xml:space="preserve">
+    <value>&amp;Reproducir sonido</value>
+  </data>
+  <data name="apagarElEquipoToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>180, 22</value>
+  </data>
+  <data name="apagarElEquipoToolStripMenuItem.Text" xml:space="preserve">
+    <value>&amp;Apagar el equipo</value>
+  </data>
   <data name="cerrarAlTerminarToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>180, 22</value>
   </data>
   <data name="cerrarAlTerminarToolStripMenuItem.Text" xml:space="preserve">
-    <value>S&amp;alir al terminar</value>
+    <value>&amp;Al terminar...</value>
   </data>
   <data name="salirToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>180, 22</value>
@@ -158,47 +176,11 @@
   <data name="sobreclickToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Sobreclick</value>
   </data>
-  <data name="siempreVisibleToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
-  </data>
-  <data name="siempreVisibleToolStripMenuItem.Text" xml:space="preserve">
-    <value>Siempre visible</value>
-  </data>
-  <data name="restaurarTamañoToolStripMenuItem.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="restaurarTamañoToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
-  </data>
-  <data name="restaurarTamañoToolStripMenuItem.Text" xml:space="preserve">
-    <value>&amp;Restaurar tamaño</value>
-  </data>
   <data name="ventanaToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>61, 20</value>
   </data>
   <data name="ventanaToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Ventana</value>
-  </data>
-  <data name="licenciaToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>183, 22</value>
-  </data>
-  <data name="licenciaToolStripMenuItem.Text" xml:space="preserve">
-    <value>&amp;Licencia</value>
-  </data>
-  <data name="visitarRepositorioToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>183, 22</value>
-  </data>
-  <data name="visitarRepositorioToolStripMenuItem.Text" xml:space="preserve">
-    <value>&amp;Visitar repositorio</value>
-  </data>
-  <data name="toolStripSeparator2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 6</value>
-  </data>
-  <data name="ascercaToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>183, 22</value>
-  </data>
-  <data name="ascercaToolStripMenuItem.Text" xml:space="preserve">
-    <value>&amp;Acerca de Sobreclick</value>
   </data>
   <data name="ayudaToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>53, 20</value>
@@ -229,6 +211,42 @@
   </data>
   <data name="&gt;&gt;menuStrip1.ZOrder" xml:space="preserve">
     <value>13</value>
+  </data>
+  <data name="siempreVisibleToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>167, 22</value>
+  </data>
+  <data name="siempreVisibleToolStripMenuItem.Text" xml:space="preserve">
+    <value>Siempre visible</value>
+  </data>
+  <data name="restaurarTamañoToolStripMenuItem.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="restaurarTamañoToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>167, 22</value>
+  </data>
+  <data name="restaurarTamañoToolStripMenuItem.Text" xml:space="preserve">
+    <value>&amp;Restaurar tamaño</value>
+  </data>
+  <data name="licenciaToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>183, 22</value>
+  </data>
+  <data name="licenciaToolStripMenuItem.Text" xml:space="preserve">
+    <value>&amp;Licencia</value>
+  </data>
+  <data name="visitarRepositorioToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>183, 22</value>
+  </data>
+  <data name="visitarRepositorioToolStripMenuItem.Text" xml:space="preserve">
+    <value>&amp;Visitar repositorio</value>
+  </data>
+  <data name="toolStripSeparator2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>180, 6</value>
+  </data>
+  <data name="ascercaToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>183, 22</value>
+  </data>
+  <data name="ascercaToolStripMenuItem.Text" xml:space="preserve">
+    <value>&amp;Acerca de Sobreclick</value>
   </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="buttonC.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
@@ -504,9 +522,9 @@
   <data name="&gt;&gt;comboBox1.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
-  <data name="timerClick.TrayLocation" type="System.Drawing.Point, System.Drawing">
+  <metadata name="timerClick.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>132, 17</value>
-  </data>
+  </metadata>
   <data name="checkBox1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
   </data>
@@ -627,9 +645,9 @@
   <data name="&gt;&gt;checkBox2.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="$this.Localizable" type="System.Boolean, mscorlib">
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
+  </metadata>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
     <value>6, 13</value>
   </data>
@@ -5724,6 +5742,24 @@
   <data name="&gt;&gt;cerrarAlTerminarToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;salirToolStripMenuItem1.Name" xml:space="preserve">
+    <value>salirToolStripMenuItem1</value>
+  </data>
+  <data name="&gt;&gt;salirToolStripMenuItem1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;reproducirSonidoToolStripMenuItem.Name" xml:space="preserve">
+    <value>reproducirSonidoToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;reproducirSonidoToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;apagarElEquipoToolStripMenuItem.Name" xml:space="preserve">
+    <value>apagarElEquipoToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;apagarElEquipoToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;salirToolStripMenuItem.Name" xml:space="preserve">
     <value>salirToolStripMenuItem</value>
   </data>
@@ -5790,16 +5826,37 @@
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
     <value>System.Windows.Forms.Form, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="msgMore0" xml:space="preserve">
+    <data name="msgMore0" xml:space="preserve">
     <value>La cantidad de clics debe ser mayor a 0</value>
   </data>
-  <data name="msgTimeSelection" xml:space="preserve">
+	<data name="msgTimeSelection" xml:space="preserve">
     <value>Tienes que establecer una duración.</value>
   </data>
-  <data name="msgTypeSelection" xml:space="preserve">
+	<data name="msgTypeSelection" xml:space="preserve">
     <value>Tienes que establecer un tipo.</value>
   </data>
-  <data name="msgConfError0" xml:space="preserve">
+	<data name="msgConfError0" xml:space="preserve">
     <value>No se ha podido cargar el archivo de configuración (Sobreclick.exe.config). La opción para cambiar las teclas no estará disponible.</value>
+  </data>
+	<data name="msgShutdownError" xml:space="preserve">
+    <value>No se ha podido apagar el equipo. Verifica que el ejecutable shutdown de Windows exista.</value>
+  </data>
+	<data name="salirToolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
+		<value>180, 22</value>
+	</data>
+	<data name="salirToolStripMenuItem1.Text" xml:space="preserve">
+    <value>&amp;Salir</value>
+  </data>
+	<data name="reproducirSonidoToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+		<value>180, 22</value>
+	</data>
+	<data name="reproducirSonidoToolStripMenuItem.Text" xml:space="preserve">
+    <value>&amp;Reproducir sonido</value>
+  </data>
+	<data name="apagarElEquipoToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+		<value>180, 22</value>
+	</data>
+	<data name="apagarElEquipoToolStripMenuItem.Text" xml:space="preserve">
+    <value>&amp;Apagar el equipo</value>
   </data>
 </root>

@@ -7,6 +7,7 @@ using System.Configuration;
 using static System.Resources.ResXFileRef;
 using System.ComponentModel;
 using System.Net.NetworkInformation;
+using System.Media;
 
 namespace Sobreclick
 {
@@ -15,6 +16,8 @@ namespace Sobreclick
         public static Keys iniT = Keys.F6;
         public static Keys pauT = Keys.F7;
         public static Keys detT = Keys.F8;
+        public static string archivoSonDir = @"C:\Windows\Media\chord.wav";
+        public static SoundPlayer archivoSon = new SoundPlayer(archivoSonDir);
         public static string scRepositorio = "https://github.com/elstef41/sobreclick";
         public string obtenerVersion()
         {
@@ -24,6 +27,11 @@ namespace Sobreclick
         public static Keys getKey(Keys k)
         {
             return k;
+        }
+
+        public static void actualizarSonido()
+        {
+
         }
         public static void actualizarTecla(int tipo, Keys tecla)
         {
@@ -50,6 +58,16 @@ namespace Sobreclick
                     ConfigurationManager.RefreshSection(configSave.AppSettings.SectionInformation.Name);
                     break;
             }
+        }
+
+        public static void actualizarArchivoSon(string dirArchivo)
+        {
+            archivoSonDir = dirArchivo;
+            SoundPlayer archivoSon = new SoundPlayer(archivoSonDir);
+            Configuration configSave = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+            configSave.AppSettings.Settings["dirSonido"].Value = dirArchivo;
+            configSave.Save(ConfigurationSaveMode.Modified);
+            ConfigurationManager.RefreshSection(configSave.AppSettings.SectionInformation.Name);
         }
     }
 }

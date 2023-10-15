@@ -5203,4 +5203,13 @@
   <data name="msgEqual" xml:space="preserve">
     <value>Some keys are repeated. Check them and try again.</value>
   </data>
+  <data name="msgErrorSaving" xml:space="preserve">
+    <value>Unexpected error when saving the configuration file. Check that you have enougth permissions to do that and try again.</value>
+  </data>
+  <data name="msgSonDefault" xml:space="preserve">
+    <value>You didn't selected a sound file. Do you wanna to use the system default one?</value>
+  </data>
+  <data name="msgErrorLoadingSound" xml:space="preserve">
+    <value>The file specified is invalid</value>
+  </data>
 </root>

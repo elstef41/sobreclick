@@ -36,6 +36,9 @@
             this.configuraciónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.cerrarAlTerminarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.salirToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.reproducirSonidoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.apagarElEquipoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.salirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ventanaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.siempreVisibleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -104,9 +107,33 @@
             // 
             // cerrarAlTerminarToolStripMenuItem
             // 
+            this.cerrarAlTerminarToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.salirToolStripMenuItem1,
+            this.reproducirSonidoToolStripMenuItem,
+            this.apagarElEquipoToolStripMenuItem});
             this.cerrarAlTerminarToolStripMenuItem.Name = "cerrarAlTerminarToolStripMenuItem";
             resources.ApplyResources(this.cerrarAlTerminarToolStripMenuItem, "cerrarAlTerminarToolStripMenuItem");
-            this.cerrarAlTerminarToolStripMenuItem.Click += new System.EventHandler(this.cerrarAlTerminarToolStripMenuItem_Click);
+            // 
+            // salirToolStripMenuItem1
+            // 
+            this.salirToolStripMenuItem1.CheckOnClick = true;
+            this.salirToolStripMenuItem1.Name = "salirToolStripMenuItem1";
+            resources.ApplyResources(this.salirToolStripMenuItem1, "salirToolStripMenuItem1");
+            this.salirToolStripMenuItem1.Click += new System.EventHandler(this.salirToolStripMenuItem1_Click);
+            // 
+            // reproducirSonidoToolStripMenuItem
+            // 
+            this.reproducirSonidoToolStripMenuItem.CheckOnClick = true;
+            this.reproducirSonidoToolStripMenuItem.Name = "reproducirSonidoToolStripMenuItem";
+            resources.ApplyResources(this.reproducirSonidoToolStripMenuItem, "reproducirSonidoToolStripMenuItem");
+            this.reproducirSonidoToolStripMenuItem.Click += new System.EventHandler(this.reproducirSonidoToolStripMenuItem_Click);
+            // 
+            // apagarElEquipoToolStripMenuItem
+            // 
+            this.apagarElEquipoToolStripMenuItem.CheckOnClick = true;
+            this.apagarElEquipoToolStripMenuItem.Name = "apagarElEquipoToolStripMenuItem";
+            resources.ApplyResources(this.apagarElEquipoToolStripMenuItem, "apagarElEquipoToolStripMenuItem");
+            this.apagarElEquipoToolStripMenuItem.Click += new System.EventHandler(this.apagarElEquipoToolStripMenuItem_Click);
             // 
             // salirToolStripMenuItem
             // 
@@ -367,6 +394,9 @@
         private System.Windows.Forms.ToolStripMenuItem restaurarTamañoToolStripMenuItem;
         private System.Windows.Forms.CheckBox checkBox2;
         private System.Windows.Forms.ToolStripMenuItem configuraciónToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem salirToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem reproducirSonidoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem apagarElEquipoToolStripMenuItem;
     }
 }
 
