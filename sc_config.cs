@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.Configuration;
 using static System.Resources.ResXFileRef;
+using System.Media;
 
 namespace Sobreclick
 {
@@ -76,9 +77,9 @@ namespace Sobreclick
                                 break;
                         }
                     }
-                    else if (!sonConfDir.EndsWith(".wav"))
+                    else
                     {
-                        MessageBox.Show(rm.GetString("msgErrorLoadingSound"), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        guardarCambiosConf();
                     }
                 }
                 else
@@ -142,7 +143,6 @@ namespace Sobreclick
                     textBox4.Enabled = false;
                     button3.Enabled = false;
                     button4.Enabled = false;
-                    textBox4.Text = "";
                     sonSistemaPreferido = true;
                     break;
             }
@@ -170,7 +170,7 @@ namespace Sobreclick
         {
             using (OpenFileDialog cargarSon = new OpenFileDialog())
             {
-                cargarSon.Filter = "Archivos de sonido compatibles (*.wav)|*.wav";
+                cargarSon.Filter = "WaveForm Audio Format (*.wav)|*.wav";
                 if (cargarSon.ShowDialog() == DialogResult.OK && cargarSon.FileName.EndsWith(".wav"))
                 {
                     var fs = cargarSon.OpenFile();
@@ -180,6 +180,19 @@ namespace Sobreclick
                 {
                     MessageBox.Show(rm.GetString("msgErrorLoadingSound"), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+            }
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                SoundPlayer testingSound = new SoundPlayer(textBox4.Text);
+                testingSound.Play();
+            }
+            catch (Exception E)
+            {
+                MessageBox.Show(rm.GetString("msgErrorLoadingSound"), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

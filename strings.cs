@@ -13,10 +13,11 @@ namespace Sobreclick
 {
     class strings
     {
+        static conf Conf = new conf();
         public static Keys iniT = Keys.F6;
         public static Keys pauT = Keys.F7;
         public static Keys detT = Keys.F8;
-        public static string archivoSonDir = @"C:\Windows\Media\chord.wav";
+        public static string archivoSonDir = Conf.dirSonido();
         public static SoundPlayer archivoSon = new SoundPlayer(archivoSonDir);
         public static string scRepositorio = "https://github.com/elstef41/sobreclick";
         public string obtenerVersion()

@@ -9,6 +9,7 @@ using System.Resources;
 using static System.Resources.ResXFileRef;
 using System.Runtime.Remoting.Metadata.W3cXsd2001;
 using System.Diagnostics;
+using System.Media;
 
 namespace Sobreclick
 {
@@ -22,6 +23,7 @@ namespace Sobreclick
         public static bool sonidoAT = false;
         public static bool apagarAT = false;
         public static bool salirAT = false;
+        public static bool ejecutarScriptAT = false;
 
         public ProcessStartInfo shutdownProcess = new ProcessStartInfo("shutdown", "-s -t 0");
 
@@ -42,8 +44,9 @@ namespace Sobreclick
         Keys tcld = strings.detT;
 
         string sonDir = strings.archivoSonDir;
+        string scriptAT;
 
-        
+
         [DllImport("user32.dll", CharSet = CharSet.Auto, CallingConvention = CallingConvention.StdCall)]
         public static extern void mouse_event(long dwFlags, long dx, long dy, long cButtons, long dwExtraInfo);
         [DllImport("user32.dll")]
@@ -190,6 +193,16 @@ namespace Sobreclick
         {
             this.Close();
         }
+        public void cambiarTextStatus(string texto, int intervalo)
+        {
+            timerStatus.Stop();
+            if (intervalo != 0)
+            {
+                timerStatus.Interval = intervalo;
+                timerStatus.Start();
+            }
+            statusText.Text = texto;
+        }
         public bool Iniciar()
         {
             bool nud1 = Convert.ToInt32(numericUpDown1.Value) < 1;
@@ -209,15 +222,19 @@ namespace Sobreclick
                 switch (Convert.ToInt32(comboBox2.SelectedIndex))
                 {
                     case 0:
+                        // Milisegundos
                         clickinterval = Convert.ToInt32(numericUpDown2.Value);
                         break;
                     case 1:
+                        // Segundos
                         clickinterval = Convert.ToInt32(numericUpDown2.Value) * 1000;
                         break;
                     case 2:
+                        // Minutos
                         clickinterval = Convert.ToInt32(numericUpDown2.Value) * 60000;
                         break;
                     case 3:
+                        // Horas
                         clickinterval = Convert.ToInt32(numericUpDown2.Value) * 3600000;
                         break;
                     default:
@@ -229,6 +246,7 @@ namespace Sobreclick
                 buttonD.Enabled = true;
                 timerClick.Interval = clickinterval;
                 timerClick.Start();
+                cambiarTextStatus("", 0);
                 return true;
             }
         }
@@ -247,11 +265,12 @@ namespace Sobreclick
             {
                 try
                 {
-                    strings.archivoSon.Play();
+                    SoundPlayer archivoSon = new SoundPlayer(Conf.dirSonido());
+                    archivoSon.Play();
                 }
                 catch (Exception e)
                 {
-                    MessageBox.Show(rm.GetString("msgShutdownError"), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(rm.GetString("msgSoundError"), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             if (apagarAT)
@@ -271,6 +290,7 @@ namespace Sobreclick
             {
                 this.Dispose();
             }
+            cambiarTextStatus(rm.GetString("statusEnded"), 5000);
             return true;
         }
 
@@ -301,6 +321,7 @@ namespace Sobreclick
                 }
                 timerClick.Interval = clickinterval;
             timerClick.Start();
+            cambiarTextStatus("", 0);
             return true;
         }
 
@@ -311,8 +332,10 @@ namespace Sobreclick
             buttonR.Enabled = true;
             timerClick.Interval = Convert.ToInt32(numericUpDown2.Value);
             timerClick.Stop();
+            cambiarTextStatus(rm.GetString("statusPaused"), 0);
             return true;
         }
+
 
 
         private void buttonC_Click(object sender, EventArgs e)
@@ -437,9 +460,27 @@ namespace Sobreclick
 
         private void numericUpDown2_ValueChanged(object sender, EventArgs e)
         {
+            int tiempoTotal = Convert.ToInt32(numericUpDown2.Value);
+            int miliASegundos = Convert.ToInt32(numericUpDown2.Value) / 1000;
+            int miliAMinutos = Convert.ToInt32(numericUpDown2.Value) / 60000;
+            int segundosAMinutos = Convert.ToInt32(numericUpDown2.Value) / 60;
             if (numericUpDown2.Value != 500)
             {
                 restaurarValoresToolStripMenuItem.Enabled = true;
+            }
+            int clickinterval;
+            switch (Convert.ToInt32(comboBox2.SelectedIndex))
+            {
+                case 0:
+                    // Milisegundos
+                    clickinterval = Convert.ToInt32(numericUpDown2.Value);
+                    cambiarTextStatus(rm.GetString("statusEstimatedTime0") + miliASegundos.ToString() + ((miliASegundos == 1) ? rm.GetString("statusEstimatedTime1NP") : rm.GetString("statusEstimatedTime1")) + miliAMinutos.ToString() + ((miliAMinutos == 1) ? rm.GetString("statusEstimatedTime2NP") : rm.GetString("statusEstimatedTime2")), 0);
+                    break;
+                case 1:
+                    // Milisegundos
+                    clickinterval = Convert.ToInt32(numericUpDown2.Value);
+                    cambiarTextStatus(rm.GetString("statusEstimatedTime0") + segundosAMinutos.ToString() + ((segundosAMinutos == 1) ? rm.GetString("statusEstimatedTime2NP") : rm.GetString("statusEstimatedTime2")), 0);
+                    break;
             }
         }
 
@@ -483,6 +524,7 @@ namespace Sobreclick
             {
                 restaurarValoresToolStripMenuItem.Enabled = true;
             }
+            cambiarTextStatus("", 0);
         }
 
 
@@ -620,5 +662,12 @@ namespace Sobreclick
                 apagarAT = false;
             }
         }
+
+        private void timerStatus_Tick(object sender, EventArgs e)
+        {
+            statusText.Text = "";
+            timerStatus.Stop();
+        }
+
     }
 }
