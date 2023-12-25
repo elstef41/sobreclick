@@ -29,11 +29,6 @@ namespace Sobreclick
         {
             return k;
         }
-
-        public static void actualizarSonido()
-        {
-
-        }
         public static void actualizarTecla(int tipo, Keys tecla)
         {
             Configuration configSave = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);

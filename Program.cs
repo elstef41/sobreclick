@@ -25,8 +25,6 @@ namespace Sobreclick
         }
 
         // Controlador de excepciones casero
-
-
         private static void UIThreadException(object sender, ThreadExceptionEventArgs e)
         {
             try
@@ -54,7 +52,7 @@ namespace Sobreclick
         }
         static void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
         {
-            excpt exception = new excpt(e.ToString());
+            excpt exception = new excpt(e.ExceptionObject.ToString());
             exception.TopMost = true;
             exception.ShowDialog();
             Application.Exit();
