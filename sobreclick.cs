@@ -27,7 +27,7 @@ namespace Sobreclick
 
         public ProcessStartInfo shutdownProcess = new ProcessStartInfo("shutdown", "-s -t 0");
 
-        ResourceManager rm = new ResourceManager(typeof(sobreclick));
+        public static ResourceManager rm = new ResourceManager(typeof(sobreclick));
         private const int MOUSEEVENTF_LEFTDOWN = 0X0002;
         private const int MOUSEEVENTF_LEFTUP = 0X0004;
         private const int MOUSEEVENTF_MIDDLEDOWN = 0X0020;
@@ -44,8 +44,6 @@ namespace Sobreclick
         Keys tcld = strings.detT;
 
         string sonDir = strings.archivoSonDir;
-        string scriptAT;
-
 
         [DllImport("user32.dll", CharSet = CharSet.Auto, CallingConvention = CallingConvention.StdCall)]
         public static extern void mouse_event(long dwFlags, long dx, long dy, long cButtons, long dwExtraInfo);
@@ -91,7 +89,15 @@ namespace Sobreclick
 
         public void actualizarDirSon()
         {
-            sonDir = Conf.dirSonido();
+            try
+            {
+                sonDir = Conf.dirSonido();
+            }
+            catch (Exception E)
+            {
+                MessageBox.Show(rm.GetString("msgConfError0"), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
             if (sonDir == null)
             {
                 MessageBox.Show(rm.GetString("msgConfError0"), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -120,21 +126,19 @@ namespace Sobreclick
             RegisterHotKey(this.Handle, tclidi, 0x0000, (int)tcli);
             RegisterHotKey(this.Handle, tclidp, 0x0000, (int)tclp);
             RegisterHotKey(this.Handle, tclidd, 0x0000, (int)tcld);
-            switch (CultureInfo.CurrentCulture.Name)
+            if (CultureInfo.CurrentCulture.Name.StartsWith("es"))
             {
-                case "en":
-                    buttonC.Text = buttonC.Text.Substring(0, 7) + tcli.ToString() + ")";
-                    buttonR.Text = buttonR.Text.Substring(0, 8) + tclp.ToString() + ")";
-                    buttonP.Text = buttonP.Text.Substring(0, 7) + tclp.ToString() + ")";
-                    buttonD.Text = buttonD.Text.Substring(0, 6) + tcld.ToString() + ")";
-                    break;
-                case "es-ES":
-                default:
-                    buttonC.Text = buttonC.Text.Substring(0, 10) + tcli.ToString() + ")";
-                    buttonR.Text = buttonR.Text.Substring(0, 11) + tclp.ToString() + ")";
-                    buttonP.Text = buttonP.Text.Substring(0, 9) + tclp.ToString() + ")";
-                    buttonD.Text = buttonD.Text.Substring(0, 10) + tcld.ToString() + ")";
-                    break;
+                buttonC.Text = buttonC.Text.Substring(0, 10) + tcli.ToString() + ")";
+                buttonR.Text = buttonR.Text.Substring(0, 11) + tclp.ToString() + ")";
+                buttonP.Text = buttonP.Text.Substring(0, 9) + tclp.ToString() + ")";
+                buttonD.Text = buttonD.Text.Substring(0, 10) + tcld.ToString() + ")";
+            }
+            else
+            {
+                buttonC.Text = buttonC.Text.Substring(0, 7) + tcli.ToString() + ")";
+                buttonR.Text = buttonR.Text.Substring(0, 8) + tclp.ToString() + ")";
+                buttonP.Text = buttonP.Text.Substring(0, 7) + tclp.ToString() + ")";
+                buttonD.Text = buttonD.Text.Substring(0, 6) + tcld.ToString() + ")";
             }
         }
 
@@ -582,7 +586,7 @@ namespace Sobreclick
                 restaurarTamañoToolStripMenuItem.Enabled = false;
 
             }
-            else if (this.Size.Width != 287 || this.Size.Height != 285)
+            else if (this.Size.Width != 285 || this.Size.Height != 287)
             {
                 restaurarTamañoToolStripMenuItem.Enabled = true;
             }

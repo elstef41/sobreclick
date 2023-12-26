@@ -117,28 +117,52 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="restaurarValoresToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>149, 22</value>
+  </data>
   <data name="restaurarValoresToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Restore values</value>
+  </data>
+  <data name="configuraciónToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>149, 22</value>
   </data>
   <data name="configuraciónToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Key settings</value>
   </data>
+  <data name="toolStripSeparator1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>146, 6</value>
+  </data>
+  <data name="salirToolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>172, 22</value>
+  </data>
   <data name="salirToolStripMenuItem1.Text" xml:space="preserve">
     <value>&amp;Exit</value>
+  </data>
+  <data name="reproducirSonidoToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>172, 22</value>
   </data>
   <data name="reproducirSonidoToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Play sound</value>
   </data>
+  <data name="apagarElEquipoToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>172, 22</value>
+  </data>
   <data name="apagarElEquipoToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Turn off computer</value>
+  </data>
+  <data name="cerrarAlTerminarToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>149, 22</value>
   </data>
   <data name="cerrarAlTerminarToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;On end...</value>
   </data>
+  <data name="salirToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>149, 22</value>
+  </data>
   <data name="salirToolStripMenuItem.Text" xml:space="preserve">
     <value>E&amp;xit</value>
   </data>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="siempreVisibleToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>149, 22</value>
   </data>
@@ -5307,51 +5331,5 @@
         AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
         AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==
 </value>
-  </data>
-	<assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="msgClickType" xml:space="preserve">
-    <value>Select click type: left, center or right.</value>
-  </data>
-  <data name="msgMore0" xml:space="preserve">
-    <value>The amount of clicks must be more than 0</value>
-  </data>
-  <data name="msgTimeSelection" xml:space="preserve">
-    <value>You need to select the time.</value>
-  </data>
-  <data name="msgTypeSelection" xml:space="preserve">
-    <value>You need to select a type.</value>
-  </data>
-  <data name="msgConfError0" xml:space="preserve">
-    <value>Error loading configuration file (sobreclick.exe.config). Option for change it will not be available.</value>
-  </data>
-	<data name="msgShutdownError" xml:space="preserve">
-    <value>The system couldn't be turned off. Check that Windows Shutdown executable exists.</value>
-  </data>
-	<data name="msgSoundError" xml:space="preserve">
-    <value>The sound file cannot be played. Verify that exists and is accesible.</value>
-  </data>
-	<data name="statusEstimatedTime0" xml:space="preserve">
-    <value>Time: </value>
-  </data>
-	<data name="statusEstimatedTime1" xml:space="preserve">
-    <value> seconds and </value>
-  </data>
-	<data name="statusEstimatedTime1NP" xml:space="preserve">
-    <value> second and </value>
-  </data>
-	<data name="statusEstimatedTime2NP" xml:space="preserve">
-    <value> minute (approx.)</value>
-  </data>
-	<data name="statusEstimatedTime2" xml:space="preserve">
-    <value> minutes (approx.)</value>
-  </data>
-	<data name="statusPaused" xml:space="preserve">
-    <value>Paused</value>
-  </data>
-	<data name="statusEnded" xml:space="preserve">
-    <value>Ended</value>
   </data>
 </root>

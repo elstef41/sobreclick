@@ -4,6 +4,7 @@ using System.Threading;
 using System.Windows.Forms;
 using System.Configuration;
 using System.Collections.Specialized;
+using System.Globalization;
 
 namespace Sobreclick
 {
@@ -16,7 +17,6 @@ namespace Sobreclick
         static void Main()
         {
             Application.EnableVisualStyles();
-            Application.SetUnhandledExceptionMode(UnhandledExceptionMode.ThrowException);
             Application.ThreadException += new ThreadExceptionEventHandler(UIThreadException);
             Application.SetUnhandledExceptionMode(UnhandledExceptionMode.CatchException);
             AppDomain.CurrentDomain.UnhandledException += new UnhandledExceptionEventHandler(CurrentDomain_UnhandledException);

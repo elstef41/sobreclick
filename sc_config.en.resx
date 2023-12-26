@@ -5198,7 +5198,7 @@
 </value>
   </data>
   <data name="$this.Text" xml:space="preserve">
-    <value>Key settings</value>
+    <value>Settings</value>
   </data>
   <data name="msgEqual" xml:space="preserve">
     <value>Some keys are repeated. Check them and try again.</value>
@@ -5211,5 +5211,11 @@
   </data>
   <data name="msgErrorLoadingSound" xml:space="preserve">
     <value>The file specified is invalid</value>
+  </data>
+  <data name="groupBox1.Text" xml:space="preserve">
+    <value>Keys</value>
+  </data>
+  <data name="groupBox2.Text" xml:space="preserve">
+    <value>Sound</value>
   </data>
 </root>

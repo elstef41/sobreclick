@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Text;
 using System.Windows.Forms;
-using System.Configuration;
 using static System.Resources.ResXFileRef;
 using System.ComponentModel;
 using System.Net.NetworkInformation;
@@ -20,6 +19,7 @@ namespace Sobreclick
         public static string archivoSonDir = Conf.dirSonido();
         public static SoundPlayer archivoSon = new SoundPlayer(archivoSonDir);
         public static string scRepositorio = "https://github.com/elstef41/sobreclick";
+
         public string obtenerVersion()
         {
             string s = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.Major.ToString() + "." + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.Minor.ToString() + "." + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.Build.ToString();
