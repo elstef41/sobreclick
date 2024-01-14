@@ -39,6 +39,7 @@
             this.salirToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.reproducirSonidoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.apagarElEquipoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.restaurarValoresToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.salirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ventanaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.siempreVisibleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -115,7 +116,8 @@
             this.cerrarAlTerminarToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.salirToolStripMenuItem1,
             this.reproducirSonidoToolStripMenuItem,
-            this.apagarElEquipoToolStripMenuItem});
+            this.apagarElEquipoToolStripMenuItem,
+            this.restaurarValoresToolStripMenuItem1});
             this.cerrarAlTerminarToolStripMenuItem.Name = "cerrarAlTerminarToolStripMenuItem";
             // 
             // salirToolStripMenuItem1
@@ -138,6 +140,13 @@
             this.apagarElEquipoToolStripMenuItem.CheckOnClick = true;
             this.apagarElEquipoToolStripMenuItem.Name = "apagarElEquipoToolStripMenuItem";
             this.apagarElEquipoToolStripMenuItem.Click += new System.EventHandler(this.apagarElEquipoToolStripMenuItem_Click);
+            // 
+            // restaurarValoresToolStripMenuItem1
+            // 
+            resources.ApplyResources(this.restaurarValoresToolStripMenuItem1, "restaurarValoresToolStripMenuItem1");
+            this.restaurarValoresToolStripMenuItem1.CheckOnClick = true;
+            this.restaurarValoresToolStripMenuItem1.Name = "restaurarValoresToolStripMenuItem1";
+            this.restaurarValoresToolStripMenuItem1.Click += new System.EventHandler(this.restaurarValoresToolStripMenuItem1_Click);
             // 
             // salirToolStripMenuItem
             // 
@@ -424,6 +433,7 @@
         private System.Windows.Forms.StatusStrip statusSC;
         private System.Windows.Forms.Timer timerStatus;
         private System.Windows.Forms.ToolStripStatusLabel statusText;
+        private System.Windows.Forms.ToolStripMenuItem restaurarValoresToolStripMenuItem1;
     }
 }
 

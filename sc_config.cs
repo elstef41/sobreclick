@@ -7,21 +7,24 @@ using System.Resources;
 using System.Text;
 using System.Windows.Forms;
 using System.Configuration;
-using static System.Resources.ResXFileRef;
 using System.Media;
 
 namespace Sobreclick
 {
     public partial class sc_config : Form
     {
+        // Variables
         static conf Conf = new conf();
         public static TypeConverter conversor = TypeDescriptor.GetConverter(typeof(Keys));
+        SoundPlayer testingSound;
+
 
         ResourceManager rm = new ResourceManager(typeof(sc_config));
+
         // Teclas
-        public static Keys iniT = (Keys)conversor.ConvertFromString(Conf.teclaIniciar());
-        public static Keys pauT = (Keys)conversor.ConvertFromString(Conf.teclaPausarReanudar());
-        public static Keys detT = (Keys)conversor.ConvertFromString(Conf.teclaDetener());
+        public static Keys iniT;
+        public static Keys pauT;
+        public static Keys detT;
 
         // Sonidos
         public static string sonConfDir = Conf.dirSonido();
@@ -31,6 +34,7 @@ namespace Sobreclick
         {
             InitializeComponent();
         }
+
 
         private void textBox1_KeyDown(object sender, KeyEventArgs e)
         {
@@ -58,7 +62,7 @@ namespace Sobreclick
 
         private void button1_Click(object sender, EventArgs e)
         {
-            sonConfDir = textBox4.Text; 
+            sonConfDir = textBox4.Text;
             if (iniT == pauT || iniT == detT || detT == pauT)
             {
                 MessageBox.Show(rm.GetString("msgEqual"), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -118,6 +122,12 @@ namespace Sobreclick
             textBox2.Clear();
             textBox3.Clear();
             textBox4.Clear();
+
+            // Cargar variables de teclas
+            iniT = (Keys)conversor.ConvertFromString(Conf.teclaIniciar());
+            pauT = (Keys)conversor.ConvertFromString(Conf.teclaPausarReanudar());
+            detT = (Keys)conversor.ConvertFromString(Conf.teclaDetener());
+
             textBox1.AppendText(iniT.ToString() + "\r\n");
             textBox2.AppendText(pauT.ToString() + "\r\n");
             textBox3.AppendText(detT.ToString() + "\r\n");
@@ -185,15 +195,25 @@ namespace Sobreclick
 
         private void button4_Click(object sender, EventArgs e)
         {
+            sonConfDir = textBox4.Text;
             try
             {
-                SoundPlayer testingSound = new SoundPlayer(textBox4.Text);
+                testingSound = new SoundPlayer(sonConfDir);
                 testingSound.Play();
             }
             catch (Exception E)
             {
                 MessageBox.Show(rm.GetString("msgErrorLoadingSound"), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void sc_config_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (testingSound != null)
+            {
+                testingSound.Stop();
+            }
+            this.Dispose();
         }
     }
 }

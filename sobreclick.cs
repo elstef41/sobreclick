@@ -6,10 +6,10 @@ using System.Runtime.InteropServices;
 using System.Threading;
 using System.Globalization;
 using System.Resources;
-using static System.Resources.ResXFileRef;
 using System.Runtime.Remoting.Metadata.W3cXsd2001;
 using System.Diagnostics;
 using System.Media;
+using Sobreclick.Properties;
 
 namespace Sobreclick
 {
@@ -24,10 +24,12 @@ namespace Sobreclick
         public static bool apagarAT = false;
         public static bool salirAT = false;
         public static bool ejecutarScriptAT = false;
+        public static bool restaurarValoresAT = false;
 
         public ProcessStartInfo shutdownProcess = new ProcessStartInfo("shutdown", "-s -t 0");
 
         public static ResourceManager rm = new ResourceManager(typeof(sobreclick));
+
         private const int MOUSEEVENTF_LEFTDOWN = 0X0002;
         private const int MOUSEEVENTF_LEFTUP = 0X0004;
         private const int MOUSEEVENTF_MIDDLEDOWN = 0X0020;
@@ -135,10 +137,10 @@ namespace Sobreclick
             }
             else
             {
-                buttonC.Text = buttonC.Text.Substring(0, 7) + tcli.ToString() + ")";
-                buttonR.Text = buttonR.Text.Substring(0, 8) + tclp.ToString() + ")";
-                buttonP.Text = buttonP.Text.Substring(0, 7) + tclp.ToString() + ")";
-                buttonD.Text = buttonD.Text.Substring(0, 6) + tcld.ToString() + ")";
+                buttonC.Text = buttonC.Text.Substring(0, 8) + tcli.ToString() + ")";
+                buttonR.Text = buttonR.Text.Substring(0, 9) + tclp.ToString() + ")";
+                buttonP.Text = buttonP.Text.Substring(0, 8) + tclp.ToString() + ")";
+                buttonD.Text = buttonD.Text.Substring(0, 7) + tcld.ToString() + ")";
             }
         }
 
@@ -263,7 +265,7 @@ namespace Sobreclick
             buttonD.Enabled = false;
             buttonR.Visible = false;
             buttonR.Enabled = false;
-            timerClick.Dispose();   
+            timerClick.Dispose();
 
             if (sonidoAT)
             {
@@ -294,6 +296,11 @@ namespace Sobreclick
             {
                 this.Dispose();
             }
+            if (restaurarValoresAT)
+            {
+                restaurarValores();
+            }
+
             cambiarTextStatus(rm.GetString("statusEnded"), 5000);
             return true;
         }
@@ -442,7 +449,7 @@ namespace Sobreclick
             }
         }
 
-        private void restaurarValoresToolStripMenuItem_Click(object sender, EventArgs e)
+        public void restaurarValores()
         {
             checkBox1.Checked = false;
             checkBox2.Checked = false;
@@ -452,6 +459,10 @@ namespace Sobreclick
             comboBox1.SelectedIndex = 0;
             comboBox2.SelectedIndex = 0;
             restaurarValoresToolStripMenuItem.Enabled = false;
+        }
+        private void restaurarValoresToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            restaurarValores();
         }
 
         private void numericUpDown1_ValueChanged(object sender, EventArgs e)
@@ -619,6 +630,7 @@ namespace Sobreclick
         {
             actualizarTeclas();
         }
+
         private void sobreclick_FormClosing(object sender, FormClosingEventArgs e)
         {
             UnregisterHotKey(this.Handle, tclidi);
@@ -666,7 +678,17 @@ namespace Sobreclick
                 apagarAT = false;
             }
         }
-
+        private void restaurarValoresToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            if (restaurarValoresToolStripMenuItem1.Checked)
+            {
+                restaurarValoresAT = true;
+            }
+            else
+            {
+                restaurarValoresAT = false;
+            }
+        }
         private void timerStatus_Tick(object sender, EventArgs e)
         {
             statusText.Text = "";

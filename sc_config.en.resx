@@ -142,6 +142,24 @@
   <data name="button2.Text" xml:space="preserve">
     <value>&amp;Restore</value>
   </data>
+  <data name="groupBox1.Text" xml:space="preserve">
+    <value>Keys</value>
+  </data>
+  <data name="checkBox1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>117, 17</value>
+  </data>
+  <data name="checkBox1.Text" xml:space="preserve">
+    <value>&amp;Use system sounds</value>
+  </data>
+  <data name="button4.Text" xml:space="preserve">
+    <value>&amp;Play</value>
+  </data>
+  <data name="button3.Text" xml:space="preserve">
+    <value>&amp;Browse</value>
+  </data>
+  <data name="groupBox2.Text" xml:space="preserve">
+    <value>Sound</value>
+  </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAABAAgAEBAQAAAABAAoAQAAhgAAACAgEAAAAAQA6AIAAK4BAAAgIAAAAAAYAKgMAACWBAAAEBAAAAAA
@@ -5198,7 +5216,7 @@
 </value>
   </data>
   <data name="$this.Text" xml:space="preserve">
-    <value>Settings</value>
+    <value>Key settings</value>
   </data>
   <data name="msgEqual" xml:space="preserve">
     <value>Some keys are repeated. Check them and try again.</value>
@@ -5211,11 +5229,5 @@
   </data>
   <data name="msgErrorLoadingSound" xml:space="preserve">
     <value>The file specified is invalid</value>
-  </data>
-  <data name="groupBox1.Text" xml:space="preserve">
-    <value>Keys</value>
-  </data>
-  <data name="groupBox2.Text" xml:space="preserve">
-    <value>Sound</value>
   </data>
 </root>

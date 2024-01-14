@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Text;
 using System.Windows.Forms;
-using static System.Resources.ResXFileRef;
 using System.ComponentModel;
 using System.Net.NetworkInformation;
 using System.Media;
