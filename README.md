@@ -1,33 +1,28 @@
-# Sobreclick
-[![Lanzamiento actual](https://img.shields.io/github/v/release/elstef41/sobreclick?include_prereleases)](https://github.com/elstef41/sobreclick/releases)
-[![Sourceforge](https://img.shields.io/badge/sourceforge-descargar-green)](https://sourceforge.net/projects/sobreclick/files/latest/download)
+# Syinfo
+[![Lanzamiento actual](https://img.shields.io/github/v/release/elstef41/syinfo?include_prereleases)](https://github.com/elstef41/syinfo/releases)
 
-![Ventana principal](https://user-images.githubusercontent.com/19848495/156661791-9cd37f6b-d061-497a-980b-578b2b9cc12d.png)
-
-## Una herramienta simple que permite hacer clic una determinada cantidad de veces específica en distintas aplicaciones.
-Ya no tendrás que esforzarte para hacer excavaciones en tu mundo de Minecraft ni gastarte los botones de tu mouse en Cookie Clicker. Con una interfaz muy simple pero útil, Sobreclick te permite hacer clics automatizados, ofreciéndote un montón de características
+![Syinfo 0 9 0 por elstef41](https://user-images.githubusercontent.com/19848495/169704499-1dd72e02-1827-4a64-b5e9-c5db58109f57.png)
+## Un visor de información básica y avanzada del equipo para Microsoft Windows.
 
 ### Funciones principales:
-- Escoger una cantidad de clics específica (de 1 a 99999999) o ilimitada.
-- Posibilidad de cerrar el autoclicker automáticamente una vez culminado el procedimiento.
-- Elegir entre clic izquierdo, central o derecho.
-- Hacer doble clic.
-- Seleccionar cuatro medidas de duración (milisegundos, segundos. minutos u horas).
-- Atajos de teclado para iniciar, pausar/reanudar o detener.
-- Disponible en español e inglés.
+- Listas organizadas en distintas pestañas.
+- Copiar un elemento de la lista con un clic, o todos los de la pestaña activa al mismo tiempo.
+- Volver a cargar los datos sin tener que reiniciar el programa.
+- Exportar la información en un archivo de texto sin formato (.TXT).
 
-### Requisitos para ejecutar Sobreclick
+## Requisitos
+### Para ejecutar Sobreclick
 * Windows XP o superior.
 * .NET Framework 2 o superior.
 
-...para compilar:
-* Visual Studio 2010 o superior (por retrocompatibilidad se recomienda la más cercana a 2010).
+### Para compilar
+* Visual Studio 2010 o Visual C# 2010 Express. En versiones posteriores pueden surgir errores de compatibilidad.
 
 ### Estado preliminar
-Sobreclick se encuentra en fase beta. Esto implica que es probable encontrar bugs en tiempo de ejecución. De este modo, cualquier error que se reporte en el tracker será agradecido.
+Syinfo se encuentra en fase de pruebas. Esto implica que es probable encontrar bugs en tiempo de ejecución. De este modo, cualquier error que se reporte en el tracker será agradecido.
 
 ## Licencia
-Sobreclick se encuentra alojado bajo la licencia [Apache License 2.0](https://www.apache.org/licenses/LICENSE-2.0.html).
+Syinfo se encuentra alojado bajo la licencia [Apache License 2.0](https://www.apache.org/licenses/LICENSE-2.0.html).
 
 ## Enlaces del desarrollador
 [YouTube](https://www.youtube.com/user/elstef41)
