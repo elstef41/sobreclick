@@ -149,7 +149,7 @@
     <value>117, 17</value>
   </data>
   <data name="checkBox1.Text" xml:space="preserve">
-    <value>&amp;Use system sounds</value>
+    <value>&amp;Use system default sound</value>
   </data>
   <data name="button4.Text" xml:space="preserve">
     <value>&amp;Play</value>

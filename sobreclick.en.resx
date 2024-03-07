@@ -5346,7 +5346,7 @@
     <value>Select click type: left, center or right.</value>
   </data>
   <data name="msgMore0" xml:space="preserve">
-    <value>The amount of clicks must be more than 0</value>
+    <value>The amount of clicks must be greater than 0</value>
   </data>
   <data name="msgTimeSelection" xml:space="preserve">
     <value>You need to select the time.</value>
@@ -5386,5 +5386,11 @@
   </data>
   <data name="statusConfigClosed" xml:space="preserve">
     <value>Settings saved</value>
+  </data>
+  <data name="masToolStripMenuItem.Text" xml:space="preserve">
+    <value>&amp;Ejecutable personalizado...</value>
+  </data>
+  <data name="msgErrorScript" xml:space="preserve">
+    <value>Customized script cannot be loaded (maybe it's incorrectly entered). The corresponding option has been disabled.</value>
   </data>
 </root>
