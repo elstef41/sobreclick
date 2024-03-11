@@ -117,7 +117,7 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="button1.Text" xml:space="preserve">
+  <data name="btnGuardar.Text" xml:space="preserve">
     <value>&amp;Save</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
@@ -139,7 +139,7 @@
   <data name="label3.Text" xml:space="preserve">
     <value>Stop</value>
   </data>
-  <data name="button2.Text" xml:space="preserve">
+  <data name="btnRestaurar.Text" xml:space="preserve">
     <value>&amp;Restore</value>
   </data>
   <data name="groupBox1.Text" xml:space="preserve">
@@ -148,13 +148,13 @@
   <data name="checkBox1.Size" type="System.Drawing.Size, System.Drawing">
     <value>117, 17</value>
   </data>
-  <data name="checkBox1.Text" xml:space="preserve">
+  <data name="cbSonidosSistema.Text" xml:space="preserve">
     <value>&amp;Use system default sound</value>
   </data>
-  <data name="button4.Text" xml:space="preserve">
+  <data name="btnReproducir.Text" xml:space="preserve">
     <value>&amp;Play</value>
   </data>
-  <data name="button3.Text" xml:space="preserve">
+  <data name="btnExmnr.Text" xml:space="preserve">
     <value>&amp;Browse</value>
   </data>
   <data name="groupBox2.Text" xml:space="preserve">
@@ -5216,7 +5216,7 @@
 </value>
   </data>
   <data name="$this.Text" xml:space="preserve">
-    <value>Key settings</value>
+    <value>Settings</value>
   </data>
   <data name="msgEqual" xml:space="preserve">
     <value>Some keys are repeated. Check them and try again.</value>

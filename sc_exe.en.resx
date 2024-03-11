@@ -5194,4 +5194,25 @@
         AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==
 </value>
   </data>
+  <data name="msgErrorBlank" xml:space="preserve">
+    <value>Directory field cannot be empty</value>
+  </data>
+  <data name="msgErrorOpen" xml:space="preserve">
+    <value>Error opening executable. Check that exists and you have enought rights.</value>
+  </data>
+  <data name="msgErrorScript" xml:space="preserve">
+    <value>Customized script cannot be loaded (maybe is wrong typed). Corresponding option has been disabled.</value>
+  </data>
+  <data name="msgErrorSE" xml:space="preserve">
+    <value>The selected file isn't valid</value>
+  </data>
+  <data name="textEx" xml:space="preserve">
+    <value>Executables|*.exe</value>
+  </data>
+  <data name="textOFD" xml:space="preserve">
+    <value>Select file...</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Customized script</value>
+  </data>
 </root>

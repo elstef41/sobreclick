@@ -8,6 +8,7 @@ using System.Globalization;
 using System.Resources;
 using System.Runtime.Remoting.Metadata.W3cXsd2001;
 using System.Diagnostics;
+using System.Configuration;
 using System.Media;
 using Sobreclick.Properties;
 
@@ -18,6 +19,8 @@ namespace Sobreclick
         strings SC = new strings();
         static conf Conf = new conf();
         public static TypeConverter conversor = TypeDescriptor.GetConverter(typeof(Keys));
+        public static string dirProgramaScript;
+        public static string argsProgramaScript;
 
         // Variables genéricas
         public static bool sonidoAT = false;
@@ -85,8 +88,8 @@ namespace Sobreclick
             this.Text += SC.obtenerVersion();
             this.Text += " por elstef41";
             this.MinimumSize = new Size(270, 268);
-            comboBox1.SelectedIndex = 0;
-            comboBox2.SelectedIndex = 0;
+            cbTipo.SelectedIndex = 0;
+            cbDur.SelectedIndex = 0;
         }
 
         public void actualizarDirSon()
@@ -123,6 +126,18 @@ namespace Sobreclick
             {
                 MessageBox.Show(rm.GetString("msgConfError0"), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 configuraciónToolStripMenuItem.Enabled = false;
+            }
+
+            if (tcli == tclp || tcli == tcld || tcld == tclp)
+            {
+                DialogResult teclasRepetidas = MessageBox.Show(rm.GetString("msgRepeatedKeys"), "Error", MessageBoxButtons.OKCancel, MessageBoxIcon.Error);
+                switch (teclasRepetidas)
+                {
+                    case DialogResult.OK:
+                        Process.Start(AppDomain.CurrentDomain.SetupInformation.ConfigurationFile);
+                        break;
+                }
+                System.Environment.Exit(0);
             }
 
             RegisterHotKey(this.Handle, tclidi, 0x0000, (int)tcli);
@@ -217,7 +232,7 @@ namespace Sobreclick
                 MessageBox.Show(rm.GetString("msgMore0"), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return true;
             }
-            else if (comboBox1.Text == "")
+            else if (cbTipo.Text == "")
             {
                 MessageBox.Show(rm.GetString("msgClickType"), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return true;
@@ -225,7 +240,7 @@ namespace Sobreclick
             else
             {
                 int clickinterval;
-                switch (Convert.ToInt32(comboBox2.SelectedIndex))
+                switch (Convert.ToInt32(cbDur.SelectedIndex))
                 {
                     case 0:
                         // Milisegundos
@@ -300,6 +315,15 @@ namespace Sobreclick
             {
                 restaurarValores();
             }
+            if (ejecutarScriptAT)
+            {
+                if (!SC.abrirScript(sobreclick.dirProgramaScript, sobreclick.argsProgramaScript))
+                {
+                    MessageBox.Show(rm.GetString("msgErrorScript"), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    masToolStripMenuItem.Checked = false;
+                    ejecutarScriptAT = false;
+                }
+            }
 
             cambiarTextStatus(rm.GetString("statusEnded"), 5000);
             return true;
@@ -312,7 +336,7 @@ namespace Sobreclick
             buttonR.Visible = false;
             buttonR.Enabled = false;
                 int clickinterval;
-                switch (Convert.ToInt32(comboBox2.SelectedIndex))
+                switch (Convert.ToInt32(cbDur.SelectedIndex))
                 {
                     case 0:
                         clickinterval = Convert.ToInt32(numericUpDown2.Value);
@@ -377,21 +401,21 @@ namespace Sobreclick
 
         private void timerClick_Tick(object sender, EventArgs e)
         {
-            switch (checkBox1.Checked)
+            switch (cbSinLimite.Checked)
             {
                 case true:
-                    switch (comboBox1.SelectedIndex)
+                    switch (cbTipo.SelectedIndex)
                     {
                         case 0:
-                            if (checkBox2.Checked) { ClickI(); }
+                            if (cbDClick.Checked) { ClickI(); }
                             ClickI();
                             break;
                         case 1:
-                            if (checkBox2.Checked) { ClickM(); }
+                            if (cbDClick.Checked) { ClickM(); }
                             ClickM();
                             break;
                         case 2:
-                            if (checkBox2.Checked) { ClickD(); }
+                            if (cbDClick.Checked) { ClickD(); }
                             ClickD();
                             break;
                     }
@@ -399,18 +423,18 @@ namespace Sobreclick
                 case false:
                     if (clickTimes != 0)
                     {
-                        switch (comboBox1.SelectedIndex)
+                        switch (cbTipo.SelectedIndex)
                         {
                             case 0:
-                                if (checkBox2.Checked) { ClickI(); }
+                                if (cbDClick.Checked) { ClickI(); }
                                 ClickI();
                                 break;
                             case 1:
-                                if (checkBox2.Checked) { ClickM(); }
+                                if (cbDClick.Checked) { ClickM(); }
                                 ClickM();
                                 break;
                             case 2:
-                                if (checkBox2.Checked) { ClickD(); }
+                                if (cbDClick.Checked) { ClickD(); }
                                 ClickD();
                                 break;
                         }
@@ -428,7 +452,7 @@ namespace Sobreclick
 
         private void buttonP_Click(object sender, EventArgs e)
         {
-            Pausar();
+             Pausar();
         }
 
         private void buttonR_Click(object sender, EventArgs e)
@@ -438,7 +462,7 @@ namespace Sobreclick
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
-            switch (checkBox1.Checked)
+            switch (cbSinLimite.Checked)
             {
                 case true:
                     numericUpDown1.Enabled = false;
@@ -451,13 +475,13 @@ namespace Sobreclick
 
         public void restaurarValores()
         {
-            checkBox1.Checked = false;
-            checkBox2.Checked = false;
+            cbSinLimite.Checked = false;
+            cbDClick.Checked = false;
             numericUpDown2.Enabled = true;
             numericUpDown1.Value = 10;
             numericUpDown2.Value = 500;
-            comboBox1.SelectedIndex = 0;
-            comboBox2.SelectedIndex = 0;
+            cbTipo.SelectedIndex = 0;
+            cbDur.SelectedIndex = 0;
             restaurarValoresToolStripMenuItem.Enabled = false;
         }
         private void restaurarValoresToolStripMenuItem_Click(object sender, EventArgs e)
@@ -484,7 +508,7 @@ namespace Sobreclick
                 restaurarValoresToolStripMenuItem.Enabled = true;
             }
             int clickinterval;
-            switch (Convert.ToInt32(comboBox2.SelectedIndex))
+            switch (Convert.ToInt32(cbDur.SelectedIndex))
             {
                 case 0:
                     // Milisegundos
@@ -501,7 +525,7 @@ namespace Sobreclick
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (comboBox1.SelectedIndex != 0)
+            if (cbTipo.SelectedIndex != 0)
             {
                 restaurarValoresToolStripMenuItem.Enabled = true;
             }
@@ -535,7 +559,7 @@ namespace Sobreclick
 
         private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (comboBox2.SelectedIndex != 0)
+            if (cbDur.SelectedIndex != 0)
             {
                 restaurarValoresToolStripMenuItem.Enabled = true;
             }
@@ -609,7 +633,7 @@ namespace Sobreclick
 
         private void checkBox2_CheckedChanged(object sender, EventArgs e)
         {
-            if (checkBox2.Checked)
+            if (cbDClick.Checked)
             {
                 restaurarValoresToolStripMenuItem.Enabled = true;
             }
@@ -678,6 +702,7 @@ namespace Sobreclick
                 apagarAT = false;
             }
         }
+
         private void restaurarValoresToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             if (restaurarValoresToolStripMenuItem1.Checked)
@@ -689,11 +714,40 @@ namespace Sobreclick
                 restaurarValoresAT = false;
             }
         }
+
+        private void masToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (!masToolStripMenuItem.Checked)
+            {
+                sc_exe exe_ventana = new sc_exe();
+                using (exe_ventana)
+                {
+                    exe_ventana.ShowDialog();
+                    switch (exe_ventana.activado)
+                    {
+                        case true:
+                            masToolStripMenuItem.Checked = true;
+                            ejecutarScriptAT = true;
+                            break;
+                        case false:
+                        default:
+                            masToolStripMenuItem.Checked = false;
+                            ejecutarScriptAT = false;
+                            break;
+                    }
+                }
+            }
+            else
+            {
+                masToolStripMenuItem.Checked = false;
+                ejecutarScriptAT = false;
+            }
+        }
+
         private void timerStatus_Tick(object sender, EventArgs e)
         {
             statusText.Text = "";
             timerStatus.Stop();
         }
-
     }
 }

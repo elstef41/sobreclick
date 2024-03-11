@@ -117,14 +117,14 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <metadata name="menuStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+  <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="menuStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing">
     <value>17, 17</value>
-  </metadata>
+  </data>
   <assembly alias="mscorlib" name="mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="restaurarValoresToolStripMenuItem.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="restaurarValoresToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>164, 22</value>
   </data>
@@ -135,7 +135,7 @@
     <value>164, 22</value>
   </data>
   <data name="configuraciónToolStripMenuItem.Text" xml:space="preserve">
-    <value>&amp;Configurar teclas</value>
+    <value>&amp;Configuración</value>
   </data>
   <data name="toolStripSeparator1.Size" type="System.Drawing.Size, System.Drawing">
     <value>161, 6</value>
@@ -534,9 +534,9 @@
   <data name="&gt;&gt;cbTipo.ZOrder" xml:space="preserve">
     <value>6</value>
   </data>
-  <metadata name="timerClick.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+  <data name="timerClick.TrayLocation" type="System.Drawing.Point, System.Drawing">
     <value>132, 17</value>
-  </metadata>
+  </data>
   <data name="cbSinLimite.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
   </data>
@@ -657,9 +657,9 @@
   <data name="&gt;&gt;cbDClick.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <metadata name="statusSC.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+  <data name="statusSC.TrayLocation" type="System.Drawing.Point, System.Drawing">
     <value>238, 17</value>
-  </metadata>
+  </data>
   <data name="statusText.Size" type="System.Drawing.Size, System.Drawing">
     <value>0, 17</value>
   </data>
@@ -687,12 +687,12 @@
   <data name="&gt;&gt;statusSC.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <metadata name="timerStatus.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+  <data name="timerStatus.TrayLocation" type="System.Drawing.Point, System.Drawing">
     <value>336, 17</value>
-  </metadata>
-  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  </data>
+  <data name="$this.Localizable" type="System.Boolean, mscorlib">
     <value>True</value>
-  </metadata>
+  </data>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
     <value>6, 13</value>
   </data>
@@ -5895,46 +5895,57 @@
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
     <value>System.Windows.Forms.Form, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-	<data name="msgMore0" xml:space="preserve">
+  <data name="msgMore0" xml:space="preserve">
     <value>La cantidad de clics debe ser mayor a 0</value>
   </data>
-	<data name="msgTimeSelection" xml:space="preserve">
+  <data name="msgTimeSelection" xml:space="preserve">
     <value>Tienes que establecer una duración.</value>
   </data>
-	<data name="msgTypeSelection" xml:space="preserve">
+  <data name="msgTypeSelection" xml:space="preserve">
     <value>Tienes que establecer un tipo.</value>
   </data>
-	<data name="msgConfError0" xml:space="preserve">
+  <data name="msgConfError0" xml:space="preserve">
     <value>No se ha podido cargar el archivo de configuración (Sobreclick.exe.config). La opción para modificarla no estará disponible.</value>
   </data>
-	<data name="msgShutdownError" xml:space="preserve">
+  <data name="msgShutdownError" xml:space="preserve">
     <value>No se ha podido apagar el equipo. Verifica que el ejecutable shutdown de Windows exista.</value>
   </data>
-	<data name="msgSoundError" xml:space="preserve">
+  <data name="msgSoundError" xml:space="preserve">
     <value>No se pudo reproducir el archivo de sonido. Verifique que exista y sea accesible.</value>
   </data>
-	<data name="statusEstimatedTime0" xml:space="preserve">
+  <data name="statusEstimatedTime0" xml:space="preserve">
     <value>Duración: </value>
   </data>
-	<data name="statusEstimatedTime1" xml:space="preserve">
+  <data name="statusEstimatedTime1" xml:space="preserve">
     <value> segundos y </value>
   </data>
-	<data name="statusEstimatedTime2" xml:space="preserve">
+  <data name="statusEstimatedTime2" xml:space="preserve">
     <value> minutos (aprox.)</value>
   </data>
-	<data name="statusEstimatedTime1NP" xml:space="preserve">
+  <data name="statusEstimatedTime1NP" xml:space="preserve">
     <value> segundo y </value>
   </data>
-	<data name="statusEstimatedTime2NP" xml:space="preserve">
+  <data name="statusEstimatedTime2NP" xml:space="preserve">
     <value> minuto (aprox.)</value>
   </data>
-	<data name="statusPaused" xml:space="preserve">
+  <data name="statusPaused" xml:space="preserve">
     <value>Pausado</value>
   </data>
-	<data name="statusEnded" xml:space="preserve">
+  <data name="statusEnded" xml:space="preserve">
     <value>Finalizado</value>
   </data>
-	<data name="statusConfigClosed" xml:space="preserve">
+  <data name="statusConfigClosed" xml:space="preserve">
     <value>Ajustes actualizados</value>
+  </data>
+  <data name="msgErrorScript" xml:space="preserve">
+    <value>No se pudo ejecutar el script personalizado. La opción correspondiente ha sido desactivada.</value>
+  </data>
+  <data name="msgRepeatedKeys" xml:space="preserve">
+    <value>Una o varias teclas establecidas en el archivo de configuración están repetidas.  Presiona "Aceptar" para abrirlo y ajustarlas.
+
+Sobreclick se cerrará.</value>
+  </data>
+  <data name="errorLoadingConfigFile" xml:space="preserve">
+    <value>Error al cargar el archivo Sobreclick.exe.config. Comprueba que existe en el directorio del programa.</value>
   </data>
 </root>

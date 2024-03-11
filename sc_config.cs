@@ -38,26 +38,26 @@ namespace Sobreclick
 
         private void textBox1_KeyDown(object sender, KeyEventArgs e)
         {
-            button2.Enabled = true;
-            textBox1.Clear();
+            btnRestaurar.Enabled = true;
+            tbIni.Clear();
             iniT = e.KeyCode;
-            textBox1.AppendText(e.KeyCode.ToString() + "\r\n");
+            tbIni.AppendText(e.KeyCode.ToString() + "\r\n");
         }
 
         private void textBox2_KeyDown(object sender, KeyEventArgs e)
         {
-            button2.Enabled = true;
-            textBox2.Clear();
+            btnRestaurar.Enabled = true;
+            tbPR.Clear();
             pauT = e.KeyCode;
-            textBox2.AppendText(e.KeyCode.ToString() + "\r\n");
+            tbPR.AppendText(e.KeyCode.ToString() + "\r\n");
         }
 
         private void textBox3_KeyDown(object sender, KeyEventArgs e)
         {
-            button2.Enabled = true;
-            textBox3.Clear();
+            btnRestaurar.Enabled = true;
+            pbDen.Clear();
             detT = e.KeyCode;
-            textBox3.AppendText(e.KeyCode.ToString() + "\r\n");
+            pbDen.AppendText(e.KeyCode.ToString() + "\r\n");
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -69,7 +69,7 @@ namespace Sobreclick
             }
             else
             {
-                if (!checkBox1.Checked)
+                if (!cbSonidosSistema.Checked)
                 {
                     if (sonConfDir == "")
                     {
@@ -100,7 +100,7 @@ namespace Sobreclick
                 strings.actualizarTecla(1, iniT);
                 strings.actualizarTecla(2, pauT);
                 strings.actualizarTecla(3, detT);
-                if (!checkBox1.Checked)
+                if (!cbSonidosSistema.Checked)
                 {
                     strings.actualizarArchivoSon(sonConfDir);
                 }
@@ -118,9 +118,9 @@ namespace Sobreclick
 
         private void sc_config_Load(object sender, EventArgs e)
         {
-            textBox1.Clear();
-            textBox2.Clear();
-            textBox3.Clear();
+            tbIni.Clear();
+            tbPR.Clear();
+            pbDen.Clear();
             textBox4.Clear();
 
             // Cargar variables de teclas
@@ -128,9 +128,9 @@ namespace Sobreclick
             pauT = (Keys)conversor.ConvertFromString(Conf.teclaPausarReanudar());
             detT = (Keys)conversor.ConvertFromString(Conf.teclaDetener());
 
-            textBox1.AppendText(iniT.ToString() + "\r\n");
-            textBox2.AppendText(pauT.ToString() + "\r\n");
-            textBox3.AppendText(detT.ToString() + "\r\n");
+            tbIni.AppendText(iniT.ToString() + "\r\n");
+            tbPR.AppendText(pauT.ToString() + "\r\n");
+            pbDen.AppendText(detT.ToString() + "\r\n");
             textBox4.AppendText(sonConfDir + "\r\n");
             if (sonConfDir == "")
             {
@@ -144,15 +144,13 @@ namespace Sobreclick
             {
                 case true:
                     textBox4.Enabled = true;
-                    button3.Enabled = true;
-                    button4.Enabled = true;
+                    btnExmnr.Enabled = true;
                     sonSistemaPreferido = false;
                     break;
                 case false:
                 default:
                     textBox4.Enabled = false;
-                    button3.Enabled = false;
-                    button4.Enabled = false;
+                    btnExmnr.Enabled = false;
                     sonSistemaPreferido = true;
                     break;
             }
@@ -162,13 +160,13 @@ namespace Sobreclick
             iniT = strings.iniT;
             pauT = strings.pauT;
             detT = strings.detT;
-            textBox1.Clear();
-            textBox1.AppendText(iniT.ToString() + "\r\n");
-            textBox2.Clear();
-            textBox2.AppendText(pauT.ToString() + "\r\n");
-            textBox3.Clear();
-            textBox3.AppendText(detT.ToString() + "\r\n");
-            button2.Enabled = false;
+            tbIni.Clear();
+            tbIni.AppendText(iniT.ToString() + "\r\n");
+            tbPR.Clear();
+            tbPR.AppendText(pauT.ToString() + "\r\n");
+            pbDen.Clear();
+            pbDen.AppendText(detT.ToString() + "\r\n");
+            btnRestaurar.Enabled = false;
         }
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
@@ -196,9 +194,18 @@ namespace Sobreclick
         private void button4_Click(object sender, EventArgs e)
         {
             sonConfDir = textBox4.Text;
+
+            switch (sonSistemaPreferido)
+            {
+                case true:
+                    testingSound = new SoundPlayer(@"C:\Windows\Media\chord.wav");
+                    break;
+                case false:
+                    testingSound = new SoundPlayer(sonConfDir);
+                    break;
+            }
             try
             {
-                testingSound = new SoundPlayer(sonConfDir);
                 testingSound.Play();
             }
             catch (Exception E)

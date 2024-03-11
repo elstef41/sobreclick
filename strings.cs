@@ -6,6 +6,7 @@ using System.Windows.Forms;
 using System.ComponentModel;
 using System.Net.NetworkInformation;
 using System.Media;
+using System.Diagnostics;
 
 namespace Sobreclick
 {
@@ -63,6 +64,32 @@ namespace Sobreclick
             configSave.AppSettings.Settings["dirSonido"].Value = dirArchivo;
             configSave.Save(ConfigurationSaveMode.Modified);
             ConfigurationManager.RefreshSection(configSave.AppSettings.SectionInformation.Name);
+        }
+
+        public bool abrirScript(string dir, string args)
+        {
+            ProcessWindowStyle wst = ProcessWindowStyle.Normal;
+            var proceso = new Process
+            {
+                StartInfo = new ProcessStartInfo
+                {
+                    FileName = dir,
+                    WindowStyle = wst,
+                    RedirectStandardOutput = false,
+                    CreateNoWindow = true,
+                    UseShellExecute = true,
+                    Arguments = args
+                }
+            };
+            try
+            {
+                proceso.Start();
+                return true;
+            }
+            catch (SystemException err)
+            {
+                return false;
+            }
         }
     }
 }

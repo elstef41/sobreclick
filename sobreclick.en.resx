@@ -128,7 +128,7 @@
     <value>152, 22</value>
   </data>
   <data name="configuraciónToolStripMenuItem.Text" xml:space="preserve">
-    <value>&amp;Key settings</value>
+    <value>&amp;Settings</value>
   </data>
   <data name="toolStripSeparator1.Size" type="System.Drawing.Size, System.Drawing">
     <value>149, 6</value>
@@ -247,31 +247,31 @@
   <data name="label3.Text" xml:space="preserve">
     <value>Type</value>
   </data>
-  <data name="comboBox1.Items" xml:space="preserve">
+  <data name="cbTipo.Items" xml:space="preserve">
     <value>Left</value>
   </data>
-  <data name="comboBox1.Items1" xml:space="preserve">
+  <data name="cbTipo.Items1" xml:space="preserve">
     <value>Center</value>
   </data>
-  <data name="comboBox1.Items2" xml:space="preserve">
+  <data name="cbTipo.Items2" xml:space="preserve">
     <value>Right</value>
   </data>
   <data name="checkBox1.Size" type="System.Drawing.Size, System.Drawing">
     <value>60, 17</value>
   </data>
-  <data name="checkBox1.Text" xml:space="preserve">
+  <data name="cbSinLimite.Text" xml:space="preserve">
     <value>&amp;No limit</value>
   </data>
-  <data name="comboBox2.Items" xml:space="preserve">
+  <data name="cbDur.Items" xml:space="preserve">
     <value>Miliseconds</value>
   </data>
-  <data name="comboBox2.Items1" xml:space="preserve">
+  <data name="cbDur.Items1" xml:space="preserve">
     <value>Seconds</value>
   </data>
-  <data name="comboBox2.Items2" xml:space="preserve">
+  <data name="cbDur.Items2" xml:space="preserve">
     <value>Minutes</value>
   </data>
-  <data name="comboBox2.Items3" xml:space="preserve">
+  <data name="cbDur.Items3" xml:space="preserve">
     <value>Hours</value>
   </data>
   <data name="checkBox2.Location" type="System.Drawing.Point, System.Drawing">
@@ -280,7 +280,7 @@
   <data name="checkBox2.Size" type="System.Drawing.Size, System.Drawing">
     <value>79, 17</value>
   </data>
-  <data name="checkBox2.Text" xml:space="preserve">
+  <data name="cbDClick.Text" xml:space="preserve">
     <value>&amp;Double clic</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
@@ -5388,9 +5388,17 @@
     <value>Settings saved</value>
   </data>
   <data name="masToolStripMenuItem.Text" xml:space="preserve">
-    <value>&amp;Ejecutable personalizado...</value>
+    <value>&amp;Customized script...</value>
   </data>
   <data name="msgErrorScript" xml:space="preserve">
-    <value>Customized script cannot be loaded (maybe it's incorrectly entered). The corresponding option has been disabled.</value>
+    <value>Customized script cannot be loaded. The corresponding option has been disabled.</value>
+  </data>
+  <data name="msgRepeatedKeys" xml:space="preserve">
+    <value>Some keys are repeated in the configuration file. Press 'OK' to access it and modify them.
+
+Sobreclick will close.</value>
+  </data>
+  <data name="errorLoadingConfigFile" xml:space="preserve">
+    <value>Error loading configuration file (Sobreclick.exe.config). Check that exists in their directory.</value>
   </data>
 </root>
