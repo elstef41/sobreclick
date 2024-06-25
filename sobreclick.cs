@@ -27,8 +27,8 @@ namespace Sobreclick
         public static bool apagarAT = false;
         public static bool salirAT = false;
         public static bool ejecutarScriptAT = false;
-        public static bool restaurarValoresAT = false;
         public static bool notificarAT = false;
+        public static bool restaurarValoresAT = false;
 
         public ProcessStartInfo shutdownProcess = new ProcessStartInfo("shutdown", "-s -t 0");
 
@@ -329,6 +329,10 @@ namespace Sobreclick
             {
                 restaurarValores();
             }
+            if (notificarAT)
+            {
+                mostrarNotificacion(rm.GetString("notifyEnded"));
+            }
             if (ejecutarScriptAT)
             {
                 if (!SC.abrirScript(sobreclick.dirProgramaScript, sobreclick.argsProgramaScript))
@@ -386,7 +390,6 @@ namespace Sobreclick
         }
 
 
-
         private void buttonC_Click(object sender, EventArgs e)
         {
             if (numericUpDown1.Text == "")
@@ -413,6 +416,13 @@ namespace Sobreclick
             buttonR.Enabled = false;
         }
 
+        public void mostrarNotificacion(string texto)
+        {
+            timerNotify.Enabled = true;
+            timerNotify.Start();
+            iconoSC.Visible = true;
+            iconoSC.ShowBalloonTip(1000, "Sobreclick", texto, ToolTipIcon.Info);
+        }
         private void timerClick_Tick(object sender, EventArgs e)
         {
             switch (cbSinLimite.Checked)
@@ -756,10 +766,34 @@ namespace Sobreclick
             }
         }
 
+        private void notificaciónToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (notificarToolStripMenuItem.Checked)
+            {
+                notificarAT = true;
+            }
+            else
+            {
+                notificarAT = false;
+            }
+        }
+
         private void timerStatus_Tick(object sender, EventArgs e)
         {
             statusText.Text = "";
             timerStatus.Stop();
+        }
+
+        private void iconoSC_BalloonTipClosed(object sender, EventArgs e)
+        {
+            iconoSC.Visible = false;
+        }
+
+        private void timerNotify_Tick(object sender, EventArgs e)
+        {
+            iconoSC.Visible = false;
+            timerNotify.Stop();
+            timerNotify.Enabled = false;
         }
 
         private void timerExit_Tick_1(object sender, EventArgs e)

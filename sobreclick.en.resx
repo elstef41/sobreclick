@@ -127,6 +127,9 @@
   <data name="configuraciónToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>152, 22</value>
   </data>
+  <data name="notificarToolStripMenuItem.Text" xml:space="preserve">
+    <value>&amp;Notify</value>
+  </data>
   <data name="configuraciónToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Settings</value>
   </data>
@@ -5400,6 +5403,9 @@ Sobreclick will close.</value>
   </data>
   <data name="errorLoadingConfigFile" xml:space="preserve">
     <value>Error loading configuration file (Sobreclick.exe.config). Check that exists in their directory.</value>
+  </data>
+  <data name="notifyEnded" xml:space="preserve">
+    <value>Sequence has ended.</value>
   </data>
   <data name="errorProgramAlreadyRunning" xml:space="preserve">
     <value>Another instance of Sobreclick is already running</value>

@@ -40,6 +40,7 @@
             this.reproducirSonidoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.apagarElEquipoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.restaurarValoresToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.notificarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.masToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.salirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ventanaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -68,6 +69,8 @@
             this.statusSC = new System.Windows.Forms.StatusStrip();
             this.statusText = new System.Windows.Forms.ToolStripStatusLabel();
             this.timerStatus = new System.Windows.Forms.Timer(this.components);
+            this.iconoSC = new System.Windows.Forms.NotifyIcon(this.components);
+            this.timerNotify = new System.Windows.Forms.Timer(this.components);
             this.timerExit = new System.Windows.Forms.Timer(this.components);
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
@@ -119,6 +122,7 @@
             this.reproducirSonidoToolStripMenuItem,
             this.apagarElEquipoToolStripMenuItem,
             this.restaurarValoresToolStripMenuItem1,
+            this.notificarToolStripMenuItem,
             this.masToolStripMenuItem});
             this.cerrarAlTerminarToolStripMenuItem.Name = "cerrarAlTerminarToolStripMenuItem";
             resources.ApplyResources(this.cerrarAlTerminarToolStripMenuItem, "cerrarAlTerminarToolStripMenuItem");
@@ -150,6 +154,13 @@
             this.restaurarValoresToolStripMenuItem1.Name = "restaurarValoresToolStripMenuItem1";
             resources.ApplyResources(this.restaurarValoresToolStripMenuItem1, "restaurarValoresToolStripMenuItem1");
             this.restaurarValoresToolStripMenuItem1.Click += new System.EventHandler(this.restaurarValoresToolStripMenuItem1_Click);
+            // 
+            // notificarToolStripMenuItem
+            // 
+            this.notificarToolStripMenuItem.CheckOnClick = true;
+            this.notificarToolStripMenuItem.Name = "notificarToolStripMenuItem";
+            resources.ApplyResources(this.notificarToolStripMenuItem, "notificarToolStripMenuItem");
+            this.notificarToolStripMenuItem.Click += new System.EventHandler(this.notificaciónToolStripMenuItem_Click);
             // 
             // masToolStripMenuItem
             // 
@@ -368,6 +379,16 @@
             this.timerStatus.Interval = 5000;
             this.timerStatus.Tick += new System.EventHandler(this.timerStatus_Tick);
             // 
+            // iconoSC
+            // 
+            resources.ApplyResources(this.iconoSC, "iconoSC");
+            this.iconoSC.BalloonTipClosed += new System.EventHandler(this.iconoSC_BalloonTipClosed);
+            // 
+            // timerNotify
+            // 
+            this.timerNotify.Interval = 8000;
+            this.timerNotify.Tick += new System.EventHandler(this.timerNotify_Tick);
+            // 
             // timerExit
             // 
             this.timerExit.Tick += new System.EventHandler(this.timerExit_Tick_1);
@@ -448,6 +469,9 @@
         private System.Windows.Forms.ToolStripStatusLabel statusText;
         private System.Windows.Forms.ToolStripMenuItem restaurarValoresToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem masToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem notificarToolStripMenuItem;
+        private System.Windows.Forms.NotifyIcon iconoSC;
+        private System.Windows.Forms.Timer timerNotify;
         private System.Windows.Forms.Timer timerExit;
     }
 }
