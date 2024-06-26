@@ -14,22 +14,35 @@ namespace Sobreclick
         /// <summary>
         /// Punto de entrada principal para la aplicación.
         /// </summary>
+        
+        static Mutex mutex = new Mutex(true, "sobreclick");
+
         [STAThread]
         static void Main()
         {
-            // Comprobar existencia de archivos internos
-            if (!File.Exists(AppDomain.CurrentDomain.SetupInformation.ConfigurationFile))
+            // Revisar si ya hay una instancia activa del programa
+            if (mutex.WaitOne(TimeSpan.Zero, true))
             {
-                MessageBox.Show(sobreclick.rm.GetString("errorLoadingConfigFile"), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                // Comprobar existencia de archivos internos
+                if (!File.Exists(AppDomain.CurrentDomain.SetupInformation.ConfigurationFile))
+                {
+                    MessageBox.Show(sobreclick.rm.GetString("errorLoadingConfigFile"), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    System.Environment.Exit(0);
+                }
+                Application.EnableVisualStyles();
+                Application.ThreadException += new ThreadExceptionEventHandler(UIThreadException);
+                Application.SetUnhandledExceptionMode(UnhandledExceptionMode.CatchException);
+                AppDomain.CurrentDomain.UnhandledException += new UnhandledExceptionEventHandler(CurrentDomain_UnhandledException);
+                Application.SetCompatibleTextRenderingDefault(false);
+                Application.Run(new sobreclick());
+            }
+            else
+            {
+                MessageBox.Show(sobreclick.rm.GetString("errorProgramAlreadyRunning"), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 System.Environment.Exit(0);
             }
-            Application.EnableVisualStyles();
-            Application.ThreadException += new ThreadExceptionEventHandler(UIThreadException);
-            Application.SetUnhandledExceptionMode(UnhandledExceptionMode.CatchException);
-            AppDomain.CurrentDomain.UnhandledException += new UnhandledExceptionEventHandler(CurrentDomain_UnhandledException);
-            Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new sobreclick());
         }
+
 
         // Controlador de excepciones casero
         private static void UIThreadException(object sender, ThreadExceptionEventArgs e)
