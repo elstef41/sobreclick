@@ -43,7 +43,16 @@ namespace Sobreclick
         private const int tclidi = 0x0997;
         private const int tclidp = 0x0998;
         private const int tclidd = 0x0999;
-        
+
+        public const int MILISEGUNDOS = 0;
+        public const int SEGUNDOS = 1;
+        public const int MINUTOS = 2;
+        public const int HORAS = 3;
+
+        public const int TIPO_IZQUIERDO = 0;
+        public const int TIPO_CENTRAL = 1;
+        public const int TIPO_DERECHO = 2;
+
         Keys tcli = strings.iniT;
         Keys tclp = strings.pauT;
         Keys tcld = strings.detT;
@@ -242,20 +251,16 @@ namespace Sobreclick
                 int clickinterval;
                 switch (Convert.ToInt32(cbDur.SelectedIndex))
                 {
-                    case 0:
-                        // Milisegundos
+                    case MILISEGUNDOS:
                         clickinterval = Convert.ToInt32(numericUpDown2.Value);
                         break;
-                    case 1:
-                        // Segundos
+                    case SEGUNDOS:
                         clickinterval = Convert.ToInt32(numericUpDown2.Value) * 1000;
                         break;
-                    case 2:
-                        // Minutos
+                    case MINUTOS:
                         clickinterval = Convert.ToInt32(numericUpDown2.Value) * 60000;
                         break;
-                    case 3:
-                        // Horas
+                    case HORAS:
                         clickinterval = Convert.ToInt32(numericUpDown2.Value) * 3600000;
                         break;
                     default:
@@ -338,16 +343,16 @@ namespace Sobreclick
                 int clickinterval;
                 switch (Convert.ToInt32(cbDur.SelectedIndex))
                 {
-                    case 0:
+                    case MILISEGUNDOS:
                         clickinterval = Convert.ToInt32(numericUpDown2.Value);
                         break;
-                    case 1:
+                    case SEGUNDOS:
                         clickinterval = Convert.ToInt32(numericUpDown2.Value) * 1000;
                         break;
-                    case 2:
+                    case MINUTOS:
                         clickinterval = Convert.ToInt32(numericUpDown2.Value) * 60000;
                         break;
-                    case 3:
+                    case HORAS:
                         clickinterval = Convert.ToInt32(numericUpDown2.Value) * 3600000;
                         break;
                     default:
@@ -406,15 +411,15 @@ namespace Sobreclick
                 case true:
                     switch (cbTipo.SelectedIndex)
                     {
-                        case 0:
+                        case TIPO_IZQUIERDO:
                             if (cbDClick.Checked) { ClickI(); }
                             ClickI();
                             break;
-                        case 1:
+                        case TIPO_CENTRAL:
                             if (cbDClick.Checked) { ClickM(); }
                             ClickM();
                             break;
-                        case 2:
+                        case TIPO_DERECHO:
                             if (cbDClick.Checked) { ClickD(); }
                             ClickD();
                             break;
@@ -425,15 +430,15 @@ namespace Sobreclick
                     {
                         switch (cbTipo.SelectedIndex)
                         {
-                            case 0:
+                            case TIPO_IZQUIERDO:
                                 if (cbDClick.Checked) { ClickI(); }
                                 ClickI();
                                 break;
-                            case 1:
+                            case TIPO_CENTRAL:
                                 if (cbDClick.Checked) { ClickM(); }
                                 ClickM();
                                 break;
-                            case 2:
+                            case TIPO_DERECHO:
                                 if (cbDClick.Checked) { ClickD(); }
                                 ClickD();
                                 break;
@@ -502,7 +507,7 @@ namespace Sobreclick
             int tiempoTotal = Convert.ToInt32(numericUpDown2.Value);
             int miliASegundos = Convert.ToInt32(numericUpDown2.Value) / 1000;
             int miliAMinutos = Convert.ToInt32(numericUpDown2.Value) / 60000;
-            int segundosAMinutos = Convert.ToInt32(numericUpDown2.Value) / 60;
+            int SEGUNDOSAMinutos = Convert.ToInt32(numericUpDown2.Value) / 60;
             if (numericUpDown2.Value != 500)
             {
                 restaurarValoresToolStripMenuItem.Enabled = true;
@@ -510,15 +515,13 @@ namespace Sobreclick
             int clickinterval;
             switch (Convert.ToInt32(cbDur.SelectedIndex))
             {
-                case 0:
-                    // Milisegundos
+                case MILISEGUNDOS:
                     clickinterval = Convert.ToInt32(numericUpDown2.Value);
                     cambiarTextStatus(rm.GetString("statusEstimatedTime0") + miliASegundos.ToString() + ((miliASegundos == 1) ? rm.GetString("statusEstimatedTime1NP") : rm.GetString("statusEstimatedTime1")) + miliAMinutos.ToString() + ((miliAMinutos == 1) ? rm.GetString("statusEstimatedTime2NP") : rm.GetString("statusEstimatedTime2")), 0);
                     break;
-                case 1:
-                    // Milisegundos
+                case SEGUNDOS:
                     clickinterval = Convert.ToInt32(numericUpDown2.Value);
-                    cambiarTextStatus(rm.GetString("statusEstimatedTime0") + segundosAMinutos.ToString() + ((segundosAMinutos == 1) ? rm.GetString("statusEstimatedTime2NP") : rm.GetString("statusEstimatedTime2")), 0);
+                    cambiarTextStatus(rm.GetString("statusEstimatedTime0") + SEGUNDOSAMinutos.ToString() + ((SEGUNDOSAMinutos == 1) ? rm.GetString("statusEstimatedTime2NP") : rm.GetString("statusEstimatedTime2")), 0);
                     break;
             }
         }
