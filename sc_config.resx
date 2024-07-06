@@ -444,25 +444,25 @@
   <data name="&gt;&gt;btnReproducir.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="textBox4.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="tbSoundDir.Location" type="System.Drawing.Point, System.Drawing">
     <value>9, 47</value>
   </data>
-  <data name="textBox4.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="tbSoundDir.Size" type="System.Drawing.Size, System.Drawing">
     <value>205, 20</value>
   </data>
-  <data name="textBox4.TabIndex" type="System.Int32, mscorlib">
+  <data name="tbSoundDir.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
-  <data name="&gt;&gt;textBox4.Name" xml:space="preserve">
-    <value>textBox4</value>
+  <data name="&gt;&gt;tbSoundDir.Name" xml:space="preserve">
+    <value>tbSoundDir</value>
   </data>
-  <data name="&gt;&gt;textBox4.Type" xml:space="preserve">
+  <data name="&gt;&gt;tbSoundDir.Type" xml:space="preserve">
     <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;textBox4.Parent" xml:space="preserve">
+  <data name="&gt;&gt;tbSoundDir.Parent" xml:space="preserve">
     <value>groupBox2</value>
   </data>
-  <data name="&gt;&gt;textBox4.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;tbSoundDir.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
   <data name="btnExmnr.Location" type="System.Drawing.Point, System.Drawing">
@@ -5586,16 +5586,16 @@
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
     <value>System.Windows.Forms.Form, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-    <data name="msgEqual" xml:space="preserve">
+  <data name="msgEqual" xml:space="preserve">
     <value>Algunas teclas están repetidas. Revísalas y vuelve a intentarlo.</value>
   </data>
-	<data name="msgErrorSaving" xml:space="preserve">
+  <data name="msgErrorSaving" xml:space="preserve">
     <value>Error inesperado al guardar el archivo de configuración. Revisa que tengas lo permisos adecuados y vuelve a intentarlo.</value>
   </data>
-	<data name="msgSonDefault" xml:space="preserve">
+  <data name="msgSonDefault" xml:space="preserve">
     <value>No has seleccionado un archivo de sonido. ¿Deseas usar el del sistema?</value>
   </data>
-	<data name="msgErrorLoadingSound" xml:space="preserve">
+  <data name="msgErrorLoadingSound" xml:space="preserve">
     <value>El archivo especificado no es válido</value>
   </data>
 </root>

@@ -62,7 +62,7 @@ namespace Sobreclick
 
         private void button1_Click(object sender, EventArgs e)
         {
-            sonConfDir = textBox4.Text;
+            sonConfDir = tbSoundDir.Text;
             if (iniT == pauT || iniT == detT || detT == pauT)
             {
                 MessageBox.Show(rm.GetString("msgEqual"), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -121,7 +121,7 @@ namespace Sobreclick
             tbIni.Clear();
             tbPR.Clear();
             pbDen.Clear();
-            textBox4.Clear();
+            tbSoundDir.Clear();
 
             // Cargar variables de teclas
             iniT = (Keys)conversor.ConvertFromString(Conf.teclaIniciar());
@@ -131,11 +131,12 @@ namespace Sobreclick
             tbIni.AppendText(iniT.ToString() + "\r\n");
             tbPR.AppendText(pauT.ToString() + "\r\n");
             pbDen.AppendText(detT.ToString() + "\r\n");
-            textBox4.AppendText(sonConfDir + "\r\n");
+            tbSoundDir.AppendText(sonConfDir + "\r\n");
             if (sonConfDir == "")
             {
                 turnarConfigSonido();
             }
+            this.tbSoundDir.TextChanged += new System.EventHandler(this.tbSoundDir_TextChanged);
         }
 
         private void turnarConfigSonido()
@@ -143,13 +144,13 @@ namespace Sobreclick
             switch (sonSistemaPreferido)
             {
                 case true:
-                    textBox4.Enabled = true;
+                    tbSoundDir.Enabled = true;
                     btnExmnr.Enabled = true;
                     sonSistemaPreferido = false;
                     break;
                 case false:
                 default:
-                    textBox4.Enabled = false;
+                    tbSoundDir.Enabled = false;
                     btnExmnr.Enabled = false;
                     sonSistemaPreferido = true;
                     break;
@@ -166,6 +167,8 @@ namespace Sobreclick
             tbPR.AppendText(pauT.ToString() + "\r\n");
             pbDen.Clear();
             pbDen.AppendText(detT.ToString() + "\r\n");
+            tbSoundDir.Clear();
+            tbSoundDir.AppendText(sonConfDir + "\r\n");
             btnRestaurar.Enabled = false;
         }
 
@@ -182,7 +185,7 @@ namespace Sobreclick
                 if (cargarSon.ShowDialog() == DialogResult.OK && cargarSon.FileName.EndsWith(".wav"))
                 {
                     var fs = cargarSon.OpenFile();
-                    textBox4.Text = cargarSon.FileName;
+                    tbSoundDir.Text = cargarSon.FileName;
                 }
                 else
                 {
@@ -193,7 +196,7 @@ namespace Sobreclick
 
         private void button4_Click(object sender, EventArgs e)
         {
-            sonConfDir = textBox4.Text;
+            sonConfDir = tbSoundDir.Text;
 
             switch (sonSistemaPreferido)
             {
@@ -221,6 +224,11 @@ namespace Sobreclick
                 testingSound.Stop();
             }
             this.Dispose();
+        }
+
+        private void tbSoundDir_TextChanged(object sender, EventArgs e)
+        {
+            btnRestaurar.Enabled = true;
         }
     }
 }
