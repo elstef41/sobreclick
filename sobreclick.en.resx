@@ -5401,4 +5401,7 @@ Sobreclick will close.</value>
   <data name="errorLoadingConfigFile" xml:space="preserve">
     <value>Error loading configuration file (Sobreclick.exe.config). Check that exists in their directory.</value>
   </data>
+  <data name="errorProgramAlreadyRunning" xml:space="preserve">
+    <value>Another instance of Sobreclick is already running</value>
+  </data>
 </root>
