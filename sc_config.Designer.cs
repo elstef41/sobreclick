@@ -42,7 +42,7 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.cbSonidosSistema = new System.Windows.Forms.CheckBox();
             this.btnReproducir = new System.Windows.Forms.Button();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.tbSoundDir = new System.Windows.Forms.TextBox();
             this.btnExmnr = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -123,7 +123,7 @@
             // 
             this.groupBox2.Controls.Add(this.cbSonidosSistema);
             this.groupBox2.Controls.Add(this.btnReproducir);
-            this.groupBox2.Controls.Add(this.textBox4);
+            this.groupBox2.Controls.Add(this.tbSoundDir);
             this.groupBox2.Controls.Add(this.btnExmnr);
             resources.ApplyResources(this.groupBox2, "groupBox2");
             this.groupBox2.Name = "groupBox2";
@@ -143,10 +143,10 @@
             this.btnReproducir.UseVisualStyleBackColor = true;
             this.btnReproducir.Click += new System.EventHandler(this.button4_Click);
             // 
-            // textBox4
+            // tbSoundDir
             // 
-            resources.ApplyResources(this.textBox4, "textBox4");
-            this.textBox4.Name = "textBox4";
+            resources.ApplyResources(this.tbSoundDir, "tbSoundDir");
+            this.tbSoundDir.Name = "tbSoundDir";
             // 
             // btnExmnr
             // 
@@ -193,7 +193,7 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.CheckBox cbSonidosSistema;
         private System.Windows.Forms.Button btnReproducir;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox tbSoundDir;
         private System.Windows.Forms.Button btnExmnr;
     }
 }
