@@ -28,6 +28,7 @@ namespace Sobreclick
         public static bool salirAT = false;
         public static bool ejecutarScriptAT = false;
         public static bool restaurarValoresAT = false;
+        public static bool notificarAT = false;
 
         public ProcessStartInfo shutdownProcess = new ProcessStartInfo("shutdown", "-s -t 0");
 
@@ -314,7 +315,15 @@ namespace Sobreclick
             }
             if (salirAT)
             {
-                this.Dispose();
+                if (!notificarAT && !ejecutarScriptAT && !apagarAT)
+                {
+                    this.Close();
+                }
+                else
+                {
+                    timerExit.Enabled = true;
+                    timerExit.Start();
+                }
             }
             if (restaurarValoresAT)
             {
@@ -751,6 +760,11 @@ namespace Sobreclick
         {
             statusText.Text = "";
             timerStatus.Stop();
+        }
+
+        private void timerExit_Tick_1(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

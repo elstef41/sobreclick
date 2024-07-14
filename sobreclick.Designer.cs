@@ -68,6 +68,7 @@
             this.statusSC = new System.Windows.Forms.StatusStrip();
             this.statusText = new System.Windows.Forms.ToolStripStatusLabel();
             this.timerStatus = new System.Windows.Forms.Timer(this.components);
+            this.timerExit = new System.Windows.Forms.Timer(this.components);
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
@@ -367,6 +368,10 @@
             this.timerStatus.Interval = 5000;
             this.timerStatus.Tick += new System.EventHandler(this.timerStatus_Tick);
             // 
+            // timerExit
+            // 
+            this.timerExit.Tick += new System.EventHandler(this.timerExit_Tick_1);
+            // 
             // sobreclick
             // 
             resources.ApplyResources(this, "$this");
@@ -443,6 +448,7 @@
         private System.Windows.Forms.ToolStripStatusLabel statusText;
         private System.Windows.Forms.ToolStripMenuItem restaurarValoresToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem masToolStripMenuItem;
+        private System.Windows.Forms.Timer timerExit;
     }
 }
 
