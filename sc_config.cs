@@ -156,6 +156,27 @@ namespace Sobreclick
                     break;
             }
         }
+
+        public void cargarArchivoSonido()
+        {
+            using (OpenFileDialog cargarSon = new OpenFileDialog())
+            {
+                cargarSon.Filter = "WaveForm Audio Format (*.wav)|*.wav";
+                DialogResult resultadoCarga = cargarSon.ShowDialog();
+                if (resultadoCarga == DialogResult.OK && cargarSon.FileName.EndsWith(".wav"))
+                {
+                    if (cargarSon.FileName.EndsWith(".wav"))
+                    {
+                        var fs = cargarSon.OpenFile();
+                        tbSoundDir.Text = cargarSon.FileName;
+                    }
+                    else
+                    {
+                        MessageBox.Show(rm.GetString("msgErrorLoadingSound"), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+        }
         private void button2_Click(object sender, EventArgs e)
         {
             iniT = strings.iniT;
@@ -177,21 +198,9 @@ namespace Sobreclick
             turnarConfigSonido();
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void btnExmnr_Click(object sender, EventArgs e)
         {
-            using (OpenFileDialog cargarSon = new OpenFileDialog())
-            {
-                cargarSon.Filter = "WaveForm Audio Format (*.wav)|*.wav";
-                if (cargarSon.ShowDialog() == DialogResult.OK && cargarSon.FileName.EndsWith(".wav"))
-                {
-                    var fs = cargarSon.OpenFile();
-                    tbSoundDir.Text = cargarSon.FileName;
-                }
-                else
-                {
-                    MessageBox.Show(rm.GetString("msgErrorLoadingSound"), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
+            cargarArchivoSonido();
         }
 
         private void button4_Click(object sender, EventArgs e)
