@@ -153,7 +153,7 @@
             resources.ApplyResources(this.btnExmnr, "btnExmnr");
             this.btnExmnr.Name = "btnExmnr";
             this.btnExmnr.UseVisualStyleBackColor = true;
-            this.btnExmnr.Click += new System.EventHandler(this.button3_Click);
+            this.btnExmnr.Click += new System.EventHandler(this.btnExmnr_Click);
             // 
             // sc_config
             // 
