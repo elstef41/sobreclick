@@ -141,7 +141,7 @@
             resources.ApplyResources(this.btnReproducir, "btnReproducir");
             this.btnReproducir.Name = "btnReproducir";
             this.btnReproducir.UseVisualStyleBackColor = true;
-            this.btnReproducir.Click += new System.EventHandler(this.button4_Click);
+            this.btnReproducir.Click += new System.EventHandler(this.btnReproducir_Click);
             // 
             // tbSoundDir
             // 

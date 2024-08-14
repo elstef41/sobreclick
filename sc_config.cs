@@ -203,9 +203,9 @@ namespace Sobreclick
             cargarArchivoSonido();
         }
 
-        private void button4_Click(object sender, EventArgs e)
+        private void btnReproducir_Click(object sender, EventArgs e)
         {
-            sonConfDir = tbSoundDir.Text;
+            sonConfDir = tbSoundDir.Text.Replace("/", "\\");
 
             switch (sonSistemaPreferido)
             {

@@ -28,7 +28,7 @@ namespace Sobreclick
         }
         public string dirSonido()
         {
-            return ConfigurationManager.AppSettings.Get("dirSonido");
+            return ConfigurationManager.AppSettings.Get("dirSonido").Replace("/", "\\");
         }
     }
 }
