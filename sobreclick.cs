@@ -34,6 +34,8 @@ namespace Sobreclick
 
         public static ResourceManager rm = new ResourceManager(typeof(sobreclick));
 
+        private sc_config ventana_configuracion = null;
+
         private const int MOUSEEVENTF_LEFTDOWN = 0X0002;
         private const int MOUSEEVENTF_LEFTUP = 0X0004;
         private const int MOUSEEVENTF_MIDDLEDOWN = 0X0020;
@@ -667,14 +669,18 @@ namespace Sobreclick
 
         private void configuraciónToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            sc_config scC = new sc_config();
-            scC.Show();
-            scC.FormClosed += new FormClosedEventHandler(scC_FormClosed);
+            if (ventana_configuracion == null)
+            {
+                ventana_configuracion = new sc_config();
+                ventana_configuracion.FormClosed += sc_config_FormClosed;
+                ventana_configuracion.Show();
+            }
         }
 
-        private void scC_FormClosed(object sender, FormClosedEventArgs e)
+        private void sc_config_FormClosed(object sender, FormClosedEventArgs e)
         {
             actualizarTeclas();
+            ventana_configuracion = null;
         }
 
         private void sobreclick_FormClosing(object sender, FormClosingEventArgs e)

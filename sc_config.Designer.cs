@@ -44,6 +44,7 @@
             this.btnReproducir = new System.Windows.Forms.Button();
             this.tbSoundDir = new System.Windows.Forms.TextBox();
             this.btnExmnr = new System.Windows.Forms.Button();
+            this.btnCancelar = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -155,10 +156,18 @@
             this.btnExmnr.UseVisualStyleBackColor = true;
             this.btnExmnr.Click += new System.EventHandler(this.btnExmnr_Click);
             // 
+            // btnCancelar
+            // 
+            resources.ApplyResources(this.btnCancelar, "btnCancelar");
+            this.btnCancelar.Name = "btnCancelar";
+            this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
+            // 
             // sc_config
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.btnRestaurar);
@@ -195,5 +204,6 @@
         private System.Windows.Forms.Button btnReproducir;
         private System.Windows.Forms.TextBox tbSoundDir;
         private System.Windows.Forms.Button btnExmnr;
+        private System.Windows.Forms.Button btnCancelar;
     }
 }
