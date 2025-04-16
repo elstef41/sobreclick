@@ -28,7 +28,7 @@ namespace Sobreclick
 
         // Sonidos
         public static string sonConfDir = Conf.dirSonido();
-        public static bool sonSistemaPreferido = false;
+        public static bool sonSistemaPreferido = Conf.sonidoPredeterminado();
 
         public sc_config()
         {
@@ -108,6 +108,21 @@ namespace Sobreclick
                 {
                     strings.actualizarArchivoSon(@"C:\Windows\Media\chord.wav");
                 }
+                switch (sonSistemaPreferido)
+                {
+                    case true:
+                        cbSonidosSistema.Checked = true;
+                        tbSoundDir.Enabled = false;
+                        btnExmnr.Enabled = false;
+                        break;
+                    case false:
+                    default:
+                        cbSonidosSistema.Checked = false;
+                        tbSoundDir.Enabled = true;
+                        btnExmnr.Enabled = true;
+                        break;
+                }
+                strings.actualizarSonidoPredeterminado(sonSistemaPreferido);
                 this.Close();
             }
             catch (Exception E)
@@ -122,7 +137,7 @@ namespace Sobreclick
             tbPR.Clear();
             pbDen.Clear();
             tbSoundDir.Clear();
-
+            
             // Cargar variables de teclas
             iniT = (Keys)conversor.ConvertFromString(Conf.teclaIniciar());
             pauT = (Keys)conversor.ConvertFromString(Conf.teclaPausarReanudar());
@@ -132,11 +147,29 @@ namespace Sobreclick
             tbPR.AppendText(pauT.ToString() + "\r\n");
             pbDen.AppendText(detT.ToString() + "\r\n");
             tbSoundDir.AppendText(sonConfDir + "\r\n");
-            if (sonConfDir == "")
-            {
-                turnarConfigSonido();
-            }
             this.tbSoundDir.TextChanged += new System.EventHandler(this.tbSoundDir_TextChanged);
+
+            // Hacer detección de archivo de configuración
+            verificarConfSonido();
+        }
+
+        private void verificarConfSonido()
+        {
+            switch (sonSistemaPreferido)
+            {
+                case true:
+                    cbSonidosSistema.Checked = true;
+                    tbSoundDir.Enabled = true;
+                    btnExmnr.Enabled = true;
+                    cbSonidosSistema.Checked = true;
+                    break;
+                case false:
+                default:
+                    cbSonidosSistema.Checked = false;
+                    tbSoundDir.Enabled = false;
+                    btnExmnr.Enabled = false;
+                    break;
+            } 
         }
 
         private void turnarConfigSonido()
@@ -144,14 +177,16 @@ namespace Sobreclick
             switch (sonSistemaPreferido)
             {
                 case true:
-                    tbSoundDir.Enabled = true;
-                    btnExmnr.Enabled = true;
+                    cbSonidosSistema.Checked = false;
+                    tbSoundDir.Enabled = false;
+                    btnExmnr.Enabled = false;
                     sonSistemaPreferido = false;
                     break;
                 case false:
                 default:
-                    tbSoundDir.Enabled = false;
-                    btnExmnr.Enabled = false;
+                    cbSonidosSistema.Checked = true;
+                    tbSoundDir.Enabled = true;
+                    btnExmnr.Enabled = true;
                     sonSistemaPreferido = true;
                     break;
             }
@@ -210,10 +245,10 @@ namespace Sobreclick
             switch (sonSistemaPreferido)
             {
                 case true:
-                    testingSound = new SoundPlayer(@"C:\Windows\Media\chord.wav");
+                    testingSound = new SoundPlayer(sonConfDir);
                     break;
                 case false:
-                    testingSound = new SoundPlayer(sonConfDir);
+                    testingSound = new SoundPlayer(@"C:\Windows\Media\chord.wav");
                     break;
             }
             try

@@ -26,6 +26,12 @@ namespace Sobreclick
         {
             return ConfigurationManager.AppSettings.Get("detener");
         }
+        public bool sonidoPredeterminado()
+        {
+            bool valor_predeterminado = false;
+            bool.TryParse(ConfigurationManager.AppSettings.Get("sonidoPredeterminado"), out valor_predeterminado);
+            return valor_predeterminado;
+        }
         public string dirSonido()
         {
             return ConfigurationManager.AppSettings.Get("dirSonido").Replace("/", "\\");

@@ -66,6 +66,39 @@ namespace Sobreclick
             ConfigurationManager.RefreshSection(configSave.AppSettings.SectionInformation.Name);
         }
 
+        public static void actualizarSonidoPredeterminado(bool valor)
+        {
+            Configuration configSave = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+            switch (valor)
+            {
+                case true:
+                    configSave.AppSettings.Settings["sonidoPredeterminado"].Value = "true";
+                    break;
+                case false:
+                    configSave.AppSettings.Settings["sonidoPredeterminado"].Value = "false";
+                    break;
+            }
+            configSave.Save(ConfigurationSaveMode.Modified);
+            ConfigurationManager.RefreshSection(configSave.AppSettings.SectionInformation.Name);
+        }
+
+        public static void alternarSonidoPredeterminado()
+        {
+            Configuration configSave = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+            string valorConfigSonidoPred = configSave.AppSettings.Settings["sonidoPredeterminado"].Value.ToLower();
+            switch (valorConfigSonidoPred)
+            {
+                case "true":
+                    configSave.AppSettings.Settings["sonidoPredeterminado"].Value = "false";
+                    break;
+                case "false":
+                    configSave.AppSettings.Settings["sonidoPredeterminado"].Value = "true";
+                    break;
+            }
+            configSave.Save(ConfigurationSaveMode.Modified);
+            ConfigurationManager.RefreshSection(configSave.AppSettings.SectionInformation.Name);
+        }
+
         public bool abrirScript(string dir, string args)
         {
             ProcessWindowStyle wst = ProcessWindowStyle.Normal;
