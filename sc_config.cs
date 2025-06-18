@@ -17,7 +17,7 @@ namespace Sobreclick
         static conf Conf = new conf();
         public static TypeConverter conversor = TypeDescriptor.GetConverter(typeof(Keys));
         SoundPlayer testingSound;
-
+        bool confInicialComprobada = false;
 
         ResourceManager rm = new ResourceManager(typeof(sc_config));
 
@@ -100,26 +100,15 @@ namespace Sobreclick
                 strings.actualizarTecla(1, iniT);
                 strings.actualizarTecla(2, pauT);
                 strings.actualizarTecla(3, detT);
-                if (!cbSonidosSistema.Checked)
-                {
-                    strings.actualizarArchivoSon(sonConfDir);
-                }
-                else
-                {
-                    strings.actualizarArchivoSon(@"C:\Windows\Media\chord.wav");
-                }
-                switch (sonSistemaPreferido)
+                strings.actualizarArchivoSon(sonConfDir);
+                switch (cbSonidosSistema.Checked)
                 {
                     case true:
-                        cbSonidosSistema.Checked = true;
-                        tbSoundDir.Enabled = false;
-                        btnExmnr.Enabled = false;
+                        sonSistemaPreferido = true;
                         break;
                     case false:
                     default:
-                        cbSonidosSistema.Checked = false;
-                        tbSoundDir.Enabled = true;
-                        btnExmnr.Enabled = true;
+                        sonSistemaPreferido = false;
                         break;
                 }
                 strings.actualizarSonidoPredeterminado(sonSistemaPreferido);
@@ -151,6 +140,8 @@ namespace Sobreclick
 
             // Hacer detección de archivo de configuración
             verificarConfSonido();
+
+            confInicialComprobada = true;
         }
 
         private void verificarConfSonido()
@@ -158,16 +149,15 @@ namespace Sobreclick
             switch (sonSistemaPreferido)
             {
                 case true:
-                    cbSonidosSistema.Checked = true;
-                    tbSoundDir.Enabled = true;
-                    btnExmnr.Enabled = true;
+                    tbSoundDir.Enabled = false;
+                    btnExmnr.Enabled = false;
                     cbSonidosSistema.Checked = true;
                     break;
                 case false:
                 default:
+                    tbSoundDir.Enabled = true;
+                    btnExmnr.Enabled = true;
                     cbSonidosSistema.Checked = false;
-                    tbSoundDir.Enabled = false;
-                    btnExmnr.Enabled = false;
                     break;
             } 
         }
@@ -178,15 +168,15 @@ namespace Sobreclick
             {
                 case true:
                     cbSonidosSistema.Checked = false;
-                    tbSoundDir.Enabled = false;
-                    btnExmnr.Enabled = false;
+                    tbSoundDir.Enabled = true;
+                    btnExmnr.Enabled = true;
                     sonSistemaPreferido = false;
                     break;
                 case false:
                 default:
                     cbSonidosSistema.Checked = true;
-                    tbSoundDir.Enabled = true;
-                    btnExmnr.Enabled = true;
+                    tbSoundDir.Enabled = false;
+                    btnExmnr.Enabled = false;
                     sonSistemaPreferido = true;
                     break;
             }
@@ -230,7 +220,16 @@ namespace Sobreclick
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
-            turnarConfigSonido();
+            switch (confInicialComprobada)
+            {
+                case true:
+                    turnarConfigSonido();
+                    break;
+                case false:
+                default:
+                    confInicialComprobada = true;
+                    break;
+            }
         }
 
         private void btnExmnr_Click(object sender, EventArgs e)
@@ -245,10 +244,11 @@ namespace Sobreclick
             switch (sonSistemaPreferido)
             {
                 case true:
-                    testingSound = new SoundPlayer(sonConfDir);
+                    // TODO: Parametrizar sonido predeterminado
+                    testingSound = new SoundPlayer(@"C:\Windows\Media\chord.wav");
                     break;
                 case false:
-                    testingSound = new SoundPlayer(@"C:\Windows\Media\chord.wav");
+                    testingSound = new SoundPlayer(sonConfDir);
                     break;
             }
             try
