@@ -294,7 +294,21 @@ namespace Sobreclick
             {
                 try
                 {
-                    SoundPlayer archivoSon = new SoundPlayer(Conf.dirSonido());
+                    // TODO: Mejorar asignación de archivo de sonido
+                    string ubicacionSonido;
+                    bool sonSistemaPreferido = Conf.sonidoPredeterminado();
+                    switch (sonSistemaPreferido)
+                    {
+                        case true:
+                            // TODO: Parametrizar sonido predeterminado
+                            ubicacionSonido = @"C:\Windows\Media\chord.wav";
+                            break;
+                        case false:
+                        default:
+                            ubicacionSonido = Conf.dirSonido();
+                            break;
+                    }
+                    SoundPlayer archivoSon = new SoundPlayer(ubicacionSonido);
                     archivoSon.Play();
                 }
                 catch (Exception e)
