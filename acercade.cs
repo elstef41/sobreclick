@@ -75,7 +75,7 @@ namespace Sobreclick
 
         private void linkLabel3_LinkClicked_1(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            System.Diagnostics.Process.Start("https://twitter.com/elstef41");
+            System.Diagnostics.Process.Start("https://x.com/elstef41");
         }
     }
 }
