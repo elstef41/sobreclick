@@ -11,7 +11,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("elstef41")]
 [assembly: AssemblyProduct("Sobreclick")]
-[assembly: AssemblyCopyright("2021 - 2024 elstef41")]
+[assembly: AssemblyCopyright("2021 - 2025 elstef41")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

@@ -98,7 +98,6 @@ namespace Sobreclick
             InitializeComponent();
             this.Text = "Sobreclick ";
             this.Text += SC.obtenerVersion();
-            this.Text += " por elstef41";
             this.MinimumSize = new Size(270, 268);
             cbTipo.SelectedIndex = 0;
             cbDur.SelectedIndex = 0;
