@@ -41,7 +41,7 @@ namespace Sobreclick
             btnRestaurar.Enabled = true;
             tbIni.Clear();
             iniT = e.KeyCode;
-            tbIni.AppendText(e.KeyCode.ToString() + "\r\n");
+            tbIni.AppendText(e.KeyCode.ToString());
         }
 
         private void textBox2_KeyDown(object sender, KeyEventArgs e)
@@ -49,7 +49,7 @@ namespace Sobreclick
             btnRestaurar.Enabled = true;
             tbPR.Clear();
             pauT = e.KeyCode;
-            tbPR.AppendText(e.KeyCode.ToString() + "\r\n");
+            tbPR.AppendText(e.KeyCode.ToString());
         }
 
         private void textBox3_KeyDown(object sender, KeyEventArgs e)
@@ -57,7 +57,7 @@ namespace Sobreclick
             btnRestaurar.Enabled = true;
             pbDen.Clear();
             detT = e.KeyCode;
-            pbDen.AppendText(e.KeyCode.ToString() + "\r\n");
+            pbDen.AppendText(e.KeyCode.ToString());
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -132,10 +132,10 @@ namespace Sobreclick
             pauT = (Keys)conversor.ConvertFromString(Conf.teclaPausarReanudar());
             detT = (Keys)conversor.ConvertFromString(Conf.teclaDetener());
 
-            tbIni.AppendText(iniT.ToString() + "\r\n");
-            tbPR.AppendText(pauT.ToString() + "\r\n");
-            pbDen.AppendText(detT.ToString() + "\r\n");
-            tbSoundDir.AppendText(sonConfDir + "\r\n");
+            tbIni.AppendText(iniT.ToString());
+            tbPR.AppendText(pauT.ToString());
+            pbDen.AppendText(detT.ToString());
+            tbSoundDir.AppendText(sonConfDir);
             this.tbSoundDir.TextChanged += new System.EventHandler(this.tbSoundDir_TextChanged);
 
             // Hacer detección de archivo de configuración
@@ -208,13 +208,13 @@ namespace Sobreclick
             pauT = strings.pauT;
             detT = strings.detT;
             tbIni.Clear();
-            tbIni.AppendText(iniT.ToString() + "\r\n");
+            tbIni.AppendText(iniT.ToString());
             tbPR.Clear();
-            tbPR.AppendText(pauT.ToString() + "\r\n");
+            tbPR.AppendText(pauT.ToString());
             pbDen.Clear();
-            pbDen.AppendText(detT.ToString() + "\r\n");
+            pbDen.AppendText(detT.ToString());
             tbSoundDir.Clear();
-            tbSoundDir.AppendText(sonConfDir + "\r\n");
+            tbSoundDir.AppendText(sonConfDir);
             btnRestaurar.Enabled = false;
         }
 
