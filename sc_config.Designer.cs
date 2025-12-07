@@ -38,15 +38,18 @@
             this.label3 = new System.Windows.Forms.Label();
             this.btnRestaurar = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.gbTeclas = new System.Windows.Forms.GroupBox();
+            this.gbSonido = new System.Windows.Forms.GroupBox();
             this.cbSonidosSistema = new System.Windows.Forms.CheckBox();
             this.btnReproducir = new System.Windows.Forms.Button();
             this.tbSoundDir = new System.Windows.Forms.TextBox();
             this.btnExmnr = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
-            this.groupBox1.SuspendLayout();
-            this.groupBox2.SuspendLayout();
+            this.gbComp = new System.Windows.Forms.GroupBox();
+            this.cbSinLimiteIniciar = new System.Windows.Forms.CheckBox();
+            this.gbTeclas.SuspendLayout();
+            this.gbSonido.SuspendLayout();
+            this.gbComp.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnGuardar
@@ -108,27 +111,27 @@
             resources.ApplyResources(this.panel1, "panel1");
             this.panel1.Name = "panel1";
             // 
-            // groupBox1
+            // gbTeclas
             // 
-            this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.tbIni);
-            this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.pbDen);
-            this.groupBox1.Controls.Add(this.tbPR);
-            resources.ApplyResources(this.groupBox1, "groupBox1");
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.TabStop = false;
+            this.gbTeclas.Controls.Add(this.label1);
+            this.gbTeclas.Controls.Add(this.tbIni);
+            this.gbTeclas.Controls.Add(this.label3);
+            this.gbTeclas.Controls.Add(this.label2);
+            this.gbTeclas.Controls.Add(this.pbDen);
+            this.gbTeclas.Controls.Add(this.tbPR);
+            resources.ApplyResources(this.gbTeclas, "gbTeclas");
+            this.gbTeclas.Name = "gbTeclas";
+            this.gbTeclas.TabStop = false;
             // 
-            // groupBox2
+            // gbSonido
             // 
-            this.groupBox2.Controls.Add(this.cbSonidosSistema);
-            this.groupBox2.Controls.Add(this.btnReproducir);
-            this.groupBox2.Controls.Add(this.tbSoundDir);
-            this.groupBox2.Controls.Add(this.btnExmnr);
-            resources.ApplyResources(this.groupBox2, "groupBox2");
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.TabStop = false;
+            this.gbSonido.Controls.Add(this.cbSonidosSistema);
+            this.gbSonido.Controls.Add(this.btnReproducir);
+            this.gbSonido.Controls.Add(this.tbSoundDir);
+            this.gbSonido.Controls.Add(this.btnExmnr);
+            resources.ApplyResources(this.gbSonido, "gbSonido");
+            this.gbSonido.Name = "gbSonido";
+            this.gbSonido.TabStop = false;
             // 
             // cbSonidosSistema
             // 
@@ -163,26 +166,43 @@
             this.btnCancelar.UseVisualStyleBackColor = true;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
+            // gbComp
+            // 
+            this.gbComp.Controls.Add(this.cbSinLimiteIniciar);
+            resources.ApplyResources(this.gbComp, "gbComp");
+            this.gbComp.Name = "gbComp";
+            this.gbComp.TabStop = false;
+            // 
+            // cbSinLimiteIniciar
+            // 
+            resources.ApplyResources(this.cbSinLimiteIniciar, "cbSinLimiteIniciar");
+            this.cbSinLimiteIniciar.Name = "cbSinLimiteIniciar";
+            this.cbSinLimiteIniciar.UseVisualStyleBackColor = true;
+            this.cbSinLimiteIniciar.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged_1);
+            // 
             // sc_config
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.gbComp);
             this.Controls.Add(this.btnCancelar);
-            this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.gbSonido);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.btnRestaurar);
             this.Controls.Add(this.btnGuardar);
-            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.gbTeclas);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "sc_config";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.sc_config_FormClosing);
             this.Load += new System.EventHandler(this.sc_config_Load);
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
+            this.gbTeclas.ResumeLayout(false);
+            this.gbTeclas.PerformLayout();
+            this.gbSonido.ResumeLayout(false);
+            this.gbSonido.PerformLayout();
+            this.gbComp.ResumeLayout(false);
+            this.gbComp.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -198,12 +218,14 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btnRestaurar;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.GroupBox gbTeclas;
+        private System.Windows.Forms.GroupBox gbSonido;
         private System.Windows.Forms.CheckBox cbSonidosSistema;
         private System.Windows.Forms.Button btnReproducir;
         private System.Windows.Forms.TextBox tbSoundDir;
         private System.Windows.Forms.Button btnExmnr;
         private System.Windows.Forms.Button btnCancelar;
+        private System.Windows.Forms.GroupBox gbComp;
+        private System.Windows.Forms.CheckBox cbSinLimiteIniciar;
     }
 }

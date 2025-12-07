@@ -65,7 +65,21 @@ namespace Sobreclick
             configSave.Save(ConfigurationSaveMode.Modified);
             ConfigurationManager.RefreshSection(configSave.AppSettings.SectionInformation.Name);
         }
-
+        public static void actualizarAjusteBooleano(string ajuste, bool valor)
+        {
+            Configuration configSave = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+            switch (valor)
+            {
+                case true:
+                    configSave.AppSettings.Settings[ajuste].Value = "true";
+                    break;
+                case false:
+                    configSave.AppSettings.Settings[ajuste].Value = "false";
+                    break;
+            }
+            configSave.Save(ConfigurationSaveMode.Modified);
+            ConfigurationManager.RefreshSection(configSave.AppSettings.SectionInformation.Name);
+        }
         public static void actualizarSonidoPredeterminado(bool valor)
         {
             Configuration configSave = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);

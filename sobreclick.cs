@@ -571,10 +571,15 @@ namespace Sobreclick
         private void sobreclick_Load(object sender, EventArgs e)
         {
             clickTimes = Convert.ToInt32(numericUpDown1.Value);
+            verificarConf();
             actualizarDirSon();
             actualizarTeclas();
         }
 
+        private void verificarConf()
+        {
+            cbSinLimite.Checked = Conf.sinLimiteCantidadIniciar();
+        }
         private void visitarRepositorioToolStripMenuItem_Click(object sender, EventArgs e)
         {
             System.Diagnostics.Process.Start(strings.scRepositorio);

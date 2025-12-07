@@ -18,6 +18,7 @@ namespace Sobreclick
         public static TypeConverter conversor = TypeDescriptor.GetConverter(typeof(Keys));
         SoundPlayer testingSound;
         bool confInicialComprobada = false;
+        bool confSinLimiteIniciar = false;
 
         ResourceManager rm = new ResourceManager(typeof(sc_config));
 
@@ -29,6 +30,7 @@ namespace Sobreclick
         // Sonidos
         public static string sonConfDir = Conf.dirSonido();
         public static bool sonSistemaPreferido = Conf.sonidoPredeterminado();
+        public static bool sonSinLimiteIniciar = Conf.sinLimiteCantidadIniciar();
 
         public sc_config()
         {
@@ -111,6 +113,18 @@ namespace Sobreclick
                         sonSistemaPreferido = false;
                         break;
                 }
+                switch (cbSinLimiteIniciar.Checked)
+                {
+                    case true:
+                        sonSinLimiteIniciar = true;
+                        break;
+                    case false:
+                    default:
+                        sonSinLimiteIniciar = false;
+                        break;
+                }
+                strings.actualizarAjusteBooleano("sonidoPredeterminado", sonSistemaPreferido);
+                strings.actualizarAjusteBooleano("sinLimiteCantidadIniciar", sonSinLimiteIniciar);
                 strings.actualizarSonidoPredeterminado(sonSistemaPreferido);
                 this.Close();
             }
@@ -159,7 +173,8 @@ namespace Sobreclick
                     btnExmnr.Enabled = true;
                     cbSonidosSistema.Checked = false;
                     break;
-            } 
+            }
+            cbSinLimiteIniciar.Checked = sonSinLimiteIniciar;
         }
 
         private void turnarConfigSonido()
@@ -278,6 +293,20 @@ namespace Sobreclick
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void checkBox1_CheckedChanged_1(object sender, EventArgs e)
+        {
+            switch (confSinLimiteIniciar)
+            {
+                case true:
+                    confSinLimiteIniciar = true;
+                    break;
+                case false:
+                default:
+                    confSinLimiteIniciar = false;
+                    break;
+            }
         }
     }
 }

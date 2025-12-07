@@ -142,11 +142,8 @@
   <data name="btnRestaurar.Text" xml:space="preserve">
     <value>&amp;Restore</value>
   </data>
-  <data name="groupBox1.Text" xml:space="preserve">
-    <value>Keys</value>
-  </data>
-  <data name="checkBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>117, 17</value>
+  <data name="cbSonidosSistema.Size" type="System.Drawing.Size, System.Drawing">
+    <value>147, 17</value>
   </data>
   <data name="cbSonidosSistema.Text" xml:space="preserve">
     <value>&amp;Use system default sound</value>
@@ -157,8 +154,17 @@
   <data name="btnExmnr.Text" xml:space="preserve">
     <value>&amp;Browse</value>
   </data>
-  <data name="groupBox2.Text" xml:space="preserve">
-    <value>Sound</value>
+  <data name="btnCancelar.Text" xml:space="preserve">
+    <value>&amp;Cancel</value>
+  </data>
+  <data name="gbComp.Text" xml:space="preserve">
+    <value>Behavior</value>
+  </data>
+  <data name="cbSinLimiteIniciar.Size" type="System.Drawing.Size, System.Drawing">
+    <value>145, 17</value>
+  </data>
+  <data name="cbSinLimiteIniciar.Text" xml:space="preserve">
+    <value>U&amp;nlimited amount on start</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -5218,16 +5224,16 @@
   <data name="$this.Text" xml:space="preserve">
     <value>Settings</value>
   </data>
-  <data name="msgEqual" xml:space="preserve">
+	<data name="msgEqual" xml:space="preserve">
     <value>Some keys are repeated. Check them and try again.</value>
   </data>
-  <data name="msgErrorSaving" xml:space="preserve">
+	<data name="msgErrorSaving" xml:space="preserve">
     <value>Unexpected error when saving the configuration file. Check that you have enougth permissions to do that and try again.</value>
   </data>
-  <data name="msgSonDefault" xml:space="preserve">
+	<data name="msgSonDefault" xml:space="preserve">
     <value>You didn't selected a sound file. Do you wanna to use the system default one?</value>
   </data>
-  <data name="msgErrorLoadingSound" xml:space="preserve">
+	<data name="msgErrorLoadingSound" xml:space="preserve">
     <value>The file specified is invalid</value>
   </data>
 </root>
