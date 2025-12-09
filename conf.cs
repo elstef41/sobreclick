@@ -5,14 +5,22 @@ using System.Configuration;
 using System.Xml;
 using System.Windows.Forms;
 using System.IO;
+using System.Security.Cryptography;
 
 namespace Sobreclick
 {
     class conf
     {
+        // Valores predefinidos, según cada parámetro configurable del programa
+        string tecla_iniciar = "F6";
+        string tecla_pausar_reanudar = "F7";
+        string tecla_detener = "F8";
+        string dir_sonido = "C:\\Windows\\Media\\notify.wav";
+        bool sonido_predeterminado = false;
+        bool sin_limite_cantidad_iniciar = true;
+
         public conf()
         {
-
         }
         public string teclaIniciar()
         {
@@ -28,13 +36,13 @@ namespace Sobreclick
         }
         public bool sonidoPredeterminado()
         {
-            bool valor_predeterminado = false;
+            bool valor_predeterminado = sonido_predeterminado;
             bool.TryParse(ConfigurationManager.AppSettings.Get("sonidoPredeterminado"), out valor_predeterminado);
             return valor_predeterminado;
         }
         public bool sinLimiteCantidadIniciar()
         {
-            bool valor_predeterminado = true;
+            bool valor_predeterminado = sin_limite_cantidad_iniciar;
             bool.TryParse(ConfigurationManager.AppSettings.Get("sinLimiteCantidadIniciar"), out valor_predeterminado);
             return valor_predeterminado;
         }
