@@ -12,12 +12,12 @@ namespace Sobreclick
     class conf
     {
         // Valores predefinidos, según cada parámetro configurable del programa
-        string tecla_iniciar = "F6";
-        string tecla_pausar_reanudar = "F7";
-        string tecla_detener = "F8";
-        string dir_sonido = "C:\\Windows\\Media\\notify.wav";
-        bool sonido_predeterminado = false;
-        bool sin_limite_cantidad_iniciar = true;
+        public Keys tecla_iniciar = Keys.F6;
+        public Keys tecla_pausar_reanudar = Keys.F7;
+        public Keys tecla_detener = Keys.F8;
+        public string dir_sonido = "C:\\Windows\\Media\\notify.wav";
+        public bool sonido_predeterminado = false;
+        public bool sin_limite_cantidad_iniciar = true;
 
         public conf()
         {
