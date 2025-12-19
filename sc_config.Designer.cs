@@ -47,6 +47,7 @@
             this.btnCancelar = new System.Windows.Forms.Button();
             this.gbComp = new System.Windows.Forms.GroupBox();
             this.cbSinLimiteIniciar = new System.Windows.Forms.CheckBox();
+            this.btnValoresPredeterminados = new System.Windows.Forms.Button();
             this.gbTeclas.SuspendLayout();
             this.gbSonido.SuspendLayout();
             this.gbComp.SuspendLayout();
@@ -103,7 +104,7 @@
             resources.ApplyResources(this.btnRestaurar, "btnRestaurar");
             this.btnRestaurar.Name = "btnRestaurar";
             this.btnRestaurar.UseVisualStyleBackColor = true;
-            this.btnRestaurar.Click += new System.EventHandler(this.button2_Click);
+            this.btnRestaurar.Click += new System.EventHandler(this.btnRestaurar_Click);
             // 
             // panel1
             // 
@@ -180,10 +181,18 @@
             this.cbSinLimiteIniciar.UseVisualStyleBackColor = true;
             this.cbSinLimiteIniciar.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged_1);
             // 
+            // btnValoresPredeterminados
+            // 
+            resources.ApplyResources(this.btnValoresPredeterminados, "btnValoresPredeterminados");
+            this.btnValoresPredeterminados.Name = "btnValoresPredeterminados";
+            this.btnValoresPredeterminados.UseVisualStyleBackColor = true;
+            this.btnValoresPredeterminados.Click += new System.EventHandler(this.btnValoresPredeterminados_Click);
+            // 
             // sc_config
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btnValoresPredeterminados);
             this.Controls.Add(this.gbComp);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.gbSonido);
@@ -227,5 +236,6 @@
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.GroupBox gbComp;
         private System.Windows.Forms.CheckBox cbSinLimiteIniciar;
+        private System.Windows.Forms.Button btnValoresPredeterminados;
     }
 }

@@ -95,6 +95,24 @@ namespace Sobreclick
             }
         }
 
+        private void reestablecerCambiosConf()
+        {
+            // Actualizar datos de configuración
+            strings.actualizarTecla(1, Conf.tecla_iniciar);
+            strings.actualizarTecla(2, Conf.tecla_pausar_reanudar);
+            strings.actualizarTecla(3, Conf.tecla_detener);
+            strings.actualizarArchivoSon(Conf.dir_sonido);
+            strings.actualizarAjusteBooleano("sonidoPredeterminado", Conf.sonido_predeterminado);
+            strings.actualizarAjusteBooleano("sinLimiteCantidadIniciar", Conf.sin_limite_cantidad_iniciar);
+
+            sonConfDir = Conf.dirSonido();
+            sonSistemaPreferido = Conf.sonidoPredeterminado();
+            sonSinLimiteIniciar = Conf.sinLimiteCantidadIniciar();
+
+            // Recambiar en form
+            btnRestaurar.Enabled = false;
+            cargarConf();
+        }
         private void guardarCambiosConf()
         {
             try
@@ -136,11 +154,17 @@ namespace Sobreclick
 
         private void sc_config_Load(object sender, EventArgs e)
         {
+            // Cargar configuración
+            cargarConf();
+        }
+
+        private void cargarConf()
+        {
             tbIni.Clear();
             tbPR.Clear();
             pbDen.Clear();
             tbSoundDir.Clear();
-            
+
             // Cargar variables de teclas
             iniT = (Keys)conversor.ConvertFromString(Conf.teclaIniciar());
             pauT = (Keys)conversor.ConvertFromString(Conf.teclaPausarReanudar());
@@ -157,7 +181,6 @@ namespace Sobreclick
 
             confInicialComprobada = true;
         }
-
         private void verificarConfSonido()
         {
             switch (sonSistemaPreferido)
@@ -217,7 +240,7 @@ namespace Sobreclick
                 }
             }
         }
-        private void button2_Click(object sender, EventArgs e)
+        private void btnRestaurar_Click(object sender, EventArgs e)
         {
             iniT = strings.iniT;
             pauT = strings.pauT;
@@ -232,7 +255,6 @@ namespace Sobreclick
             tbSoundDir.AppendText(sonConfDir);
             btnRestaurar.Enabled = false;
         }
-
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
             switch (confInicialComprobada)
@@ -287,7 +309,10 @@ namespace Sobreclick
 
         private void tbSoundDir_TextChanged(object sender, EventArgs e)
         {
-            btnRestaurar.Enabled = true;
+            if (confInicialComprobada == true)
+            {
+                btnRestaurar.Enabled = true;
+            }
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
@@ -305,6 +330,18 @@ namespace Sobreclick
                 case false:
                 default:
                     confSinLimiteIniciar = false;
+                    break;
+            }
+        }
+
+        private void btnValoresPredeterminados_Click(object sender, EventArgs e)
+        {
+            DialogResult confirmValoresPredeterminados = MessageBox.Show(rm.GetString("msgValoresPredeterminados"), "Error", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            switch (confirmValoresPredeterminados)
+            {
+                case DialogResult.Yes:
+                    confInicialComprobada = false; // TODO: Buscar una manera de emprolijar la detección
+                    reestablecerCambiosConf();
                     break;
             }
         }
