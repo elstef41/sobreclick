@@ -26,7 +26,7 @@ namespace Sobreclick
                 // Comprobar existencia de archivos internos
                 if (!File.Exists(AppDomain.CurrentDomain.SetupInformation.ConfigurationFile))
                 {
-                    MessageBox.Show(sobreclick.rm.GetString("errorLoadingConfigFile"), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(sobreclick.rm.GetString("errorLoadingConfigFile"), sobreclick.rm.GetString("msgErrorTitle"), MessageBoxButtons.OK, MessageBoxIcon.Error);
                     System.Environment.Exit(0);
                 }
                 Application.EnableVisualStyles();
@@ -38,7 +38,7 @@ namespace Sobreclick
             }
             else
             {
-                MessageBox.Show(sobreclick.rm.GetString("errorProgramAlreadyRunning"), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(sobreclick.rm.GetString("errorProgramAlreadyRunning"), sobreclick.rm.GetString("msgErrorTitle"), MessageBoxButtons.OK, MessageBoxIcon.Error);
                 System.Environment.Exit(0);
             }
         }

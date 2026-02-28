@@ -111,12 +111,12 @@ namespace Sobreclick
             }
             catch (Exception E)
             {
-                MessageBox.Show(rm.GetString("msgConfError0"), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(rm.GetString("msgConfError0"), rm.GetString("msgErrorTitle"), MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
             if (sonDir == null)
             {
-                MessageBox.Show(rm.GetString("msgConfError0"), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(rm.GetString("msgConfError0"), rm.GetString("msgErrorTitle"), MessageBoxButtons.OK, MessageBoxIcon.Error);
                 configuraciónToolStripMenuItem.Enabled = false;
             }
         }
@@ -135,13 +135,13 @@ namespace Sobreclick
             }
             catch (Exception e)
             {
-                MessageBox.Show(rm.GetString("msgConfError0"), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(rm.GetString("msgConfError0"), rm.GetString("msgErrorTitle"), MessageBoxButtons.OK, MessageBoxIcon.Error);
                 configuraciónToolStripMenuItem.Enabled = false;
             }
 
             if (tcli == tclp || tcli == tcld || tcld == tclp)
             {
-                DialogResult teclasRepetidas = MessageBox.Show(rm.GetString("msgRepeatedKeys"), "Error", MessageBoxButtons.OKCancel, MessageBoxIcon.Error);
+                DialogResult teclasRepetidas = MessageBox.Show(rm.GetString("msgRepeatedKeys"), rm.GetString("msgErrorTitle"), MessageBoxButtons.OKCancel, MessageBoxIcon.Error);
                 switch (teclasRepetidas)
                 {
                     case DialogResult.OK:
@@ -240,12 +240,12 @@ namespace Sobreclick
             bool nud1 = Convert.ToInt32(numericUpDown1.Value) < 1;
             if (nud1 == true)
             {
-                MessageBox.Show(rm.GetString("msgMore0"), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(rm.GetString("msgMore0"), rm.GetString("msgErrorTitle"), MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return true;
             }
             else if (cbTipo.Text == "")
             {
-                MessageBox.Show(rm.GetString("msgClickType"), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(rm.GetString("msgClickType"), rm.GetString("msgErrorTitle"), MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return true;
             }
             else
@@ -312,7 +312,7 @@ namespace Sobreclick
                 }
                 catch (Exception e)
                 {
-                    MessageBox.Show(rm.GetString("msgSoundError"), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(rm.GetString("msgSoundError"), rm.GetString("msgErrorTitle"), MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             if (apagarAT)
@@ -325,7 +325,7 @@ namespace Sobreclick
                 }
                 catch (Exception e)
                 {
-                    MessageBox.Show(rm.GetString("msgShutdownError"), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(rm.GetString("msgShutdownError"), rm.GetString("msgErrorTitle"), MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             if (salirAT)
@@ -352,7 +352,7 @@ namespace Sobreclick
             {
                 if (!SC.abrirScript(sobreclick.dirProgramaScript, sobreclick.argsProgramaScript))
                 {
-                    MessageBox.Show(rm.GetString("msgErrorScript"), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(rm.GetString("msgErrorScript"), rm.GetString("msgErrorTitle"), MessageBoxButtons.OK, MessageBoxIcon.Error);
                     masToolStripMenuItem.Checked = false;
                     ejecutarScriptAT = false;
                 }
@@ -409,11 +409,11 @@ namespace Sobreclick
         {
             if (numericUpDown1.Text == "")
             {
-                MessageBox.Show(rm.GetString("msgTimeSelection"), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(rm.GetString("msgTimeSelection"), rm.GetString("msgErrorTitle"), MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else if (numericUpDown2.Text == "")
             {
-                MessageBox.Show(rm.GetString("msgTypeSelection"), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(rm.GetString("msgTypeSelection"), rm.GetString("msgErrorTitle"), MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
