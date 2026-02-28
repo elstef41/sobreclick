@@ -5245,4 +5245,13 @@
   <data name="msgValoresPredeterminados" xml:space="preserve">
     <value>This will restore all values to factory defaults. Are you sure?</value>
   </data>
+  <data name="msgErrorTitle" xml:space="preserve">
+    <value>Error</value>
+  </data>
+  <data name="msgInfoTitle" xml:space="preserve">
+    <value>Information</value>
+  </data>
+  <data name="msgQuestionTitle" xml:space="preserve">
+    <value>Question</value>
+  </data>
 </root>

@@ -67,7 +67,7 @@ namespace Sobreclick
             sonConfDir = tbSoundDir.Text;
             if (iniT == pauT || iniT == detT || detT == pauT)
             {
-                MessageBox.Show(rm.GetString("msgEqual"), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(rm.GetString("msgEqual"), rm.GetString("msgErrorTitle"), MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
@@ -75,7 +75,7 @@ namespace Sobreclick
                 {
                     if (sonConfDir == "")
                     {
-                        DialogResult confirmSon = MessageBox.Show(rm.GetString("msgSonDefault"), "Error", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                        DialogResult confirmSon = MessageBox.Show(rm.GetString("msgSonDefault"), rm.GetString("msgInfoTitle"), MessageBoxButtons.YesNo, MessageBoxIcon.Information);
                         switch (confirmSon)
                         {
                             case DialogResult.Yes:
@@ -148,7 +148,7 @@ namespace Sobreclick
             }
             catch (Exception E)
             {
-                MessageBox.Show(rm.GetString("msgErrorSaving"), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(rm.GetString("msgErrorSaving"), rm.GetString("msgErrorTitle"), MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -235,7 +235,7 @@ namespace Sobreclick
                     }
                     else
                     {
-                        MessageBox.Show(rm.GetString("msgErrorLoadingSound"), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show(rm.GetString("msgErrorLoadingSound"), rm.GetString("msgErrorTitle"), MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
             }
@@ -294,7 +294,7 @@ namespace Sobreclick
             }
             catch (Exception E)
             {
-                MessageBox.Show(rm.GetString("msgErrorLoadingSound"), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(rm.GetString("msgErrorLoadingSound"), rm.GetString("msgErrorTitle"), MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -336,7 +336,7 @@ namespace Sobreclick
 
         private void btnValoresPredeterminados_Click(object sender, EventArgs e)
         {
-            DialogResult confirmValoresPredeterminados = MessageBox.Show(rm.GetString("msgValoresPredeterminados"), "Error", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            DialogResult confirmValoresPredeterminados = MessageBox.Show(rm.GetString("msgValoresPredeterminados"), rm.GetString("msgQuestionTitle"), MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             switch (confirmValoresPredeterminados)
             {
                 case DialogResult.Yes:

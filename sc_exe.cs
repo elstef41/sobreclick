@@ -50,7 +50,7 @@ namespace Sobreclick
             }
             if (dir_exe == "")
             {
-                MessageBox.Show(rm.GetString("msgErrorBlank"), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(rm.GetString("msgErrorBlank"), rm.GetString("msgErrorTitle"), MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
             else
@@ -75,11 +75,11 @@ namespace Sobreclick
 
                 if (tbDirExe.Text == "")
                 {
-                    MessageBox.Show(rm.GetString("msgErrorBlank"), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(rm.GetString("msgErrorBlank"), rm.GetString("msgErrorTitle"), MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 else if (!SC.abrirScript(tbDirExe.Text, args))
                 {
-                    MessageBox.Show(rm.GetString("msgErrorOpen"), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(rm.GetString("msgErrorOpen"), rm.GetString("msgErrorTitle"), MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
         }
 
@@ -114,7 +114,7 @@ namespace Sobreclick
                 {
                     if (!abrirEXE.FileName.EndsWith(".EXE") && !abrirEXE.FileName.EndsWith(".exe"))
                     {
-                        MessageBox.Show(string.Format(rm.GetString("msgErrorSE")), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show(string.Format(rm.GetString("msgErrorSE")), rm.GetString("msgErrorTitle"), MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                     else if ((archivoEXE = abrirEXE.OpenFile()) != null)
                     {
@@ -126,7 +126,7 @@ namespace Sobreclick
                 }
                 catch (Exception)
                 {
-                    MessageBox.Show(string.Format(rm.GetString("msgErrorOpen")), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(string.Format(rm.GetString("msgErrorOpen")), rm.GetString("msgErrorTitle"), MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
