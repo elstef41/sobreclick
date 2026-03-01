@@ -3,19 +3,23 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Text;
 using System.Windows.Forms;
-using System.Configuration;
-using static System.Resources.ResXFileRef;
 using System.ComponentModel;
 using System.Net.NetworkInformation;
+using System.Media;
+using System.Diagnostics;
 
 namespace Sobreclick
 {
     class strings
     {
+        static conf Conf = new conf();
         public static Keys iniT = Keys.F6;
         public static Keys pauT = Keys.F7;
         public static Keys detT = Keys.F8;
+        public static string archivoSonDir = Conf.dirSonido();
+        public static SoundPlayer archivoSon = new SoundPlayer(archivoSonDir);
         public static string scRepositorio = "https://github.com/elstef41/sobreclick";
+
         public string obtenerVersion()
         {
             string s = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.Major.ToString() + "." + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.Minor.ToString() + "." + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.Build.ToString();
@@ -49,6 +53,89 @@ namespace Sobreclick
                     configSave.Save(ConfigurationSaveMode.Modified);
                     ConfigurationManager.RefreshSection(configSave.AppSettings.SectionInformation.Name);
                     break;
+            }
+        }
+
+        public static void actualizarArchivoSon(string dirArchivo)
+        {
+            archivoSonDir = dirArchivo;
+            SoundPlayer archivoSon = new SoundPlayer(archivoSonDir);
+            Configuration configSave = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+            configSave.AppSettings.Settings["dirSonido"].Value = dirArchivo;
+            configSave.Save(ConfigurationSaveMode.Modified);
+            ConfigurationManager.RefreshSection(configSave.AppSettings.SectionInformation.Name);
+        }
+        public static void actualizarAjusteBooleano(string ajuste, bool valor)
+        {
+            Configuration configSave = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+            switch (valor)
+            {
+                case true:
+                    configSave.AppSettings.Settings[ajuste].Value = "true";
+                    break;
+                case false:
+                    configSave.AppSettings.Settings[ajuste].Value = "false";
+                    break;
+            }
+            configSave.Save(ConfigurationSaveMode.Modified);
+            ConfigurationManager.RefreshSection(configSave.AppSettings.SectionInformation.Name);
+        }
+        public static void actualizarSonidoPredeterminado(bool valor)
+        {
+            Configuration configSave = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+            switch (valor)
+            {
+                case true:
+                    configSave.AppSettings.Settings["sonidoPredeterminado"].Value = "true";
+                    break;
+                case false:
+                    configSave.AppSettings.Settings["sonidoPredeterminado"].Value = "false";
+                    break;
+            }
+            configSave.Save(ConfigurationSaveMode.Modified);
+            ConfigurationManager.RefreshSection(configSave.AppSettings.SectionInformation.Name);
+        }
+
+        public static void alternarSonidoPredeterminado()
+        {
+            Configuration configSave = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+            string valorConfigSonidoPred = configSave.AppSettings.Settings["sonidoPredeterminado"].Value.ToLower();
+            switch (valorConfigSonidoPred)
+            {
+                case "true":
+                    configSave.AppSettings.Settings["sonidoPredeterminado"].Value = "false";
+                    break;
+                case "false":
+                    configSave.AppSettings.Settings["sonidoPredeterminado"].Value = "true";
+                    break;
+            }
+            configSave.Save(ConfigurationSaveMode.Modified);
+            ConfigurationManager.RefreshSection(configSave.AppSettings.SectionInformation.Name);
+        }
+
+        public bool abrirScript(string dir, string args)
+        {
+            ProcessWindowStyle wst = ProcessWindowStyle.Normal;
+            var proceso = new Process
+            {
+                StartInfo = new ProcessStartInfo
+                {
+                    FileName = dir,
+                    WindowStyle = wst,
+                    RedirectStandardOutput = false,
+                    CreateNoWindow = true,
+                    UseShellExecute = true,
+                    Arguments = args
+                }
+            };
+            try
+            {
+                proceso.Start();
+                return true;
+            }
+            catch (SystemException err)
+            {
+                return false;
             }
         }
     }

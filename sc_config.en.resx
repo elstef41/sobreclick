@@ -112,15 +112,15 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="button1.Text" xml:space="preserve">
+  <data name="btnGuardar.Text" xml:space="preserve">
     <value>&amp;Save</value>
   </data>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
     <value>29, 13</value>
   </data>
@@ -139,8 +139,38 @@
   <data name="label3.Text" xml:space="preserve">
     <value>Stop</value>
   </data>
-  <data name="button2.Text" xml:space="preserve">
+  <data name="btnRestaurar.Text" xml:space="preserve">
     <value>&amp;Restore</value>
+  </data>
+  <data name="cbSonidosSistema.Size" type="System.Drawing.Size, System.Drawing">
+    <value>147, 17</value>
+  </data>
+  <data name="cbSonidosSistema.Text" xml:space="preserve">
+    <value>&amp;Use system default sound</value>
+  </data>
+  <data name="btnReproducir.Text" xml:space="preserve">
+    <value>&amp;Play</value>
+  </data>
+  <data name="btnExmnr.Text" xml:space="preserve">
+    <value>&amp;Browse</value>
+  </data>
+  <data name="gbSonido.Text" xml:space="preserve">
+    <value>Sound</value>
+  </data>
+  <data name="btnCancelar.Text" xml:space="preserve">
+    <value>&amp;Cancel</value>
+  </data>
+  <data name="cbSinLimiteIniciar.Size" type="System.Drawing.Size, System.Drawing">
+    <value>145, 17</value>
+  </data>
+  <data name="cbSinLimiteIniciar.Text" xml:space="preserve">
+    <value>U&amp;nlimited amount on start</value>
+  </data>
+  <data name="gbComp.Text" xml:space="preserve">
+    <value>Behavior</value>
+  </data>
+  <data name="btnValoresPredeterminados.Text" xml:space="preserve">
+    <value>&amp;Default values</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -5198,9 +5228,30 @@
 </value>
   </data>
   <data name="$this.Text" xml:space="preserve">
-    <value>Key settings</value>
+    <value>Settings</value>
   </data>
   <data name="msgEqual" xml:space="preserve">
     <value>Some keys are repeated. Check them and try again.</value>
+  </data>
+  <data name="msgErrorSaving" xml:space="preserve">
+    <value>Unexpected error when saving the configuration file. Check that you have enougth permissions to do that and try again.</value>
+  </data>
+  <data name="msgSonDefault" xml:space="preserve">
+    <value>You didn't selected a sound file. Do you wanna to use the system default one?</value>
+  </data>
+  <data name="msgErrorLoadingSound" xml:space="preserve">
+    <value>The file specified is invalid</value>
+  </data>
+  <data name="msgValoresPredeterminados" xml:space="preserve">
+    <value>This will restore all values to factory defaults. Are you sure?</value>
+  </data>
+  <data name="msgErrorTitle" xml:space="preserve">
+    <value>Error</value>
+  </data>
+  <data name="msgInfoTitle" xml:space="preserve">
+    <value>Information</value>
+  </data>
+  <data name="msgQuestionTitle" xml:space="preserve">
+    <value>Question</value>
   </data>
 </root>

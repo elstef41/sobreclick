@@ -6,7 +6,11 @@ using System.Runtime.InteropServices;
 using System.Threading;
 using System.Globalization;
 using System.Resources;
-using static System.Resources.ResXFileRef;
+using System.Runtime.Remoting.Metadata.W3cXsd2001;
+using System.Diagnostics;
+using System.Configuration;
+using System.Media;
+using Sobreclick.Properties;
 
 namespace Sobreclick
 {
@@ -15,8 +19,23 @@ namespace Sobreclick
         strings SC = new strings();
         static conf Conf = new conf();
         public static TypeConverter conversor = TypeDescriptor.GetConverter(typeof(Keys));
+        public static string dirProgramaScript;
+        public static string argsProgramaScript;
 
-        ResourceManager rm = new ResourceManager(typeof(sobreclick));
+        // Variables genéricas
+        public static bool sonidoAT = false;
+        public static bool apagarAT = false;
+        public static bool salirAT = false;
+        public static bool ejecutarScriptAT = false;
+        public static bool notificarAT = false;
+        public static bool restaurarValoresAT = false;
+
+        public ProcessStartInfo shutdownProcess = new ProcessStartInfo("shutdown", "-s -t 0");
+
+        public static ResourceManager rm = new ResourceManager(typeof(sobreclick));
+
+        private sc_config ventana_configuracion = null;
+
         private const int MOUSEEVENTF_LEFTDOWN = 0X0002;
         private const int MOUSEEVENTF_LEFTUP = 0X0004;
         private const int MOUSEEVENTF_MIDDLEDOWN = 0X0020;
@@ -27,10 +46,21 @@ namespace Sobreclick
         private const int tclidi = 0x0997;
         private const int tclidp = 0x0998;
         private const int tclidd = 0x0999;
-        
+
+        public const int MILISEGUNDOS = 0;
+        public const int SEGUNDOS = 1;
+        public const int MINUTOS = 2;
+        public const int HORAS = 3;
+
+        public const int TIPO_IZQUIERDO = 0;
+        public const int TIPO_CENTRAL = 1;
+        public const int TIPO_DERECHO = 2;
+
         Keys tcli = strings.iniT;
         Keys tclp = strings.pauT;
         Keys tcld = strings.detT;
+
+        string sonDir = strings.archivoSonDir;
 
         [DllImport("user32.dll", CharSet = CharSet.Auto, CallingConvention = CallingConvention.StdCall)]
         public static extern void mouse_event(long dwFlags, long dx, long dy, long cButtons, long dwExtraInfo);
@@ -68,12 +98,28 @@ namespace Sobreclick
             InitializeComponent();
             this.Text = "Sobreclick ";
             this.Text += SC.obtenerVersion();
-            this.Text += " por elstef41";
             this.MinimumSize = new Size(270, 268);
-            comboBox1.SelectedIndex = 0;
-            comboBox2.SelectedIndex = 0;
+            cbTipo.SelectedIndex = 0;
+            cbDur.SelectedIndex = 0;
         }
 
+        public void actualizarDirSon()
+        {
+            try
+            {
+                sonDir = Conf.dirSonido();
+            }
+            catch (Exception E)
+            {
+                MessageBox.Show(rm.GetString("msgConfError0"), rm.GetString("msgErrorTitle"), MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            if (sonDir == null)
+            {
+                MessageBox.Show(rm.GetString("msgConfError0"), rm.GetString("msgErrorTitle"), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                configuraciónToolStripMenuItem.Enabled = false;
+            }
+        }
 
         public void actualizarTeclas()
         {
@@ -89,28 +135,38 @@ namespace Sobreclick
             }
             catch (Exception e)
             {
-                MessageBox.Show(rm.GetString("msgConfError0"), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(rm.GetString("msgConfError0"), rm.GetString("msgErrorTitle"), MessageBoxButtons.OK, MessageBoxIcon.Error);
                 configuraciónToolStripMenuItem.Enabled = false;
+            }
+
+            if (tcli == tclp || tcli == tcld || tcld == tclp)
+            {
+                DialogResult teclasRepetidas = MessageBox.Show(rm.GetString("msgRepeatedKeys"), rm.GetString("msgErrorTitle"), MessageBoxButtons.OKCancel, MessageBoxIcon.Error);
+                switch (teclasRepetidas)
+                {
+                    case DialogResult.OK:
+                        Process.Start(AppDomain.CurrentDomain.SetupInformation.ConfigurationFile);
+                        break;
+                }
+                System.Environment.Exit(0);
             }
 
             RegisterHotKey(this.Handle, tclidi, 0x0000, (int)tcli);
             RegisterHotKey(this.Handle, tclidp, 0x0000, (int)tclp);
             RegisterHotKey(this.Handle, tclidd, 0x0000, (int)tcld);
-            switch (CultureInfo.CurrentCulture.Name)
+            if (CultureInfo.CurrentCulture.Name.StartsWith("es"))
             {
-                case "en":
-                    buttonC.Text = buttonC.Text.Substring(0, 7) + tcli.ToString() + ")";
-                    buttonR.Text = buttonR.Text.Substring(0, 8) + tclp.ToString() + ")";
-                    buttonP.Text = buttonP.Text.Substring(0, 7) + tclp.ToString() + ")";
-                    buttonD.Text = buttonD.Text.Substring(0, 6) + tcld.ToString() + ")";
-                    break;
-                case "es-ES":
-                default:
-                    buttonC.Text = buttonC.Text.Substring(0, 10) + tcli.ToString() + ")";
-                    buttonR.Text = buttonR.Text.Substring(0, 11) + tclp.ToString() + ")";
-                    buttonP.Text = buttonP.Text.Substring(0, 9) + tclp.ToString() + ")";
-                    buttonD.Text = buttonD.Text.Substring(0, 10) + tcld.ToString() + ")";
-                    break;
+                buttonC.Text = buttonC.Text.Substring(0, 10) + tcli.ToString() + ")";
+                buttonR.Text = buttonR.Text.Substring(0, 11) + tclp.ToString() + ")";
+                buttonP.Text = buttonP.Text.Substring(0, 9) + tclp.ToString() + ")";
+                buttonD.Text = buttonD.Text.Substring(0, 10) + tcld.ToString() + ")";
+            }
+            else
+            {
+                buttonC.Text = buttonC.Text.Substring(0, 8) + tcli.ToString() + ")";
+                buttonR.Text = buttonR.Text.Substring(0, 9) + tclp.ToString() + ")";
+                buttonP.Text = buttonP.Text.Substring(0, 8) + tclp.ToString() + ")";
+                buttonD.Text = buttonD.Text.Substring(0, 7) + tcld.ToString() + ")";
             }
         }
 
@@ -169,34 +225,44 @@ namespace Sobreclick
         {
             this.Close();
         }
+        public void cambiarTextStatus(string texto, int intervalo)
+        {
+            timerStatus.Stop();
+            if (intervalo != 0)
+            {
+                timerStatus.Interval = intervalo;
+                timerStatus.Start();
+            }
+            statusText.Text = texto;
+        }
         public bool Iniciar()
         {
             bool nud1 = Convert.ToInt32(numericUpDown1.Value) < 1;
             if (nud1 == true)
             {
-                MessageBox.Show(rm.GetString("msgMore0"), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(rm.GetString("msgMore0"), rm.GetString("msgErrorTitle"), MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return true;
             }
-            else if (comboBox1.Text == "")
+            else if (cbTipo.Text == "")
             {
-                MessageBox.Show(rm.GetString("msgClickType"), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(rm.GetString("msgClickType"), rm.GetString("msgErrorTitle"), MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return true;
             }
             else
             {
                 int clickinterval;
-                switch (Convert.ToInt32(comboBox2.SelectedIndex))
+                switch (Convert.ToInt32(cbDur.SelectedIndex))
                 {
-                    case 0:
+                    case MILISEGUNDOS:
                         clickinterval = Convert.ToInt32(numericUpDown2.Value);
                         break;
-                    case 1:
+                    case SEGUNDOS:
                         clickinterval = Convert.ToInt32(numericUpDown2.Value) * 1000;
                         break;
-                    case 2:
+                    case MINUTOS:
                         clickinterval = Convert.ToInt32(numericUpDown2.Value) * 60000;
                         break;
-                    case 3:
+                    case HORAS:
                         clickinterval = Convert.ToInt32(numericUpDown2.Value) * 3600000;
                         break;
                     default:
@@ -208,6 +274,7 @@ namespace Sobreclick
                 buttonD.Enabled = true;
                 timerClick.Interval = clickinterval;
                 timerClick.Start();
+                cambiarTextStatus("", 0);
                 return true;
             }
         }
@@ -221,6 +288,77 @@ namespace Sobreclick
             buttonR.Visible = false;
             buttonR.Enabled = false;
             timerClick.Dispose();
+
+            if (sonidoAT)
+            {
+                try
+                {
+                    // TODO: Mejorar asignación de archivo de sonido
+                    string ubicacionSonido;
+                    bool sonSistemaPreferido = Conf.sonidoPredeterminado();
+                    switch (sonSistemaPreferido)
+                    {
+                        case true:
+                            // TODO: Parametrizar sonido predeterminado
+                            ubicacionSonido = @"C:\Windows\Media\chord.wav";
+                            break;
+                        case false:
+                        default:
+                            ubicacionSonido = Conf.dirSonido();
+                            break;
+                    }
+                    SoundPlayer archivoSon = new SoundPlayer(ubicacionSonido);
+                    archivoSon.Play();
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show(rm.GetString("msgSoundError"), rm.GetString("msgErrorTitle"), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            if (apagarAT)
+            {
+                try
+                {
+                    shutdownProcess.CreateNoWindow = true;
+                    shutdownProcess.UseShellExecute = false;
+                    Process.Start(shutdownProcess);
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show(rm.GetString("msgShutdownError"), rm.GetString("msgErrorTitle"), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            if (salirAT)
+            {
+                if (!notificarAT && !ejecutarScriptAT && !apagarAT)
+                {
+                    this.Close();
+                }
+                else
+                {
+                    timerExit.Enabled = true;
+                    timerExit.Start();
+                }
+            }
+            if (restaurarValoresAT)
+            {
+                restaurarValores();
+            }
+            if (notificarAT)
+            {
+                mostrarNotificacion(rm.GetString("notifyEnded"));
+            }
+            if (ejecutarScriptAT)
+            {
+                if (!SC.abrirScript(sobreclick.dirProgramaScript, sobreclick.argsProgramaScript))
+                {
+                    MessageBox.Show(rm.GetString("msgErrorScript"), rm.GetString("msgErrorTitle"), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    masToolStripMenuItem.Checked = false;
+                    ejecutarScriptAT = false;
+                }
+            }
+
+            cambiarTextStatus(rm.GetString("statusEnded"), 5000);
             return true;
         }
 
@@ -231,18 +369,18 @@ namespace Sobreclick
             buttonR.Visible = false;
             buttonR.Enabled = false;
                 int clickinterval;
-                switch (Convert.ToInt32(comboBox2.SelectedIndex))
+                switch (Convert.ToInt32(cbDur.SelectedIndex))
                 {
-                    case 0:
+                    case MILISEGUNDOS:
                         clickinterval = Convert.ToInt32(numericUpDown2.Value);
                         break;
-                    case 1:
+                    case SEGUNDOS:
                         clickinterval = Convert.ToInt32(numericUpDown2.Value) * 1000;
                         break;
-                    case 2:
+                    case MINUTOS:
                         clickinterval = Convert.ToInt32(numericUpDown2.Value) * 60000;
                         break;
-                    case 3:
+                    case HORAS:
                         clickinterval = Convert.ToInt32(numericUpDown2.Value) * 3600000;
                         break;
                     default:
@@ -251,6 +389,7 @@ namespace Sobreclick
                 }
                 timerClick.Interval = clickinterval;
             timerClick.Start();
+            cambiarTextStatus("", 0);
             return true;
         }
 
@@ -261,6 +400,7 @@ namespace Sobreclick
             buttonR.Enabled = true;
             timerClick.Interval = Convert.ToInt32(numericUpDown2.Value);
             timerClick.Stop();
+            cambiarTextStatus(rm.GetString("statusPaused"), 0);
             return true;
         }
 
@@ -269,11 +409,11 @@ namespace Sobreclick
         {
             if (numericUpDown1.Text == "")
             {
-                MessageBox.Show(rm.GetString("msgTimeSelection"), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(rm.GetString("msgTimeSelection"), rm.GetString("msgErrorTitle"), MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else if (numericUpDown2.Text == "")
             {
-                MessageBox.Show(rm.GetString("msgTypeSelection"), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(rm.GetString("msgTypeSelection"), rm.GetString("msgErrorTitle"), MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
@@ -289,26 +429,32 @@ namespace Sobreclick
             buttonP.Enabled = false;
             buttonR.Visible = false;
             buttonR.Enabled = false;
-            if (cerrarAlTerminarToolStripMenuItem.Checked) { this.Dispose(); }
         }
 
+        public void mostrarNotificacion(string texto)
+        {
+            timerNotify.Enabled = true;
+            timerNotify.Start();
+            iconoSC.Visible = true;
+            iconoSC.ShowBalloonTip(1000, "Sobreclick", texto, ToolTipIcon.Info);
+        }
         private void timerClick_Tick(object sender, EventArgs e)
         {
-            switch (checkBox1.Checked)
+            switch (cbSinLimite.Checked)
             {
                 case true:
-                    switch (comboBox1.SelectedIndex)
+                    switch (cbTipo.SelectedIndex)
                     {
-                        case 0:
-                            if (checkBox2.Checked) { ClickI(); }
+                        case TIPO_IZQUIERDO:
+                            if (cbDClick.Checked) { ClickI(); }
                             ClickI();
                             break;
-                        case 1:
-                            if (checkBox2.Checked) { ClickM(); }
+                        case TIPO_CENTRAL:
+                            if (cbDClick.Checked) { ClickM(); }
                             ClickM();
                             break;
-                        case 2:
-                            if (checkBox2.Checked) { ClickD(); }
+                        case TIPO_DERECHO:
+                            if (cbDClick.Checked) { ClickD(); }
                             ClickD();
                             break;
                     }
@@ -316,18 +462,18 @@ namespace Sobreclick
                 case false:
                     if (clickTimes != 0)
                     {
-                        switch (comboBox1.SelectedIndex)
+                        switch (cbTipo.SelectedIndex)
                         {
-                            case 0:
-                                if (checkBox2.Checked) { ClickI(); }
+                            case TIPO_IZQUIERDO:
+                                if (cbDClick.Checked) { ClickI(); }
                                 ClickI();
                                 break;
-                            case 1:
-                                if (checkBox2.Checked) { ClickM(); }
+                            case TIPO_CENTRAL:
+                                if (cbDClick.Checked) { ClickM(); }
                                 ClickM();
                                 break;
-                            case 2:
-                                if (checkBox2.Checked) { ClickD(); }
+                            case TIPO_DERECHO:
+                                if (cbDClick.Checked) { ClickD(); }
                                 ClickD();
                                 break;
                         }
@@ -345,7 +491,7 @@ namespace Sobreclick
 
         private void buttonP_Click(object sender, EventArgs e)
         {
-            Pausar();
+             Pausar();
         }
 
         private void buttonR_Click(object sender, EventArgs e)
@@ -355,7 +501,7 @@ namespace Sobreclick
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
-            switch (checkBox1.Checked)
+            switch (cbSinLimite.Checked)
             {
                 case true:
                     numericUpDown1.Enabled = false;
@@ -366,16 +512,20 @@ namespace Sobreclick
             }
         }
 
-        private void restaurarValoresToolStripMenuItem_Click(object sender, EventArgs e)
+        public void restaurarValores()
         {
-            checkBox1.Checked = false;
-            checkBox2.Checked = false;
+            cbSinLimite.Checked = false;
+            cbDClick.Checked = false;
             numericUpDown2.Enabled = true;
             numericUpDown1.Value = 10;
             numericUpDown2.Value = 500;
-            comboBox1.SelectedIndex = 0;
-            comboBox2.SelectedIndex = 0;
+            cbTipo.SelectedIndex = 0;
+            cbDur.SelectedIndex = 0;
             restaurarValoresToolStripMenuItem.Enabled = false;
+        }
+        private void restaurarValoresToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            restaurarValores();
         }
 
         private void numericUpDown1_ValueChanged(object sender, EventArgs e)
@@ -388,38 +538,48 @@ namespace Sobreclick
 
         private void numericUpDown2_ValueChanged(object sender, EventArgs e)
         {
+            int tiempoTotal = Convert.ToInt32(numericUpDown2.Value);
+            int miliASegundos = Convert.ToInt32(numericUpDown2.Value) / 1000;
+            int miliAMinutos = Convert.ToInt32(numericUpDown2.Value) / 60000;
+            int SEGUNDOSAMinutos = Convert.ToInt32(numericUpDown2.Value) / 60;
             if (numericUpDown2.Value != 500)
             {
                 restaurarValoresToolStripMenuItem.Enabled = true;
+            }
+            int clickinterval;
+            switch (Convert.ToInt32(cbDur.SelectedIndex))
+            {
+                case MILISEGUNDOS:
+                    clickinterval = Convert.ToInt32(numericUpDown2.Value);
+                    cambiarTextStatus(rm.GetString("statusEstimatedTime0") + miliASegundos.ToString() + ((miliASegundos == 1) ? rm.GetString("statusEstimatedTime1NP") : rm.GetString("statusEstimatedTime1")) + miliAMinutos.ToString() + ((miliAMinutos == 1) ? rm.GetString("statusEstimatedTime2NP") : rm.GetString("statusEstimatedTime2")), 0);
+                    break;
+                case SEGUNDOS:
+                    clickinterval = Convert.ToInt32(numericUpDown2.Value);
+                    cambiarTextStatus(rm.GetString("statusEstimatedTime0") + SEGUNDOSAMinutos.ToString() + ((SEGUNDOSAMinutos == 1) ? rm.GetString("statusEstimatedTime2NP") : rm.GetString("statusEstimatedTime2")), 0);
+                    break;
             }
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (comboBox1.SelectedIndex != 0)
+            if (cbTipo.SelectedIndex != 0)
             {
                 restaurarValoresToolStripMenuItem.Enabled = true;
-            }
-        }
-
-        private void cerrarAlTerminarToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (!cerrarAlTerminarToolStripMenuItem.Checked)
-            {
-                cerrarAlTerminarToolStripMenuItem.Checked = true;
-            }
-            else
-            {
-                cerrarAlTerminarToolStripMenuItem.Checked = false;
             }
         }
 
         private void sobreclick_Load(object sender, EventArgs e)
         {
             clickTimes = Convert.ToInt32(numericUpDown1.Value);
+            verificarConf();
+            actualizarDirSon();
             actualizarTeclas();
         }
 
+        private void verificarConf()
+        {
+            cbSinLimite.Checked = Conf.sinLimiteCantidadIniciar();
+        }
         private void visitarRepositorioToolStripMenuItem_Click(object sender, EventArgs e)
         {
             System.Diagnostics.Process.Start(strings.scRepositorio);
@@ -441,10 +601,11 @@ namespace Sobreclick
 
         private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (comboBox2.SelectedIndex != 0)
+            if (cbDur.SelectedIndex != 0)
             {
                 restaurarValoresToolStripMenuItem.Enabled = true;
             }
+            cambiarTextStatus("", 0);
         }
 
 
@@ -502,7 +663,7 @@ namespace Sobreclick
                 restaurarTamañoToolStripMenuItem.Enabled = false;
 
             }
-            else if (this.Size.Width != 287 || this.Size.Height != 285)
+            else if (this.Size.Width != 285 || this.Size.Height != 287)
             {
                 restaurarTamañoToolStripMenuItem.Enabled = true;
             }
@@ -514,7 +675,7 @@ namespace Sobreclick
 
         private void checkBox2_CheckedChanged(object sender, EventArgs e)
         {
-            if (checkBox2.Checked)
+            if (cbDClick.Checked)
             {
                 restaurarValoresToolStripMenuItem.Enabled = true;
             }
@@ -526,15 +687,20 @@ namespace Sobreclick
 
         private void configuraciónToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            sc_config scC = new sc_config();
-            scC.Show();
-            scC.FormClosed += new FormClosedEventHandler(scC_FormClosed);
+            if (ventana_configuracion == null)
+            {
+                ventana_configuracion = new sc_config();
+                ventana_configuracion.FormClosed += sc_config_FormClosed;
+                ventana_configuracion.Show();
+            }
         }
 
-        private void scC_FormClosed(object sender, FormClosedEventArgs e)
+        private void sc_config_FormClosed(object sender, FormClosedEventArgs e)
         {
             actualizarTeclas();
+            ventana_configuracion = null;
         }
+
         private void sobreclick_FormClosing(object sender, FormClosingEventArgs e)
         {
             UnregisterHotKey(this.Handle, tclidi);
@@ -545,6 +711,118 @@ namespace Sobreclick
         private void button1_Click(object sender, EventArgs e)
         {
             actualizarTeclas();
+        }
+
+        private void salirToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            if (salirToolStripMenuItem1.Checked)
+            {
+                salirAT = true;
+            }
+            else
+            {
+                salirAT = false;
+            }
+        }
+
+        private void reproducirSonidoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (reproducirSonidoToolStripMenuItem.Checked)
+            {
+                sonidoAT = true;
+            }
+            else
+            {
+                sonidoAT = false;
+            }
+        }
+
+        private void apagarElEquipoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (apagarElEquipoToolStripMenuItem.Checked)
+            {
+                apagarAT = true;
+            }
+            else
+            {
+                apagarAT = false;
+            }
+        }
+
+        private void restaurarValoresToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            if (restaurarValoresToolStripMenuItem1.Checked)
+            {
+                restaurarValoresAT = true;
+            }
+            else
+            {
+                restaurarValoresAT = false;
+            }
+        }
+
+        private void masToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (!masToolStripMenuItem.Checked)
+            {
+                sc_exe exe_ventana = new sc_exe();
+                using (exe_ventana)
+                {
+                    exe_ventana.ShowDialog();
+                    switch (exe_ventana.activado)
+                    {
+                        case true:
+                            masToolStripMenuItem.Checked = true;
+                            ejecutarScriptAT = true;
+                            break;
+                        case false:
+                        default:
+                            masToolStripMenuItem.Checked = false;
+                            ejecutarScriptAT = false;
+                            break;
+                    }
+                }
+            }
+            else
+            {
+                masToolStripMenuItem.Checked = false;
+                ejecutarScriptAT = false;
+            }
+        }
+
+        private void notificaciónToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (notificarToolStripMenuItem.Checked)
+            {
+                notificarAT = true;
+            }
+            else
+            {
+                notificarAT = false;
+            }
+        }
+
+        private void timerStatus_Tick(object sender, EventArgs e)
+        {
+            statusText.Text = "";
+            timerStatus.Stop();
+        }
+
+        private void iconoSC_BalloonTipClosed(object sender, EventArgs e)
+        {
+            iconoSC.Visible = false;
+        }
+
+        private void timerNotify_Tick(object sender, EventArgs e)
+        {
+            iconoSC.Visible = false;
+            timerNotify.Stop();
+            timerNotify.Enabled = false;
+        }
+
+        private void timerExit_Tick_1(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

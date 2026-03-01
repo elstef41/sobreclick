@@ -10,7 +10,7 @@ Ya no tendrás que esforzarte para hacer excavaciones en tu mundo de Minecraft n
 
 ### Funciones principales:
 - Escoger una cantidad de clics específica (de 1 a 99999999) o ilimitada.
-- Posibilidad de cerrar el autoclicker automáticamente una vez culminado el procedimiento.
+- Posibilidad de cerrar el programa o ejecutar un script personalizado al finalizar el procedimiento.
 - Elegir entre clic izquierdo, central o derecho.
 - Hacer doble clic en cualquiera de las tres variantes.
 - Seleccionar cuatro medidas de duración (milisegundos, segundos. minutos u horas).

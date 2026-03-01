@@ -3,10 +3,25 @@ using System.Collections.Generic;
 using System.Text;
 using System.Configuration;
 using System.Xml;
+using System.Windows.Forms;
+using System.IO;
+using System.Security.Cryptography;
+
 namespace Sobreclick
 {
     class conf
     {
+        // Valores predefinidos, según cada parámetro configurable del programa
+        public Keys tecla_iniciar = Keys.F6;
+        public Keys tecla_pausar_reanudar = Keys.F7;
+        public Keys tecla_detener = Keys.F8;
+        public string dir_sonido = "C:\\Windows\\Media\\notify.wav";
+        public bool sonido_predeterminado = false;
+        public bool sin_limite_cantidad_iniciar = true;
+
+        public conf()
+        {
+        }
         public string teclaIniciar()
         {
             return ConfigurationManager.AppSettings.Get("iniciar");
@@ -18,6 +33,22 @@ namespace Sobreclick
         public string teclaDetener()
         {
             return ConfigurationManager.AppSettings.Get("detener");
+        }
+        public bool sonidoPredeterminado()
+        {
+            bool valor_predeterminado = sonido_predeterminado;
+            bool.TryParse(ConfigurationManager.AppSettings.Get("sonidoPredeterminado"), out valor_predeterminado);
+            return valor_predeterminado;
+        }
+        public bool sinLimiteCantidadIniciar()
+        {
+            bool valor_predeterminado = sin_limite_cantidad_iniciar;
+            bool.TryParse(ConfigurationManager.AppSettings.Get("sinLimiteCantidadIniciar"), out valor_predeterminado);
+            return valor_predeterminado;
+        }
+        public string dirSonido()
+        {
+            return ConfigurationManager.AppSettings.Get("dirSonido").Replace("/", "\\");
         }
     }
 }

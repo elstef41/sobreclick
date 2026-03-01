@@ -36,6 +36,12 @@
             this.configuraciónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.cerrarAlTerminarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.salirToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.reproducirSonidoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.apagarElEquipoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.restaurarValoresToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.notificarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.masToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.salirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ventanaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.siempreVisibleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -54,15 +60,22 @@
             this.label2 = new System.Windows.Forms.Label();
             this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
             this.label3 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cbTipo = new System.Windows.Forms.ComboBox();
             this.timerClick = new System.Windows.Forms.Timer(this.components);
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.cbSinLimite = new System.Windows.Forms.CheckBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
+            this.cbDur = new System.Windows.Forms.ComboBox();
+            this.cbDClick = new System.Windows.Forms.CheckBox();
+            this.statusSC = new System.Windows.Forms.StatusStrip();
+            this.statusText = new System.Windows.Forms.ToolStripStatusLabel();
+            this.timerStatus = new System.Windows.Forms.Timer(this.components);
+            this.iconoSC = new System.Windows.Forms.NotifyIcon(this.components);
+            this.timerNotify = new System.Windows.Forms.Timer(this.components);
+            this.timerExit = new System.Windows.Forms.Timer(this.components);
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
+            this.statusSC.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -104,9 +117,56 @@
             // 
             // cerrarAlTerminarToolStripMenuItem
             // 
+            this.cerrarAlTerminarToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.salirToolStripMenuItem1,
+            this.reproducirSonidoToolStripMenuItem,
+            this.apagarElEquipoToolStripMenuItem,
+            this.restaurarValoresToolStripMenuItem1,
+            this.notificarToolStripMenuItem,
+            this.masToolStripMenuItem});
             this.cerrarAlTerminarToolStripMenuItem.Name = "cerrarAlTerminarToolStripMenuItem";
             resources.ApplyResources(this.cerrarAlTerminarToolStripMenuItem, "cerrarAlTerminarToolStripMenuItem");
-            this.cerrarAlTerminarToolStripMenuItem.Click += new System.EventHandler(this.cerrarAlTerminarToolStripMenuItem_Click);
+            // 
+            // salirToolStripMenuItem1
+            // 
+            this.salirToolStripMenuItem1.CheckOnClick = true;
+            this.salirToolStripMenuItem1.Name = "salirToolStripMenuItem1";
+            resources.ApplyResources(this.salirToolStripMenuItem1, "salirToolStripMenuItem1");
+            this.salirToolStripMenuItem1.Click += new System.EventHandler(this.salirToolStripMenuItem1_Click);
+            // 
+            // reproducirSonidoToolStripMenuItem
+            // 
+            this.reproducirSonidoToolStripMenuItem.CheckOnClick = true;
+            this.reproducirSonidoToolStripMenuItem.Name = "reproducirSonidoToolStripMenuItem";
+            resources.ApplyResources(this.reproducirSonidoToolStripMenuItem, "reproducirSonidoToolStripMenuItem");
+            this.reproducirSonidoToolStripMenuItem.Click += new System.EventHandler(this.reproducirSonidoToolStripMenuItem_Click);
+            // 
+            // apagarElEquipoToolStripMenuItem
+            // 
+            this.apagarElEquipoToolStripMenuItem.CheckOnClick = true;
+            this.apagarElEquipoToolStripMenuItem.Name = "apagarElEquipoToolStripMenuItem";
+            resources.ApplyResources(this.apagarElEquipoToolStripMenuItem, "apagarElEquipoToolStripMenuItem");
+            this.apagarElEquipoToolStripMenuItem.Click += new System.EventHandler(this.apagarElEquipoToolStripMenuItem_Click);
+            // 
+            // restaurarValoresToolStripMenuItem1
+            // 
+            this.restaurarValoresToolStripMenuItem1.CheckOnClick = true;
+            this.restaurarValoresToolStripMenuItem1.Name = "restaurarValoresToolStripMenuItem1";
+            resources.ApplyResources(this.restaurarValoresToolStripMenuItem1, "restaurarValoresToolStripMenuItem1");
+            this.restaurarValoresToolStripMenuItem1.Click += new System.EventHandler(this.restaurarValoresToolStripMenuItem1_Click);
+            // 
+            // notificarToolStripMenuItem
+            // 
+            this.notificarToolStripMenuItem.CheckOnClick = true;
+            this.notificarToolStripMenuItem.Name = "notificarToolStripMenuItem";
+            resources.ApplyResources(this.notificarToolStripMenuItem, "notificarToolStripMenuItem");
+            this.notificarToolStripMenuItem.Click += new System.EventHandler(this.notificaciónToolStripMenuItem_Click);
+            // 
+            // masToolStripMenuItem
+            // 
+            this.masToolStripMenuItem.Name = "masToolStripMenuItem";
+            resources.ApplyResources(this.masToolStripMenuItem, "masToolStripMenuItem");
+            this.masToolStripMenuItem.Click += new System.EventHandler(this.masToolStripMenuItem_Click);
             // 
             // salirToolStripMenuItem
             // 
@@ -252,28 +312,28 @@
             resources.ApplyResources(this.label3, "label3");
             this.label3.Name = "label3";
             // 
-            // comboBox1
+            // cbTipo
             // 
-            resources.ApplyResources(this.comboBox1, "comboBox1");
-            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
-            resources.GetString("comboBox1.Items"),
-            resources.GetString("comboBox1.Items1"),
-            resources.GetString("comboBox1.Items2")});
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            resources.ApplyResources(this.cbTipo, "cbTipo");
+            this.cbTipo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbTipo.FormattingEnabled = true;
+            this.cbTipo.Items.AddRange(new object[] {
+            resources.GetString("cbTipo.Items"),
+            resources.GetString("cbTipo.Items1"),
+            resources.GetString("cbTipo.Items2")});
+            this.cbTipo.Name = "cbTipo";
+            this.cbTipo.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // timerClick
             // 
             this.timerClick.Tick += new System.EventHandler(this.timerClick_Tick);
             // 
-            // checkBox1
+            // cbSinLimite
             // 
-            resources.ApplyResources(this.checkBox1, "checkBox1");
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.UseVisualStyleBackColor = true;
-            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            resources.ApplyResources(this.cbSinLimite, "cbSinLimite");
+            this.cbSinLimite.Name = "cbSinLimite";
+            this.cbSinLimite.UseVisualStyleBackColor = true;
+            this.cbSinLimite.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
             // panel1
             // 
@@ -281,37 +341,69 @@
             resources.ApplyResources(this.panel1, "panel1");
             this.panel1.Name = "panel1";
             // 
-            // comboBox2
+            // cbDur
             // 
-            resources.ApplyResources(this.comboBox2, "comboBox2");
-            this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Items.AddRange(new object[] {
-            resources.GetString("comboBox2.Items"),
-            resources.GetString("comboBox2.Items1"),
-            resources.GetString("comboBox2.Items2"),
-            resources.GetString("comboBox2.Items3")});
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Tag = "";
-            this.comboBox2.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged);
+            resources.ApplyResources(this.cbDur, "cbDur");
+            this.cbDur.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbDur.FormattingEnabled = true;
+            this.cbDur.Items.AddRange(new object[] {
+            resources.GetString("cbDur.Items"),
+            resources.GetString("cbDur.Items1"),
+            resources.GetString("cbDur.Items2"),
+            resources.GetString("cbDur.Items3")});
+            this.cbDur.Name = "cbDur";
+            this.cbDur.Tag = "";
+            this.cbDur.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged);
             // 
-            // checkBox2
+            // cbDClick
             // 
-            resources.ApplyResources(this.checkBox2, "checkBox2");
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.UseVisualStyleBackColor = true;
-            this.checkBox2.CheckedChanged += new System.EventHandler(this.checkBox2_CheckedChanged);
+            resources.ApplyResources(this.cbDClick, "cbDClick");
+            this.cbDClick.Name = "cbDClick";
+            this.cbDClick.UseVisualStyleBackColor = true;
+            this.cbDClick.CheckedChanged += new System.EventHandler(this.checkBox2_CheckedChanged);
+            // 
+            // statusSC
+            // 
+            this.statusSC.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.statusText});
+            resources.ApplyResources(this.statusSC, "statusSC");
+            this.statusSC.Name = "statusSC";
+            // 
+            // statusText
+            // 
+            this.statusText.Name = "statusText";
+            resources.ApplyResources(this.statusText, "statusText");
+            // 
+            // timerStatus
+            // 
+            this.timerStatus.Interval = 5000;
+            this.timerStatus.Tick += new System.EventHandler(this.timerStatus_Tick);
+            // 
+            // iconoSC
+            // 
+            resources.ApplyResources(this.iconoSC, "iconoSC");
+            this.iconoSC.BalloonTipClosed += new System.EventHandler(this.iconoSC_BalloonTipClosed);
+            // 
+            // timerNotify
+            // 
+            this.timerNotify.Interval = 8000;
+            this.timerNotify.Tick += new System.EventHandler(this.timerNotify_Tick);
+            // 
+            // timerExit
+            // 
+            this.timerExit.Tick += new System.EventHandler(this.timerExit_Tick_1);
             // 
             // sobreclick
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.checkBox2);
+            this.Controls.Add(this.statusSC);
+            this.Controls.Add(this.cbDClick);
             this.Controls.Add(this.buttonC);
-            this.Controls.Add(this.comboBox2);
+            this.Controls.Add(this.cbDur);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.checkBox1);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.cbSinLimite);
+            this.Controls.Add(this.cbTipo);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.numericUpDown2);
@@ -330,6 +422,8 @@
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
+            this.statusSC.ResumeLayout(false);
+            this.statusSC.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -350,23 +444,35 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.NumericUpDown numericUpDown2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cbTipo;
         private System.Windows.Forms.ToolStripMenuItem ascercaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem licenciaToolStripMenuItem;
         private System.Windows.Forms.Timer timerClick;
-        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.CheckBox cbSinLimite;
         private System.Windows.Forms.ToolStripMenuItem restaurarValoresToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem visitarRepositorioToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem cerrarAlTerminarToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.ComboBox cbDur;
         private System.Windows.Forms.ToolStripMenuItem ventanaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem siempreVisibleToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem restaurarTamañoToolStripMenuItem;
-        private System.Windows.Forms.CheckBox checkBox2;
+        private System.Windows.Forms.CheckBox cbDClick;
         private System.Windows.Forms.ToolStripMenuItem configuraciónToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem salirToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem reproducirSonidoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem apagarElEquipoToolStripMenuItem;
+        private System.Windows.Forms.StatusStrip statusSC;
+        private System.Windows.Forms.Timer timerStatus;
+        private System.Windows.Forms.ToolStripStatusLabel statusText;
+        private System.Windows.Forms.ToolStripMenuItem restaurarValoresToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem masToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem notificarToolStripMenuItem;
+        private System.Windows.Forms.NotifyIcon iconoSC;
+        private System.Windows.Forms.Timer timerNotify;
+        private System.Windows.Forms.Timer timerExit;
     }
 }
 
