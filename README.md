@@ -2,8 +2,8 @@
 [![Lanzamiento actual](https://img.shields.io/github/v/release/elstef41/sobreclick?include_prereleases)](https://github.com/elstef41/sobreclick/releases)
 [![Sourceforge](https://img.shields.io/badge/sourceforge-descargar-green)](https://sourceforge.net/projects/sobreclick/files/latest/download)
 
-![Ventana principal](https://github.com/elstef41/sobreclick/assets/19848495/91ffbaca-ef98-480c-8946-586303ea57b9)
 =======
+![Ventana principal](https://github.com/user-attachments/assets/1ace6b44-9893-4f36-9882-96438e72bfb5)
 
 ## Una herramienta simple que permite hacer clic una determinada cantidad de veces específica en distintas aplicaciones.
 Ya no tendrás que esforzarte para hacer excavaciones en tu mundo de Minecraft ni gastarte los botones de tu mouse en Cookie Clicker. Con una interfaz muy simple pero útil, Sobreclick te permite hacer clics automatizados, ofreciéndote un montón de características
@@ -17,15 +17,14 @@ Ya no tendrás que esforzarte para hacer excavaciones en tu mundo de Minecraft n
 - Atajos de teclado para iniciar, pausar/reanudar o detener, completamente configurables y almacenables para posteriores ejecuciones.
 - Disponible en español e inglés.
 
-### Requisitos para ejecutar Sobreclick
+## Requisitos 
+### para ejecutar Sobreclick
 * Windows XP o superior.
 * .NET Framework 2 o superior.
 
-...para compilar:
-* Visual Studio 2010 o superior.
+### para compilar
 
-### Estado preliminar
-Sobreclick se encuentra en fase beta. Esto implica que es probable encontrar bugs en tiempo de ejecución. De este modo, cualquier error que se reporte en el tracker será agradecido.
+* Visual Studio 2010 o superior (por retrocompatibilidad se recomienda la más cercana a 2010).
 
 ## Capturas
 ![Sobreclick en Windows XP](https://github.com/elstef41/sobreclick/assets/19848495/aca7a812-696d-4d3c-a99c-b1c299f5a0fd)
@@ -40,8 +39,6 @@ Sobreclick se encuentra alojado bajo la licencia [Apache License 2.0](https://ww
 ## Enlaces del desarrollador
 [YouTube](https://www.youtube.com/user/elstef41)
 
-[Twitter](https://twitter.com/elstef41)
+[X](https://x.com/elstef41)
 
 [Telegram](https://t.me/elstef41)
-
-[Blog](https://elstef41.com)
