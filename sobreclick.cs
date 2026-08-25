@@ -237,6 +237,7 @@ namespace Sobreclick
         }
         public bool Iniciar()
         {
+            ocultarNotificacion();
             bool nud1 = Convert.ToInt32(numericUpDown1.Value) < 1;
             if (nud1 == true)
             {
@@ -437,6 +438,13 @@ namespace Sobreclick
             timerNotify.Start();
             iconoSC.Visible = true;
             iconoSC.ShowBalloonTip(1000, "Sobreclick", texto, ToolTipIcon.Info);
+        }
+        public void ocultarNotificacion()
+        {
+            // Recordar que no funciona con el sistema de notificación moderno
+            timerNotify.Stop();
+            timerNotify.Enabled = false;
+            iconoSC.Visible = false;
         }
         private void timerClick_Tick(object sender, EventArgs e)
         {
